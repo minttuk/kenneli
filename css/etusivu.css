@@ -12,6 +12,7 @@ footer {
     margin: 50px 0;
 }
 
-#testiwell {
+#testiwell, #commentarea {
     display: none;
 }
+
