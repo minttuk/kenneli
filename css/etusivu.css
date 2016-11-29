@@ -8,6 +8,7 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #ff9966;
 }
 
 footer {
@@ -18,3 +19,22 @@ footer {
     display: none;
 }
 
+.well {
+    background-color: rgb(222,220,100);
+    border-radius: 25px;
+    border: 2px solid rgb(200,200,100);
+}
+
+.list-unstyled {
+  list-style: disc;
+  padding-left: 19px;
+}
+
+#somewell{
+    padding-bottom: 35px;
+}
+
+#somebuttons{
+    padding-top: 10px;
+    padding-left: 10px;
+}
