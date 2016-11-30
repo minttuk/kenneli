@@ -1,13 +1,16 @@
-function get_session(callback) {
+function get_session_my(callback) {
     var result;
+    var $str = "getSession";
     $.ajax({
-        url: "https://kenneli-uusi-sainipatala.c9users.io/php/get_session.php",
+        //url: "https://kenneli-uusi-sainipatala.c9users.io/php/get_session.php",
+        //url: "php/get_session.php",
+        url: "php/sqlquery.php?q=" + $str,
         type: "GET",
-        cache: false,
+        //cache: false,
         success: function (response) {
             result = response;
             console.log(result);
-            callback(null, result);
+            callback("moi", result);
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);

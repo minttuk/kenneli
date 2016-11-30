@@ -1,12 +1,22 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+//header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: application/json');
 include("connect.php");
 
-/*$q = $_REQUEST["q"];
+$q = $_REQUEST["q"];
 
 if ($q == "getMsgs"){
     getMsgs();
-}*/
+}
+
+if ($q == "login"){
+    login();
+}
+
+if ($q == "getSession") {
+    getSession();
+}
 
 function getResource() {
     # returns numerically indexed array of URI parts
@@ -42,6 +52,32 @@ function getMethod() {
     # returns a string containing the HTTP method
     $method = $_SERVER['REQUEST_METHOD'];
     return $method;
+}
+
+function login() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $sql = "SELECT * FROM user WHERE email='" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "'";
+    $result = $GLOBALS['db']->query($sql);
+    //$resultnumber = $result->num_rows;
+    session_start();
+    if ($result->num_rows > 0) {
+        // output data of each row
+        if ($row = $result->fetch_assoc()) {
+            if ($row['password'] == $value['password']) {
+                $_SESSION['id'] = $row['id'];
+                echo json_encode(array('id'=>$_SESSION['id']));
+                return; 
+            }
+        }
+    }
+    http_response_code(403);
+    echo json_encode(array('error'=>'No user found'));
+}
+
+function getSession() {
+    session_start();
+    //$_SESSION['id'] = 2;
+    echo json_encode($_SESSION['id']);
 }
 
 function createUser() {
@@ -141,7 +177,8 @@ getUsers();
 updateUser();
 */
 
-getMsgs();
+//getMsgs();
+//login();
 
 $db->close();
 

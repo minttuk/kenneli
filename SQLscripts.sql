@@ -41,6 +41,7 @@ foreign key (dog_id) references dog(id)
 );
 
 insert into user (email, password) values ("testi@testi.fi", "testipassword");
+insert into user (email, password) values ("testi2@testi2.fi", "testi2password");
 
 insert into dog (name, owner, description) values ("musti", "1", "Kiltti koira.");
 

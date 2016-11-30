@@ -3,9 +3,11 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script type="text/javascript" src="js/get_session.js"></script>
         <script>
-            get_session(function(error, result) {
+            get_session_my(function(error, result) {
                 console.log(error + ", " + result);
-                //window.location = "login.html";
+                if (!result && result == null) {
+                    window.location = "login.html";
+                }
             });
         </script>
     </head>
