@@ -8,11 +8,16 @@
 
 body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-color: #ff9966;
+    background-color: #ccbb99;
 }
 
 footer {
     margin: 50px 0;
+}
+
+.navbar {
+    background-color: #990044;
+    border-bottom: 0px;
 }
 
 #testiwell, #commentarea {
@@ -22,7 +27,7 @@ footer {
 .well {
     background-color: rgb(222,220,100);
     border-radius: 25px;
-    border: 2px solid rgb(200,200,100);
+    border: 2px solid #990044;
 }
 
 .list-unstyled {
@@ -30,11 +35,17 @@ footer {
   padding-left: 19px;
 }
 
-#somewell{
+#somewell {
     padding-bottom: 35px;
 }
 
-#somebuttons{
+#somebuttons {
     padding-top: 10px;
     padding-left: 10px;
+}
+
+hr{
+    border: 0;
+    height: 2px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
