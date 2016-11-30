@@ -2,6 +2,12 @@
 header("Access-Control-Allow-Origin: *");
 include("connect.php");
 
+$q = $_REQUEST["q"];
+
+if ($q == "getMsgs"){
+    getMsgs();
+}
+
 function getResource() {
     # returns numerically indexed array of URI parts
     $resource_string = $_SERVER['REQUEST_URI'];
@@ -74,7 +80,7 @@ function updateUser() {
 
 
 function getMsgs() {
-    /*$sql = "SELECT * FROM message WHERE id=1";
+    $sql = "SELECT * FROM message WHERE id=1";
     $result = $GLOBALS['db']->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
@@ -87,8 +93,8 @@ function getMsgs() {
     } else {
         echo "0 results";
     }
-    //echo json_encode($result);*/
-    echo '1';
+    //echo json_encode($result);
+    //echo '1';
 }
 
 

@@ -27,13 +27,13 @@ function getDogMessages(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
 		    console.log(text);
-		    //var object = JSON.parse(text);
-		    document.getElementById("title1").innerHTML = text;//object[0].title;
-		    //document.getElementById("message1").innerHTML = object[0].message;
+		    var object = JSON.parse(text);
+		    document.getElementById("title1").innerHTML = object[0].title;
+		    document.getElementById("message1").innerHTML = object[0].message;
 		}
 	};
 	
-	ajaxRequest.open("GET", "php/sqlquery.php", true);
+	ajaxRequest.open("GET", "php/sqlquery.php?q=getMsgs", true);
 	ajaxRequest.send(null);
 	
 }
