@@ -30,8 +30,16 @@ foreign key (owner) references user(id)
 
 create table message (
 id int not null auto_increment,
+title varchar(40),
 message varchar(40),
 user_id int not null,
+dog_id int not null,
+posttime TIMESTAMP,
 Primary key (id),
-foreign key (user_id) references user(id)
+foreign key (user_id) references user(id),
+foreign key (dog_id) references dog(id)
 );
+
+insert into user (email, password) values ("testi@testi.fi", "testipassword");
+
+insert into dog (name, owner, description) values ("musti", "1", "Kiltti koira.");
