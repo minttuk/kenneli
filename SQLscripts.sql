@@ -46,3 +46,4 @@ insert into dog (name, owner, description) values ("musti", "1", "Kiltti koira."
 
 insert into message (title, message, user_id, dog_id) values ("Hei Koiraihmiset!", "Minulla on ilo kertoa tästä sivusta teille.", "1", "1");
 insert into message (title, message, user_id, dog_id) values ("Musti karkasi", "Onko kukaan nähnyt mustia!!??!?", "1", "1");
+insert into message (title, message, user_id, dog_id) values ("Musti", "MessageMusti", "1", "1");
