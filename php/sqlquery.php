@@ -3,6 +3,8 @@ header("Access-Control-Allow-Origin: *");
 //header('Content-Type: text/html; charset=utf-8');
 header('Content-Type: application/json');
 include("connect.php");
+mb_language('uni');
+mb_internal_encoding('UTF-8');
 
 $q = $_REQUEST["q"];
 
@@ -116,7 +118,7 @@ function updateUser() {
 
 
 function getMsgs() {
-    $query="select *  FROM message WHERE id=3";
+    $query="select *  FROM message WHERE id=1";
     //$result = mysql_query($query);
     $result=$GLOBALS['db']->query($query);
     $msg = array();
