@@ -72,6 +72,18 @@ function updateUser() {
     }
 }
 
+
+function getMsgs() {
+    $sql = "SELECT * FROM message";
+    $result = $GLOBALS['db']->query($sql);
+    $rows = array();
+    while($r = mysql_fetch_assoc($result)) {
+        $rows['object_name'][] = $r;
+   }
+    echo json_encode($rows);
+}
+
+
 // some functions to be done (some might not be necessary)
 
 // deleteUser()
@@ -113,11 +125,13 @@ else {
 	http_response_code(405); # Method not allowed
 }
 */
-
+/*
 createUser();
 getUsers();
 updateUser();
+*/
 
+getMsgs();
 
 $db->close();
 
