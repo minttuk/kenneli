@@ -74,6 +74,17 @@ function updateUser() {
 
 
 function getMsgs() {
+    $query="select *  FROM message";
+    $result=$GLOBALS['db']->query($query);
+    while($row=mysql_fetch_array($result))
+    {
+      $title=$row['title']; 
+      $message=$row['message'];
+    
+      $msg[] = array('title'=> $title,'message'=> $message);
+    }
+    
+    echo $jsonformat=json_encode($msg);
     /*$sql = "SELECT * FROM message WHERE id=1";
     $result = $GLOBALS['db']->query($sql);
     if ($result->num_rows > 0) {
@@ -84,11 +95,12 @@ function getMsgs() {
             echo json_encode($result_array);
             //print_r($result_array);
         }
-    } else {
+    } 
+    else {
         echo "0 results";
-    }
-    //echo json_encode($result);*/
-    echo '1';
+    }*/
+    //echo json_encode($result);
+    //echo '1';
 }
 
 
