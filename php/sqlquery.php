@@ -81,9 +81,10 @@ function updateUser() {
 
 function getMsgs() {
     $query="select *  FROM message WHERE id=1";
+    //$result = mysql_query($query);
     $result=$GLOBALS['db']->query($query);
-    while($row=mysql_fetch_array($result))
-    {
+    $msg = array();
+    while($row=$result->fetch_assoc()){
       $title=$row['title']; 
       $message=$row['message'];
     
@@ -140,7 +141,7 @@ getUsers();
 updateUser();
 */
 
-getMsgs();
+//getMsgs();
 
 $db->close();
 
