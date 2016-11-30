@@ -29,11 +29,11 @@ function getDogMessages(){
 		    console.log(text);
 		    var object = JSON.parse(text);
 		    document.getElementById("title1").innerHTML = object[0].title;
-		    document.getElementById("message1").innerHTML = object[0].message;
+		    //document.getElementById("message1").innerHTML = object[0].message;
 		}
 	};
 	
-	ajaxRequest.open("GET", "php/sqlquery.php?q=getMsgs", true);
+	ajaxRequest.open("GET", "php/sqlquery.php", true);
 	ajaxRequest.send(null);
 	
 }
