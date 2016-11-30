@@ -80,21 +80,17 @@ function updateUser() {
 
 
 function getMsgs() {
-    $sql = "SELECT * FROM message WHERE id=1";
-    $result = $GLOBALS['db']->query($sql);
-    if ($result->num_rows > 0) {
-        // output data of each row
-        while($row = $result->fetch_assoc()) {
-            //$age = array("Peter"=>"35", "Ben"=>"37", "Joe"=>"43");
-            $result_array[] = array('title' => $row['title'], 'message' => $row['message']);
-            echo json_encode($result_array);
-            //print_r($result_array);
-        }
-    } else {
-        echo "0 results";
+    $query="select *  FROM message WHERE id=1";
+    //$result = mysql_query($query);
+    $result=$GLOBALS['db']->query($query);
+    $msg = array();
+    while($row=$result->fetch_assoc()){
+      $title=$row['title']; 
+      $message=$row['message'];
+    
+      $msg[] = array('title'=> $title,'message'=> $message);
     }
-    //echo json_encode($result);
-    //echo '1';
+    echo $jsonformat=json_encode($msg);
 }
 
 
@@ -145,7 +141,7 @@ getUsers();
 updateUser();
 */
 
-getMsgs();
+//getMsgs();
 
 $db->close();
 
