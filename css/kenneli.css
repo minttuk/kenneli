@@ -44,8 +44,42 @@ footer {
     padding-left: 10px;
 }
 
-hr{
-    border: 0;
-    height: 2px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+hr.style18 { 
+  height: 30px; 
+  border-style: solid; 
+  border-color: #990044; 
+  border-width: 1px 0 0 0; 
+  border-radius: 20px; 
+} 
+hr.style18:before { 
+  display: block; 
+  content: ""; 
+  height: 30px; 
+  margin-top: -31px; 
+  border-style: solid; 
+  border-color: #990044; 
+  border-width: 0 0 1px 0; 
+  border-radius: 20px; 
 }
+
+hr.style8 {
+	border-top: 3px double #990044;
+}
+
+
+.btn-primary{
+    background-color: #990044;
+    border-color: black;
+}
+
+.testilinkki{
+    color: black;
+}
+ #paivityswell{
+     margin-bottom: 50px;
+     margin-top: 50px;
+ }
+ 
+ #linkkiwell{
+     margin-top: 50px;
+ }
