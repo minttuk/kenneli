@@ -12,7 +12,7 @@ if ($q == "getMsgs"){
     getMsgs();
 }
 
-if (getMethod() == "POST"){     
+if ($q == "createMsg"){     
     createMsg();  
 }
 
@@ -82,7 +82,7 @@ function login() {
     echo json_encode(array('error'=>'No user found'));
 }
 
-function getMsgs() {
+/*function getMsgs() {
     $sql="select *  FROM message WHERE id=1";
     //$result = mysql_query($sql);
     $result=$GLOBALS['db']->query($sql);
@@ -95,7 +95,7 @@ function getMsgs() {
     }
     //echo $jsonformat=json_encode($msg);
     echo json_encode($msg);
-}
+}*/
 
 function getSession() {
     session_start();
@@ -156,20 +156,19 @@ function getMsgs() {
 
 function createMsg() {
     mysql_set_charset('utf8');
-   //query for insert data into tables
+    
+    //$check = mysql_query("SELECT * FROM comment order by id desc");
     if(isset($_POST['title'])){
-       $title = $_POST['title'];
-       $message =$_POST['message'];
-
-    $query = "INSERT INTO `message` 
-             (`title`,`message`)
-             VALUES
-             ('$title','$message')";
-             $query_run= mysql_query($query);
-             $retval=mysql_query($query,$conn);
-               if ($query_run)
-       { echo 'It is working';
+        $content=mysql_real_escape_string($_POST['title']);
+        $ip=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
+        mysql_query("insert into message(title) values ('$content')");
+        $fetch= mysql_query("SELECT title,id FROM message order by id desc");
+        $row=mysql_fetch_array($fetch);
+        echo $row['title'];
     }
+    
+
+}
     
     
     
@@ -181,7 +180,7 @@ function createMsg() {
     } else {
         echo "Error: " . $sql . "<br>" . $GLOBALS['db']->error;
     }*/
-}
+
     
 
 
@@ -234,7 +233,7 @@ updateUser();
 
 //getMsgs();
 
-getMsgs();
+//getMsgs();
 //login();
 
 

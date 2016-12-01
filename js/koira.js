@@ -46,30 +46,21 @@ function postMessage(){
     
     var title = document.getElementById("title");
     var message = document.getElementById("message");
+    var dataString = 'title='+ title + 'message='+ message;
+    
 
-    //get the form values
- //var title = $('#otsikko').val();     
- //var message = $('#teksti').val();     
- 
- //make the postdata
- var postData = '&title='+title+'&message='+message;
- //call your .php script in the background, 
- //when it returns it will call the success function if the request was successful or 
- //the error one if there was an issue (like a 404, 500 or any other error status)
-
-  $.ajax({
-    url : "php/sqlquery.php?q=createMsg",
+    $.ajax({
     type: "POST",
-    data : postData,
-    success: function(data,status,  xhr)
-     {
-        //if success then just output the text to the status div then clear the form inputs to prepare for new data
-        $("#message1").html(data);
-        $('#title').val();
-        $('#message').val('');
-         }
-
-}); 
-
+    url: "php/sqlquery.php?q=createMsg",
+    data: dataString,
+    cache: true,
+    success: function(html){
+    //$("#show").after(html);
+    document.getElementById('title').value='';
+    document.getElementById('message').value='';
+    //$("#flash").hide();
+    //$("#content").focus();
+    }  
+    });
 
 }
