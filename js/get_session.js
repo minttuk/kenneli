@@ -9,8 +9,8 @@ function get_session_my(callback) {
         //cache: false,
         success: function (response) {
             result = response;
-            console.log(result);
-            callback("moi", result);
+            console.log(result['id']);
+            callback("moi", result['id']);
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);

@@ -94,7 +94,8 @@ function getMsgs() {
 function getSession() {
     session_start();
     //$_SESSION['id'] = 2;
-    echo json_encode($_SESSION['id']);
+    //echo json_encode($_SESSION['id']);
+    echo json_encode(array('id'=> $_SESSION['id']));
 }
 
 function createUser() {
@@ -179,8 +180,9 @@ getUsers();
 updateUser();
 */
 
-getMsgs();
+//getMsgs();
 //login();
+//getSession();
 
 $db->close();
 
