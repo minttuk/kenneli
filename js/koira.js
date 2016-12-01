@@ -22,12 +22,12 @@ function getDogMessages(){
 		}
 	}
 
-	
 	ajaxRequest.onreadystatechange = function(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
 		    console.log(text);
 		    var object = JSON.parse(text);
+		    console.log(object[0]);
 		    document.getElementById("title1").innerHTML = object[0].title;
 		    //document.getElementById("message1").innerHTML = object[0].message;
 		}

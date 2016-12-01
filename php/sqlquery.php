@@ -76,6 +76,21 @@ function login() {
     echo json_encode(array('error'=>'No user found'));
 }
 
+function getMsgs() {
+    $sql="select *  FROM message WHERE id=1";
+    //$result = mysql_query($sql);
+    $result=$GLOBALS['db']->query($sql);
+    $msg = array();
+    while($row=$result->fetch_assoc()){
+      $title=$row["title"]; 
+      $message=$row["message"];
+      //$data += [$category => $question];
+      $msg[] = array('title'=> $title,'message'=> $message);
+    }
+    //echo $jsonformat=json_encode($msg);
+    echo json_encode($msg);
+}
+
 function getSession() {
     session_start();
     //$_SESSION['id'] = 2;
@@ -114,21 +129,6 @@ function updateUser() {
     } else {
         echo "Error updating record: " . $GLOBALS['db']->error;
     }
-}
-
-
-function getMsgs() {
-    $query="select *  FROM message WHERE id=1";
-    //$result = mysql_query($query);
-    $result=$GLOBALS['db']->query($query);
-    $msg = array();
-    while($row=$result->fetch_assoc()){
-      $title=$row["title"]; 
-      $message=$row["message"];
-    
-      $msg[] = array("title"=> $title,"message"=> $message);
-    }
-    echo $jsonformat=json_encode($msg);
 }
 
 
@@ -179,7 +179,7 @@ getUsers();
 updateUser();
 */
 
-//getMsgs();
+getMsgs();
 //login();
 
 $db->close();
