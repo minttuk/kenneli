@@ -12,6 +12,11 @@ if ($q == "getMsgs"){
     getMsgs();
 }
 
+if ($q == "createMsg"){     
+    createMsg();  
+}
+
+
 if ($q == "login"){
     login();
 }
@@ -19,6 +24,7 @@ if ($q == "login"){
 if ($q == "getSession") {
     getSession();
 }
+
 
 function getResource() {
     # returns numerically indexed array of URI parts
@@ -76,7 +82,7 @@ function login() {
     echo json_encode(array('error'=>'No user found'));
 }
 
-function getMsgs() {
+/*function getMsgs() {
     $sql="select *  FROM message WHERE id=1";
     //$result = mysql_query($sql);
     $result=$GLOBALS['db']->query($sql);
@@ -89,7 +95,7 @@ function getMsgs() {
     }
     //echo $jsonformat=json_encode($msg);
     echo json_encode($msg);
-}
+}*/
 
 function getSession() {
     session_start();
@@ -133,6 +139,52 @@ function updateUser() {
 }
 
 
+
+function getMsgs() {
+    $query="select *  FROM message WHERE id=1";
+    //$result = mysql_query($query);
+    $result=$GLOBALS['db']->query($query);
+    $msg = array();
+    while($row=$result->fetch_assoc()){
+      $title=$row["title"]; 
+      $message=$row["message"];
+      $time=$row["posttime"];
+    
+      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time);
+    }
+    echo $jsonformat=json_encode($msg);
+}
+
+function createMsg() {
+    mysql_set_charset('utf8');
+    
+    //$check = mysql_query("SELECT * FROM comment order by id desc");
+    if(isset($_POST['title'])){
+        $content=mysql_real_escape_string($_POST['title']);
+        $ip=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
+        mysql_query("insert into message(title) values ('$content')");
+        $fetch= mysql_query("SELECT title,id FROM message order by id desc");
+        $row=mysql_fetch_array($fetch);
+        echo $row['title'];
+    }
+    
+
+}
+    
+    
+    
+   /* $sql = "INSERT INTO message (title, message)
+    VALUES ('title', 'message')";
+    
+    if ($GLOBALS['db']->query($sql) === TRUE) {
+        echo "New message created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $GLOBALS['db']->error;
+    }*/
+
+    
+
+
 // some functions to be done (some might not be necessary)
 
 // deleteUser()
@@ -141,7 +193,6 @@ function updateUser() {
 // updateDog()
 // getDog()
 // getDogs()
-// createMsg()
 // getMsg()
 // getMsgs()
 // updateMsg()
@@ -183,6 +234,7 @@ updateUser();
 //getMsgs();
 //login();
 //getSession();
+
 
 $db->close();
 
