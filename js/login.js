@@ -12,21 +12,25 @@ $('#loginbutton').click(function(){
     console.log($('#loginpassword').val());
     if (checkEmail($loginemail) && passwordGiven($loginpassword)) {
         console.log('both ok');
-        var values = $loginemail;
-
+        //var values = $loginemail;
+        var $str = "login";
         $.ajax({
-            url: "https://kenneli-uusi-sainipatala.c9users.io/php/login.php",
+            //url: "https://kennelsome-sainipatala.c9users.io/php/login.php",
+            url: "php/sqlquery.php?q=" + $str,
             type: "post",
-            data: JSON.stringify({ "email": $loginemail, "password": $loginpassword}),
+            //dataType: "html",
+            dataType: "json",
+            data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),
+            //data: "",
             success: function (response) {
-               console.log(response + " session");
+               console.log("SUCCESS",response);
+                window.location = "testi.html";
             },
             error: function(jqXHR, textStatus, errorThrown) {
-               console.log(textStatus, errorThrown);
+               console.log("ERROR",textStatus, errorThrown);
             }
         });
     }
-    window.location = "testi.html";
     return false;
 });
 

@@ -1,5 +1,7 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+//header('Content-Type: text/html; charset=utf-8');
+header('Content-Type: application/json');
 include("connect.php");
 mb_language('uni');
 mb_internal_encoding('UTF-8');
@@ -9,8 +11,18 @@ $q = $_REQUEST["q"];
 if ($q == "getMsgs"){
     getMsgs();
 }
+
 if (getMethod() == "POST"){     
     createMsg();  
+}
+
+
+if ($q == "login"){
+    login();
+}
+
+if ($q == "getSession") {
+    getSession();
 }
 
 
@@ -50,6 +62,47 @@ function getMethod() {
     return $method;
 }
 
+function login() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $sql = "SELECT * FROM user WHERE email='" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "'";
+    $result = $GLOBALS['db']->query($sql);
+    //$resultnumber = $result->num_rows;
+    session_start();
+    if ($result->num_rows > 0) {
+        // output data of each row
+        if ($row = $result->fetch_assoc()) {
+            if ($row['password'] == $value['password']) {
+                $_SESSION['id'] = $row['id'];
+                echo json_encode(array('id'=>$_SESSION['id']));
+                return; 
+            }
+        }
+    }
+    http_response_code(403);
+    echo json_encode(array('error'=>'No user found'));
+}
+
+function getMsgs() {
+    $sql="select *  FROM message WHERE id=1";
+    //$result = mysql_query($sql);
+    $result=$GLOBALS['db']->query($sql);
+    $msg = array();
+    while($row=$result->fetch_assoc()){
+      $title=$row["title"]; 
+      $message=$row["message"];
+      //$data += [$category => $question];
+      $msg[] = array('title'=> $title,'message'=> $message);
+    }
+    //echo $jsonformat=json_encode($msg);
+    echo json_encode($msg);
+}
+
+function getSession() {
+    session_start();
+    //$_SESSION['id'] = 2;
+    echo json_encode($_SESSION['id']);
+}
+
 function createUser() {
     $sql = "INSERT INTO user (email, password)
     VALUES ('testi2@testi.fi', 'testi2salasana')";
@@ -83,6 +136,7 @@ function updateUser() {
         echo "Error updating record: " . $GLOBALS['db']->error;
     }
 }
+
 
 
 function getMsgs() {
@@ -131,8 +185,6 @@ function createMsg() {
     
 
 
-
-
 // some functions to be done (some might not be necessary)
 
 // deleteUser()
@@ -179,7 +231,12 @@ getUsers();
 updateUser();
 */
 
+
 //getMsgs();
+
+getMsgs();
+//login();
+
 
 $db->close();
 
