@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -99,12 +99,12 @@
                 <!-- Comments Form -->
                 <div class="well" id="paivitywell">
                     <h4>Kirjoita tähän koiran kuulumisia:</h4>
-                    <form role="form">
+                    <form role="form" method="post">
                         <div class="form-group">
-                            <textarea class="form-control" rows="1" placeholder="Otsikko"></textarea>
-                            <textarea class="form-control" rows="3" placeholder="Teksti"></textarea>
+                            <textarea class="form-control" rows="1" placeholder="Otsikko" id="title"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Teksti" id="message"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
                     </form>
                 </div>
 
@@ -133,7 +133,7 @@
                         <h4 class="media-heading" id="title1">Tähän tietokannasta haettu koiran nimi: päivityksen otsikko
                             <small>Tähän aikaleima</small>
                         </h4>
-                        Tähän päivityksen sisältö ja kuvaan koiran kuva
+                        <p id="message1">Tähän päivityksen sisältö ja kuvaan koiran kuva</p>
                     </div>
                 </div>
 

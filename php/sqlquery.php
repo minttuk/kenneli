@@ -4,11 +4,15 @@ include("connect.php");
 mb_language('uni');
 mb_internal_encoding('UTF-8');
 
-/*$q = $_REQUEST["q"];
+$q = $_REQUEST["q"];
 
 if ($q == "getMsgs"){
     getMsgs();
-}*/
+}
+if (getMethod() == "POST"){     
+    createMsg();  
+}
+
 
 function getResource() {
     # returns numerically indexed array of URI parts
@@ -89,11 +93,44 @@ function getMsgs() {
     while($row=$result->fetch_assoc()){
       $title=$row["title"]; 
       $message=$row["message"];
+      $time=$row["posttime"];
     
-      $msg[] = array("title"=> $title,"message"=> $message);
+      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time);
     }
     echo $jsonformat=json_encode($msg);
 }
+
+function createMsg() {
+    mysql_set_charset('utf8');
+   //query for insert data into tables
+    if(isset($_POST['title'])){
+       $title = $_POST['title'];
+       $message =$_POST['message'];
+
+    $query = "INSERT INTO `message` 
+             (`title`,`message`)
+             VALUES
+             ('$title','$message')";
+             $query_run= mysql_query($query);
+             $retval=mysql_query($query,$conn);
+               if ($query_run)
+       { echo 'It is working';
+    }
+    
+    
+    
+   /* $sql = "INSERT INTO message (title, message)
+    VALUES ('title', 'message')";
+    
+    if ($GLOBALS['db']->query($sql) === TRUE) {
+        echo "New message created successfully";
+    } else {
+        echo "Error: " . $sql . "<br>" . $GLOBALS['db']->error;
+    }*/
+}
+    
+
+
 
 
 // some functions to be done (some might not be necessary)
@@ -104,7 +141,6 @@ function getMsgs() {
 // updateDog()
 // getDog()
 // getDogs()
-// createMsg()
 // getMsg()
 // getMsgs()
 // updateMsg()
@@ -143,7 +179,7 @@ getUsers();
 updateUser();
 */
 
-getMsgs();
+//getMsgs();
 
 $db->close();
 
