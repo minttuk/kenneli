@@ -201,6 +201,7 @@ function createMsg() {
     /*if ($_REQUEST['title']) {
         $title = $_REQUEST['title'];
         $message = $_REQUEST['message'];
+        console.log($title);
         $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
         $result = $GLOBALS['db']->query($sql);
         //$query = mysqli_query($GLOBALS['db'], $sql);
@@ -214,12 +215,19 @@ function createMsg() {
     }*/
 
     
-   /* if(isset($_POST['title'])){
+    /*if(isset($_POST['title'])){
         $title = mysql_real_escape_string($_POST['title']);
+        console.log($title);
         $message = mysql_real_escape_string($_POST['message']);
         $result = mysql_query("insert into message(title, message) values ('$title', '$message')");
-        $row=mysql_fetch_array($result);
-        echo $row['title'];
+        //$row=mysql_fetch_array($result);
+        //echo $row['title'];
+        if ($result->num_rows > 0) {
+            echo json_encode(array('answer'=>'message successfully created'));
+        }
+        else {
+            echo json_encode(array('answer'=>'Error in creating mysql message'));    
+        }
     }*/
     
 }
