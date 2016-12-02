@@ -12,7 +12,7 @@ if ($q == "getMsgs"){
     getMsgs();
 }
 
-if ($q == "createMsg"){     
+if ($q == "createMsg"){
     createMsg(); 
 }
 
@@ -181,8 +181,23 @@ function getMsgs() {
 }
 
 function createMsg() {
-    mysql_set_charset('utf8');
-    if ($_REQUEST['title']) {
+    //mysql_set_charset('utf8');
+    $json = file_get_contents('php://input');
+    $value = json_decode($json);
+    $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
+    $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
+    $sql = "INSERT INTO message(title, message) VALUES ($title, $message)";
+    //$result = mysql_query($sql);
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        echo json_encode(array('answer'=>'message successfully created'));
+    }
+    else {
+        echo json_encode(array('answer'=>'Error in creating mysql message'));    
+    }
+    
+    
+    /*if ($_REQUEST['title']) {
         $title = $_REQUEST['title'];
         $message = $_REQUEST['message'];
         $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
@@ -195,20 +210,8 @@ function createMsg() {
             echo 'Error in creating mysql message';
         }
 
-    }
-    /*$value = json_decode(file_get_contents('php://input'), true);
-    $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
-    $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
-    $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
-    //$result = mysql_query($sql);
-    $result = $GLOBALS['db']->query($sql);
-    if ($result->num_rows > 0) {
-        echo json_encode(array('answer'=>'message successfully created'));
-    }
-    else {
-        echo json_encode(array('answer'=>'Error in creating mysql message'));    
-        
     }*/
+
     
    /* if(isset($_POST['title'])){
         $title = mysql_real_escape_string($_POST['title']);
