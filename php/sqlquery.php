@@ -182,7 +182,21 @@ function getMsgs() {
 
 function createMsg() {
     mysql_set_charset('utf8');
-    $value = json_decode(file_get_contents('php://input'), true);
+    if ($_REQUEST['title']) {
+        $title = $_REQUEST['title'];
+        $message = $_REQUEST['message'];
+        $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
+        $result = $GLOBALS['db']->query($sql);
+        //$query = mysqli_query($GLOBALS['db'], $sql);
+        if($result){
+            echo 'message inserted successfully';
+        }
+        else{
+            echo 'Error in creating mysql message';
+        }
+
+    }
+    /*$value = json_decode(file_get_contents('php://input'), true);
     $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
     $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
     $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
@@ -194,7 +208,7 @@ function createMsg() {
     else {
         echo json_encode(array('answer'=>'Error in creating mysql message'));    
         
-    }
+    }*/
     
    /* if(isset($_POST['title'])){
         $title = mysql_real_escape_string($_POST['title']);
