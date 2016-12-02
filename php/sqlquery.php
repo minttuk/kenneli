@@ -16,13 +16,24 @@ if ($q == "createMsg"){
     createMsg();  
 }
 
-
 if ($q == "login"){
     login();
 }
 
 if ($q == "getSession") {
     getSession();
+}
+
+if ($q == "getDog") {
+    getDog();
+}
+
+if ($q == "getDogs") {
+    getDogs();
+}
+
+if ($q == "getUser") {
+    getUser();
 }
 
 
@@ -129,6 +140,22 @@ function getUsers() {
     }
 }
 
+function getUser() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $sql = "SELECT * FROM user WHERE id='" . mysqli_real_escape_string($GLOBALS['db'], $value['id']) . "'";
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        if ($row = $result->fetch_assoc()) {
+            $user = array('id'=>$row['id'], 'firstname'=>$row['firstname'], 'lastname'=>$row['lastname'], 'email'=>$row['email']);
+            echo $jsonformat=json_encode($user);
+            return; 
+        }
+    }
+    http_response_code(403);
+    echo json_encode(array('error'=>'No user found!'));
+}
+
 function updateUser() {
     $sql = "UPDATE user SET email='updatetest@test.com' WHERE id=2";
     if ($GLOBALS['db']->query($sql) === TRUE) {
@@ -137,8 +164,6 @@ function updateUser() {
         echo "Error updating record: " . $GLOBALS['db']->error;
     }
 }
-
-
 
 function getMsgs() {
     $query="select *  FROM message WHERE id=1";
@@ -167,10 +192,40 @@ function createMsg() {
         $row=mysql_fetch_array($fetch);
         echo $row['title'];
     }
-    
-
 }
+
+function getDog() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $sql = "SELECT * FROM dog WHERE id='" . mysqli_real_escape_string($GLOBALS['db'], $value['dogID']) . "'";
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        if ($row = $result->fetch_assoc()) {
+            $dog = array('id'=>$row['id'], 'name'=>$row['name'], 'owner'=>$row['owner'], 'image'=>$row['image'], 'description'=>$row['description']);
+            echo $jsonformat=json_encode($dog);
+            return; 
+        }
+    }
+    http_response_code(403);
+    echo json_encode(array('error'=>'No dog found'));
+}
+
+function getDogs() {
+    $sql = "SELECT * FROM dog";
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        $dogs= array();
+        while ($row = $result->fetch_assoc()) {
+            $dogs[] = array('id'=>$row['id'], 'name'=>$row["name"], 'owner'=>$row["owner"], 'image'=>$row["image"], 'description'=>$row["description"]);
+        }
+        echo $jsonformat=json_encode($dogs);
+        return;
+    }
+    http_response_code(403);
+    echo json_encode(array('error'=>'No dog found'));
     
+}
     
     
    /* $sql = "INSERT INTO message (title, message)
@@ -191,49 +246,10 @@ function createMsg() {
 // getUser()
 // createDog()
 // updateDog()
-// getDog()
-// getDogs()
 // getMsg()
 // getMsgs()
 // updateMsg()
 // deleteMsg()
-
-/*
-$resource = getResource();
-$request_method = getMethod();
-$parameters = getParameters();
-
-# Redirect to appropriate handlers.
-if ($resource[0]=="staffapi") {
-	if ($request_method=="POST" && $resource[1]=="person") {
-    	postPerson($parameters);
-	}
-	else if ($request_method=="GET" && $resource[1]=="persons") {
-		getPersons();
-	} 
-	else if ($request_method=="GET" && $resource[1]=="person") {
-		getPerson($resource[2]);
-	}
-	else if ($request_method=="DELETE" && $resource[1]=="person") {
-		deletePerson($resource[2]);
-	}
-	else {
-		http_response_code(405); # Method not allowed
-	}
-}
-else {
-	http_response_code(405); # Method not allowed
-}
-*/
-/*
-createUser();
-getUsers();
-updateUser();
-*/
-
-//getMsgs();
-//login();
-//getSession();
 
 
 $db->close();

@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title class="name"></title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/kenneli.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/get_session.js"></script>
+    <script type="text/javascript" src="js/parseUri.js"></script>
+    <script type="text/javascript" src="js/nav.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">Etusivulle</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav" id="nav">
+                    <!-- <li>
+                        <a href="#">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Post Content Column -->
+            <div class="col-lg-9">
+
+                <!-- Blog Post -->
+
+                <!-- Title -->
+                <h1 class='name'></h1>
+
+                <!-- Author -->
+                <p class="lead" id='owner'>
+                    <i>Dalmatian Lovely Lisa</i>
+                </p>
+
+                <hr class="style8">
+
+                <!-- Preview Image -->
+                <img class="img-responsive" id="profileimage" src="" alt="Image not shown properly">
+
+                <hr class="style8">
+
+                <!-- Post Content -->
+                <p class="lead" id='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
+
+                <hr class="style8">
+
+                <!-- Blog Comments -->
+
+                <!-- Comments Form -->
+                <div class="well" id="paivitywell">
+                    <h4>Kirjoita tähän koiran kuulumisia:</h4>
+                    <form role="form" method="post">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="1" placeholder="Otsikko" id="title"></textarea>
+                            <textarea class="form-control" rows="3" placeholder="Teksti" id="message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submit">Submit</button>
+                    </form>
+                </div>
+
+                <hr class="style8">
+
+                <!-- Posted Comments -->
+
+                <!-- Comment -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading">Tähän tietokannasta haettu koiran nimi: päivityksen otsikko
+                            <small>Tähän aikaleima</small>
+                        </h4>
+                        Tähän päivityksen sisältö ja kuvaan koiran kuva
+                    </div>
+                </div>
+                
+                <div class="media">
+                    <a class="pull-left" href="#">
+                        <img class="media-object" src="http://placehold.it/64x64" alt="">
+                    </a>
+                    <div class="media-body">
+                        <h4 class="media-heading" id="title1">Tähän tietokannasta haettu koiran nimi: päivityksen otsikko
+                            <small>Tähän aikaleima</small>
+                        </h4>
+                        <p id="message1">Tähän päivityksen sisältö ja kuvaan koiran kuva</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-3">
+
+                <!-- Blog Categories Well -->
+                <div class="well" id="linkkiwell">
+                    <h4>Pentueen koirat</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a class ="testilinkki" href="koira1.html">Fanni</a>
+                                </li>
+                                <li><a class ="testilinkki" href="koira2.html">Ruffe</a>
+                                </li>
+                                <li><a class ="testilinkki" href="koira3.html">Musti</a>
+                                </li>
+                                <br>
+                                <li><a class ="testilinkki" href="index.html">Etusivulle</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Yhteystiedot:</h4>
+                    <p><strong>Kaisa Koppola </strong><br> Hirsikuja 4, 01522 Espoo <br> kaisa.koppola@posti.fi <br> 040-7651132</p>
+                </div>
+                
+                <div class="well" id="somewell">
+                    <h4>Seuraa meitä somessa:</h4>
+                    <div id="somebuttons">
+                        <a href="">
+                        <img title="Twitter" alt="Twitter" src="https://socialmediawidgets.files.wordpress.com/2014/03/twitter1.png" width="35" height="35" />
+                        </a>
+                        <a href="">
+                        <img title="LinkedIn" alt="LinkedIn" src="https://socialmediawidgets.files.wordpress.com/2014/03/linkedin1.png" width="35" height="35" />
+                        </a>
+                        <a href="">
+                        <img title="Facebook" alt="Facebook" src="https://socialmediawidgets.files.wordpress.com/2014/03/facebook1.png" width="35" height="35" />
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr class="style8">
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <script type="text/javascript" src="js/dog.js"></script>
+    <script>
+        get_dog_content();
+        getNav();
+    </script>
+
+
+</body>
+
+</html>

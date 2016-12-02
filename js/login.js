@@ -15,13 +15,10 @@ $('#loginbutton').click(function(){
         //var values = $loginemail;
         var $str = "login";
         $.ajax({
-            //url: "https://kennelsome-sainipatala.c9users.io/php/login.php",
             url: "php/sqlquery.php?q=" + $str,
             type: "post",
-            //dataType: "html",
             dataType: "json",
             data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),
-            //data: "",
             success: function (response) {
                console.log("SUCCESS",response);
                 window.location = "testi.html";
