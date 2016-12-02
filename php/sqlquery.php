@@ -166,7 +166,10 @@ function updateUser() {
 }
 
 function getMsgs() {
-    $query="select *  FROM message WHERE id=1";
+    //$query="select *  FROM message WHERE id=1";
+    //$query="select * FROM message"; tällä sai haettua kaikki, tätä voi käyttää etusivulla
+    $query = "select * FROM message WHERE dog_id=1"; //hakee kaikki koira1:n päivitykset. Tämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
+                                                    // parametrina koiran id-numeroa??
     //$result = mysql_query($query);
     $result=$GLOBALS['db']->query($query);
     $msg = array();
