@@ -12,6 +12,10 @@ if ($q == "getMsgs"){
     getMsgs();
 }
 
+if ($q == "getFrontSideMsgs"){
+    getFrontSideMsgs();
+}
+
 if ($q == "createMsg"){
     createMsg(); 
 }
@@ -179,6 +183,25 @@ function getMsgs() {
       $time=$row["posttime"];
     
       $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time);
+    }
+    echo $jsonformat=json_encode($msg);
+}
+
+function getFrontSideMsgs() {
+    //$query="select *  FROM message WHERE id=1";
+    $query="select * FROM message"; //tällä sai haettua kaikki, tätä voi käyttää etusivulla
+    //$query = "select * FROM message WHERE dog_id=1"; //hakee kaikki koira1:n päivitykset. Tämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
+                                                    // parametrina koiran id-numeroa??
+    //$result = mysql_query($query);
+    $result=$GLOBALS['db']->query($query);
+    $msg = array();
+    while($row=$result->fetch_assoc()){
+      $title=$row["title"]; 
+      $message=$row["message"];
+      $time=$row["posttime"];
+      $dog_id=$row["dog_id"];
+    
+      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time, "dog_id"=>$dog_id);
     }
     echo $jsonformat=json_encode($msg);
 }
