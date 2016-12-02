@@ -30,22 +30,16 @@ function getDogMessages(){
 		    console.log(object[0]);
 		    
 		    for (var i=0;i<5;i++){
+		        var koiran_id = object[i].dog_id;
 		        var loop_title = "title"+(i+1);
 		        var loop_message = "message"+(i+1);
 		        var loop_timestamp = "timestamp"+(i+1);
-		        var loop_naamakuva = "naamakuva"+(i+1);
+		        var loop_kuvan_id = "naamakuva"+(i+1);
+		        var loop_kuvan_src = "<img class=\"media-object\" src=\"img/koira"+koiran_id+"naama.png\" alt=\"\">";
 		        document.getElementById(loop_title).innerHTML = object[i].title;
 		        document.getElementById(loop_message).innerHTML = object[i].message;
     		    document.getElementById(loop_timestamp).innerHTML = "<small>"+object[i].time+"</small>";
-    		    if(object[i].dog_id==1){
-    		        document.getElementById(loop_naamakuva).innerHTML = "<img class=\"media-object\" src=\"img/koira1naama.png\" alt=\"\">";
-    		    }
-    		    else if(object[i].dog_id==2){
-    		        document.getElementById(loop_naamakuva).innerHTML = "<img class=\"media-object\" src=\"img/koira2naama.png\" alt=\"\">";
-    		    }
-    		    else if(object[i].dog_id==3){
-    		        document.getElementById(loop_naamakuva).innerHTML = "<img class=\"media-object\" src=\"img/koira3naama.png\" alt=\"\">";
-    		    }
+    		    document.getElementById(loop_kuvan_id).innerHTML = loop_kuvan_src;
 		    }
 		}
 	};

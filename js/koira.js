@@ -28,6 +28,11 @@ function getDogMessages(){
 		    console.log(text);
 		    var object = JSON.parse(text);
 		    console.log(object[0]);
+		    var count = Object.keys(object).length;
+			console.log(count);
+			for(var i=0;i<count;i++){
+				
+			}
 		    document.getElementById("title1").innerHTML = object[0].title;
 		    document.getElementById("message1").innerHTML = object[0].message;
 		    document.getElementById("timestamp1").innerHTML = "<small>"+object[0].time+"</small>";
