@@ -183,6 +183,7 @@ function getMsgs() {
 function createMsg() {
     //mysql_set_charset('utf8');
     $json = file_get_contents('php://input');
+    console.log($json);
     $value = json_decode($json);
     $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
     $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
