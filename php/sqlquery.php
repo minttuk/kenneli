@@ -13,7 +13,7 @@ if ($q == "getMsgs"){
 }
 
 if ($q == "createMsg"){     
-    createMsg();  
+    createMsg(); 
 }
 
 if ($q == "login"){
@@ -182,16 +182,28 @@ function getMsgs() {
 
 function createMsg() {
     mysql_set_charset('utf8');
-    
-    //$check = mysql_query("SELECT * FROM comment order by id desc");
-    if(isset($_POST['title'])){
-        $content=mysql_real_escape_string($_POST['title']);
-        $ip=mysql_real_escape_string($_SERVER['REMOTE_ADDR']);
-        mysql_query("insert into message(title) values ('$content')");
-        $fetch= mysql_query("SELECT title,id FROM message order by id desc");
-        $row=mysql_fetch_array($fetch);
-        echo $row['title'];
+    $value = json_decode(file_get_contents('php://input'), true);
+    $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
+    $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
+    $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
+    //$result = mysql_query($sql);
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        echo json_encode(array('answer'=>'message successfully created'));
     }
+    else {
+        echo json_encode(array('answer'=>'Error in creating mysql message'));    
+        
+    }
+    
+   /* if(isset($_POST['title'])){
+        $title = mysql_real_escape_string($_POST['title']);
+        $message = mysql_real_escape_string($_POST['message']);
+        $result = mysql_query("insert into message(title, message) values ('$title', '$message')");
+        $row=mysql_fetch_array($result);
+        echo $row['title'];
+    }*/
+    
 }
 
 function getDog() {
@@ -228,16 +240,7 @@ function getDogs() {
 }
     
     
-   /* $sql = "INSERT INTO message (title, message)
-    VALUES ('title', 'message')";
-    
-    if ($GLOBALS['db']->query($sql) === TRUE) {
-        echo "New message created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $GLOBALS['db']->error;
-    }*/
 
-    
 
 
 // some functions to be done (some might not be necessary)
