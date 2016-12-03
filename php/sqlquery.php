@@ -12,7 +12,11 @@ if ($q == "getMsgs"){
     getMsgs();
 }
 
-if ($q == "createMsg"){     
+if ($q == "getFrontSideMsgs"){
+    getFrontSideMsgs();
+}
+
+if ($q == "createMsg"){
     createMsg(); 
 }
 
@@ -174,7 +178,10 @@ function updateUser() {
 }
 
 function getMsgs() {
-    $query="select *  FROM message WHERE id=1";
+    //$query="select *  FROM message WHERE id=1";
+    //$query="select * FROM message"; tällä sai haettua kaikki, tätä voi käyttää etusivulla
+    $query = "select * FROM message WHERE dog_id=1"; //hakee kaikki koira1:n päivitykset. Tämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
+                                                    // parametrina koiran id-numeroa??
     //$result = mysql_query($query);
     $result=$GLOBALS['db']->query($query);
     $msg = array();
@@ -188,11 +195,47 @@ function getMsgs() {
     echo $jsonformat=json_encode($msg);
 }
 
+function getFrontSideMsgs() {
+    //$query="select *  FROM message WHERE id=1";
+    $query="select * FROM message"; //tällä sai haettua kaikki, tätä voi käyttää etusivulla
+    //$query = "select * FROM message WHERE dog_id=1"; //hakee kaikki koira1:n päivitykset. Tämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
+                                                    // parametrina koiran id-numeroa??
+    //$result = mysql_query($query);
+    $result=$GLOBALS['db']->query($query);
+    $msg = array();
+    while($row=$result->fetch_assoc()){
+      $title=$row["title"]; 
+      $message=$row["message"];
+      $time=$row["posttime"];
+      $dog_id=$row["dog_id"];
+    
+      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time, "dog_id"=>$dog_id);
+    }
+    echo $jsonformat=json_encode($msg);
+}
+
 function createMsg() {
-    mysql_set_charset('utf8');
-    if ($_REQUEST['title']) {
+    //mysql_set_charset('utf8');
+    $json = file_get_contents('php://input');
+    console.log($json);
+    $value = json_decode($json);
+    $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
+    $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
+    $sql = "INSERT INTO message(title, message) VALUES ($title, $message)";
+    //$result = mysql_query($sql);
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        echo json_encode(array('answer'=>'message successfully created'));
+    }
+    else {
+        echo json_encode(array('answer'=>'Error in creating mysql message'));    
+    }
+    
+    
+    /*if ($_REQUEST['title']) {
         $title = $_REQUEST['title'];
         $message = $_REQUEST['message'];
+        console.log($title);
         $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
         $result = $GLOBALS['db']->query($sql);
         //$query = mysqli_query($GLOBALS['db'], $sql);
@@ -203,27 +246,22 @@ function createMsg() {
             echo 'Error in creating mysql message';
         }
 
-    }
-    /*$value = json_decode(file_get_contents('php://input'), true);
-    $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
-    $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
-    $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
-    //$result = mysql_query($sql);
-    $result = $GLOBALS['db']->query($sql);
-    if ($result->num_rows > 0) {
-        echo json_encode(array('answer'=>'message successfully created'));
-    }
-    else {
-        echo json_encode(array('answer'=>'Error in creating mysql message'));    
-        
     }*/
+
     
-   /* if(isset($_POST['title'])){
+    /*if(isset($_POST['title'])){
         $title = mysql_real_escape_string($_POST['title']);
+        console.log($title);
         $message = mysql_real_escape_string($_POST['message']);
         $result = mysql_query("insert into message(title, message) values ('$title', '$message')");
-        $row=mysql_fetch_array($result);
-        echo $row['title'];
+        //$row=mysql_fetch_array($result);
+        //echo $row['title'];
+        if ($result->num_rows > 0) {
+            echo json_encode(array('answer'=>'message successfully created'));
+        }
+        else {
+            echo json_encode(array('answer'=>'Error in creating mysql message'));    
+        }
     }*/
     
 }

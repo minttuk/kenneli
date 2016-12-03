@@ -28,8 +28,20 @@ function getDogMessages(){
 		    console.log(text);
 		    var object = JSON.parse(text);
 		    console.log(object[0]);
+		    var count = Object.keys(object).length;
+			console.log(count);
+			for(var i=0;i<count;i++){
+				
+			}
 		    document.getElementById("title1").innerHTML = object[0].title;
 		    document.getElementById("message1").innerHTML = object[0].message;
+		    document.getElementById("timestamp1").innerHTML = "<small>"+object[0].time+"</small>";
+		    document.getElementById("title2").innerHTML = object[1].title;
+		    document.getElementById("message2").innerHTML = object[1].message;
+		    document.getElementById("timestamp2").innerHTML = "<small>"+object[1].time+"</small>";
+		    document.getElementById("title3").innerHTML = object[2].title;
+		    document.getElementById("message3").innerHTML = object[2].message;
+		    document.getElementById("timestamp3").innerHTML = "<small>"+object[2].time+"</small>";
 		}
 	};
 	
