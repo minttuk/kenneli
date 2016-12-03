@@ -1,4 +1,4 @@
-function get_session_my(callback) {
+(function get_session() {
     var result;
     var $str = "getSession";
     $.ajax({
@@ -10,12 +10,15 @@ function get_session_my(callback) {
         success: function (response) {
             result = response;
             console.log(result['id']);
-            callback("moi", result['id']);
+            //callback("moi", result['id']);
+            return;
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);
-            callback(errorThrown);
+            window.location = "login.html";
+            //callback(errorThrown);
+            return false;
         }
     });
-    return result;
-}
+    //return result;
+})()

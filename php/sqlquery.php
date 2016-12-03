@@ -36,6 +36,10 @@ if ($q == "getUser") {
     getUser();
 }
 
+if ($q == "logout") {
+    sessionDestroy();
+}
+
 
 function getResource() {
     # returns numerically indexed array of URI parts
@@ -93,6 +97,12 @@ function login() {
     echo json_encode(array('error'=>'No user found'));
 }
 
+function sessionDestroy() {
+    session_start();
+    session_destroy();
+    echo json_encode(array('id'=>$_SESSION['id']));
+}
+
 /*function getMsgs() {
     $sql="select *  FROM message WHERE id=1";
     //$result = mysql_query($sql);
@@ -110,8 +120,6 @@ function login() {
 
 function getSession() {
     session_start();
-    //$_SESSION['id'] = 2;
-    //echo json_encode($_SESSION['id']);
     echo json_encode(array('id'=> $_SESSION['id']));
 }
 
