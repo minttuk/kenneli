@@ -252,12 +252,14 @@ function getFrontSideMsgs() {
 
 function createMsg() {
     //mysql_set_charset('utf8');
-    $json = file_get_contents('php://input');
-    console.log($json);
-    $value = json_decode($json);
+    //$json = file_get_contents('php://input');
+    //console.log($json);
+    $value = json_decode(file_get_contents('php://input'), true);
+    //$title = $value->title;
+    //$message = $value->message;
     $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
     $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
-    $sql = "INSERT INTO message(title, message) VALUES ($title, $message)";
+    $sql = "INSERT INTO message(title, message) VALUES ('$title', '$message')";
     //$result = mysql_query($sql);
     $result = $GLOBALS['db']->query($sql);
     if ($result->num_rows > 0) {
