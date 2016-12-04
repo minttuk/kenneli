@@ -1,4 +1,5 @@
 $('#logoutbutton').click(function(){
+    console.log("logout pushed");
     var $str = "logout";
     $.ajax({
         url: "php/sqlquery.php?q=" + $str,
@@ -7,11 +8,12 @@ $('#logoutbutton').click(function(){
         //data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),
         success: function (response) {
            console.log("SUCCESS",response);
-            //window.location = "testi.html";
+            window.location = "login.html";
+            return;
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log("ERROR",textStatus, errorThrown);
         }
     });
-    return false;
+    //return false;
 });

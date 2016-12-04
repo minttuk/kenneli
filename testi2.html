@@ -1,10 +1,17 @@
 <html>
     <head>
+        <link rel="stylesheet" type="text/css" href="css/testi.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/get_session.js"></script>
+        <script type="text/javascript" src="js/get_session2.js"></script>
     </head>
     <body>
         <h3>Hello2</h3>
         <button id="logoutbutton">logout</button>
+        <script type="text/javascript" src="js/logout.js"></script>
+        <script>
+            window.onbeforeunload = function(){
+                document.body.style.display = "none";
+            }
+        </script>
     </body>
 </html>

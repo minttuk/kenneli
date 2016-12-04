@@ -1,4 +1,5 @@
 <?php
+session_start();
 header("Access-Control-Allow-Origin: *");
 //header('Content-Type: text/html; charset=utf-8');
 header('Content-Type: application/json');
@@ -44,6 +45,10 @@ if ($q == "logout") {
     sessionDestroy();
 }
 
+if ($q == "register") {
+    register();
+}
+
 
 function getResource() {
     # returns numerically indexed array of URI parts
@@ -86,11 +91,10 @@ function login() {
     $sql = "SELECT * FROM user WHERE email='" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "'";
     $result = $GLOBALS['db']->query($sql);
     //$resultnumber = $result->num_rows;
-    session_start();
     if ($result->num_rows > 0) {
         // output data of each row
         if ($row = $result->fetch_assoc()) {
-            if ($row['password'] == $value['password']) {
+            if (password_verify($value['password'], $row['password'])) {
                 $_SESSION['id'] = $row['id'];
                 echo json_encode(array('id'=>$_SESSION['id']));
                 return; 
@@ -99,10 +103,43 @@ function login() {
     }
     http_response_code(403);
     echo json_encode(array('error'=>'No user found'));
+
+}
+
+function register() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $sql = "SELECT * FROM user WHERE email='" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "'";
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        http_response_code(403);
+        echo json_encode(array('error'=>'A user with this email address already exists.'));
+    }
+    else {
+        $sql = "INSERT INTO user (email, password, firstname, lastname) VALUES (
+        '" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "', 
+        '" . mysqli_real_escape_string($GLOBALS['db'], password_hash($value['password'], PASSWORD_DEFAULT)) . "', 
+        '" . mysqli_real_escape_string($GLOBALS['db'], $value['firstname']) . "', 
+        '" . mysqli_real_escape_string($GLOBALS['db'], $value['lastname']) . "')";
+        if ($GLOBALS['db']->query($sql) === TRUE) {
+            $sql = "SELECT * FROM user WHERE email='" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "'";
+            $result = $GLOBALS['db']->query($sql);
+            if ($result->num_rows > 0) {
+                if ($row = $result->fetch_assoc()) {
+                    $_SESSION['id'] = $row['id'];
+                }
+            }
+            echo json_encode(array('id'=>$_SESSION['id']));
+            return;
+        } 
+        else {
+            http_response_code(403);
+            echo json_encode(array('errorMsg'=>'There was a problem registering this user.'));
+        }
+    }
 }
 
 function sessionDestroy() {
-    session_start();
+    $_SESSION['id'] = null;
     session_destroy();
     echo json_encode(array('id'=>$_SESSION['id']));
 }
@@ -123,7 +160,6 @@ function sessionDestroy() {
 }*/
 
 function getSession() {
-    session_start();
     echo json_encode(array('id'=> $_SESSION['id']));
 }
 

@@ -1,6 +1,6 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/login.css">
+        <link rel="stylesheet" type="text/css" href="css/login2.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     </head>
     <body>
@@ -8,10 +8,11 @@
           <div class="form">
             <h3>Welcome to Kennelbook!</h3>
             <form class="register-form">
-              <input type="text" placeholder="name"/>
-              <input type="password" placeholder="password"/>
-              <input type="text" placeholder="email address"/>
-              <button>create</button>
+              <input id='firstname' type="text" placeholder="firstname"/>
+              <input id='lastname' type="text" placeholder="lastname"/>
+              <input id='registeremail' type="text" placeholder="email address"/>
+              <input id='registerpassword' type="password" placeholder="password"/>
+              <button id='registerbutton'>create</button>
               <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
             <form class="login-form" id="login-form">
@@ -20,8 +21,9 @@
               <button id="loginbutton">login</button>
               <p class="message">Not registered? <a href="#">Create an account</a></p>
             </form>
+            <p class="errormsg"></p>
           </div>
         </div>
-        <script src="js/login.js"></script>
+        <script src="js/login2.js"></script>
     </body>
 </html>

@@ -4,13 +4,13 @@
         url: "php/sqlquery.php?q=" + $str,
         type: "GET",
         success: function (response) {
-            console.log('homo');
-            console.log(response);
             console.log(response['id']);
-            if (response === null) {
+            if (response['id'] === null || !response['id']) {
                 console.log('IF');
                 window.location = "login.html";
+                return;
             }
+            window.onload = document.body.style.display = "block";
             return;
         },
         error: function(jqXHR, textStatus, errorThrown) {

@@ -16,7 +16,7 @@ id int not null auto_increment,
 firstname varchar(40),
 lastname varchar(40),
 email varchar(255) not null,
-password varchar(400) not null,
+password varchar(255) not null,
 Primary key (id)
 );
 
