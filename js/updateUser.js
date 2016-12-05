@@ -2,7 +2,7 @@ var modal = document.getElementById('myModal');
 var btn = document.getElementById("updateUser");
 var span = document.getElementsByClassName("close")[0];
 
-function getUserById(callback) {
+btn.onclick = function getUserById(callback) {
     var id = userid;
     var $str = "getUser";
     $.ajax({
@@ -11,24 +11,21 @@ function getUserById(callback) {
         dataType: "json",
         async: false,
         data: JSON.stringify({'id': id}),
-        success: function (response) {
-            console.log("SUCCESS",response);
-            return callback(response);
-        },
+        success: userUpdateForm,
         error: function(jqXHR, textStatus, errorThrown) {
            console.log("ERROR",textStatus, errorThrown);
         }
     });
 }
 
-btn.onclick = getUserById(function(data) {
+function userUpdateForm(data) {
     console.log("button painettu");
     modal.style.display = "block";
     $('#address').val(data['address']);
-    $('#zipcone').val(data['zipcode']);
+    $('#zipcode').val(data['zipcode']);
     $('#city').val(data['city']);
     $('#phonenumber').val(data['phonenumber']);
-})
+}
 
 span.onclick = function() {
     modal.style.display = "none";
