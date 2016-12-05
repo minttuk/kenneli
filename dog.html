@@ -62,17 +62,14 @@
                     <i></i>
                 </p>
                 <hr class="style8">
-                <a id="imagebtn" href=""><i class="fa fa-picture-o fa-2x fa-right" aria-hidden="true"></i></a>
+                <a id="imagebtn" href=""><i class="fa fa-picture-o fa-2x fa-right editDog" aria-hidden="true"></i></a>
+                <p id="updateDog"><i class="fa fa-cog fa-2x fa-right editDog" aria-hidden="true"></i></p>
                 <img class="img-responsive" id="profileimage" src="" alt="Image not shown properly">
                 <hr class="style8">
 
                 <!-- Post Content -->
-                <p class="lead" id='description'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
+                <p class="lead" id="dogTitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+                <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
                 <hr class="style8">
 
                 <!-- Comments Form -->
@@ -182,11 +179,57 @@
         </footer>
 
     </div>
-    <!-- /.container -->
+    
+    <div id="dogModal" class="modal">
+        <div class="modal-content">
+            <span class="close">x</span>
+                <form>
+              <div class="form-group">
+                <label for="dogName">Name</label>
+                <input type="text" class="form-control" id="dogname" placeholder="name">
+              </div>
+              <div class="form-group">
+                <label for="dogTitle">Title</label>
+                <input type="text" class="form-control" id="dogTitle" placeholder="title">
+              </div>
+              <div class="form-group">
+                <label for="dogDescription">Description</label>
+                <input type="text" class="form-control" id="dogDescription" placeholder="description">
+              </div>
+              <button type="button" class="btn btn-default" id="updateDogBtn">Save</button>
+            </form>
+        </div>
+    </div>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">x</span>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputAddress">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="address">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputZipcode">Zip Code</label>
+                    <input type="text" class="form-control" id="zipcode" placeholder="zipcode">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputCity">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="city">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="phonenumber" placeholder="phone number">
+                  </div>
+                  <button type="button" class="btn btn-default" id="updateUserBtn">Save</button>
+                </form>
+        </div>
+    </div>
+
     <script type="text/javascript" src="js/dog2.js"></script>
     <script src="js/koira.js"></script>
     <script src="js/insertMessage2.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
+    <script type="text/javascript" src="js/updateDog.js"></script>
 
 </body>
 <div class="se-pre-con"></div>

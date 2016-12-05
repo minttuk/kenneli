@@ -296,7 +296,7 @@ function getDog() {
     if ($result->num_rows > 0) {
         // output data of each row
         if ($row = $result->fetch_assoc()) {
-            $dog = array('id'=>$row['id'], 'name'=>$row['name'], 'owner'=>$row['owner'], 'image'=>$row['image'], 'description'=>$row['description']);
+            $dog = array('id'=>$row['id'], 'name'=>$row['name'], 'owner'=>$row['owner'], 'title'=>$row['title'], 'description'=>$row['description']);
             echo $jsonformat=json_encode($dog);
             return; 
         }

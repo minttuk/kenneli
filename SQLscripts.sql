@@ -29,7 +29,8 @@ id int not null auto_increment,
 name varchar(40) not null,
 owner int not null,
 image varchar(255),
-description varchar(255),
+title varchar(255),
+description varchar(1000),
 Primary key (id),
 foreign key (owner) references user(id)
 );
@@ -49,9 +50,9 @@ foreign key (dog_id) references dog(id)
 insert into user (firstname, lastname, email, password, address, zipcode, city, phonenumber) values ("Leena", "Jokiaho", "hash@hash.fi", "$2y$10$r85x52ep7OvUuxtnJhozseNVNtE2BVdCypJzTO8UNClmMPlr2sjju", "Bulevardi 18", "00140", "Helsinki", "050 1234 5678");
 insert into user (firstname, lastname, email, password) values ("Maija", "Honka", "testi2@testi2.fi", "testi2password");
 
-insert into dog (name, owner, description) values ("Fanni", "2", "Fanni on hieman ujo, mutta erittäin älykäs koira.");
-insert into dog (name, owner, description) values ("Ruffe", '1', "Ruffe on kaikkien kaveri");
-insert into dog (name, owner, description) values ("Musti", "1", "Kiltti koira.");
+insert into dog (name, owner, title) values ("Fanni", "2", "Fanni on hieman ujo, mutta erittäin älykäs koira.");
+insert into dog (name, owner, title) values ("Ruffe", '1', "Ruffe on kaikkien kaveri");
+insert into dog (name, owner, title) values ("Musti", "1", "Kiltti koira.");
 
 insert into message (title, message, user_id, dog_id) values ("Fannin eka päivitys", "Päivitys nro 1", "2", "1");
 insert into message (title, message, user_id, dog_id) values ("Mustin eka päivitys", "Päivitys nro 2", "1", "3");
