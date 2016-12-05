@@ -18,7 +18,7 @@ var dog;
         dataType: "json",
         data: JSON.stringify({'dogID': dogId}),
         success: function (response) {
-            dog = response;
+           dog = response;
            console.log("SUCCESS",response);
            console.log(response['id']);
            $('.name').html(response['name']);

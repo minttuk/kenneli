@@ -33,6 +33,10 @@ if ($q == "getDog") {
     getDog();
 }
 
+if ($q == "updateDog") {
+    updateDog();
+}
+
 if ($q == "getDogs") {
     getDogs();
 }
@@ -303,6 +307,28 @@ function getDog() {
     }
     http_response_code(403);
     echo json_encode(array('error'=>'No dog found'));
+}
+
+function updateDog() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $id = mysqli_real_escape_string($GLOBALS['db'], $value['id']);
+    $name = mysqli_real_escape_string($GLOBALS['db'], $value['name']);
+    $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
+    $description = mysqli_real_escape_string($GLOBALS['db'], $value['description']);
+    $sql = "UPDATE dog SET 
+    name='" . $name . "',
+    title='" . $title . "', 
+    description='" . $description . "'
+    WHERE id='" . $id . "'";
+    if ($GLOBALS['db']->query($sql) === TRUE) {
+        $msg[] = array("message"=> 'Dog updated successfully');
+        echo $jsonformat=json_encode($msg);
+        return;
+    } else {
+        $msg[] = array("message"=> 'Error updating dog');
+        echo $jsonformat=json_encode($msg);
+        return;
+    }
 }
 
 function getDogs() {

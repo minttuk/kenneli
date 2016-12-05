@@ -1,7 +1,7 @@
 var dogmodal = document.getElementById('dogModal');
 var dogbtn = document.getElementById("updateDog");
 var imgbtn = document.getElementById("imagebtn");
-var dogspan = document.getElementsByClassName("closeDog")[0];
+var span = document.getElementsByClassName("close")[0];
 
 (function() {
     if (userid == owner) {
@@ -11,47 +11,30 @@ var dogspan = document.getElementsByClassName("closeDog")[0];
     }
 })();
 
-dogbtn.onclick = function getDogById(callback) {
-    var id = userid;
-    var $str = "getDog";
-    $.ajax({
-        url: "php/sqlquery.php?q=" + $str,
-        type: "post",
-        dataType: "json",
-        data: JSON.stringify({'id': id}),
-        success: userUpdateForm,
-        error: function(jqXHR, textStatus, errorThrown) {
-           console.log("ERROR",textStatus, errorThrown);
-        }
-    });
-}
-
-function dogUpdateForm(data) {
-    console.log("button painettu");
-    modal.style.display = "block";
-    $('#address').val(data['address']);
-    $('#zipcode').val(data['zipcode']);
-    $('#city').val(data['city']);
-    $('#phonenumber').val(data['phonenumber']);
+dogbtn.onclick = function getDogById() {
+    $('#dogFormName').val(dog['name']);
+    $('#dogFormTitle').val(dog['title']);
+    $('#dogFormDescription').val(dog['description']);
+    dogmodal.style.display = "block";
 }
 
 span.onclick = function() {
-    modal.style.display = "none";
+    dogmodal.style.display = "none";
 }
 window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    if (event.target == dogmodal) {
+        dogmodal.style.display = "none";
     }
 }
 
-var updateUserBtn = document.getElementById("updateUserBtn");
-updateUserBtn.onclick = function() {
-    var $str = "updateUser";
+var updateDogBtn = document.getElementById("updateDogBtn");
+updateDogBtn.onclick = function() {
+    var $str = "updateDog";
     $.ajax({
         url: "php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
-        data: JSON.stringify({'address': $('#address').val(), 'zipcode': $('#zipcode').val(), 'city': $('#city').val(), 'phonenumber': $('#phonenumber').val()}),
+        data: JSON.stringify({'id': dog['id'],'name': $('#dogFormName').val(), 'title': $('#dogFormTitle').val(), 'description': $('#dogFormDescription').val()}),
         success: function (response) {
             console.log("SUCCESS",response);
         },
@@ -59,5 +42,6 @@ updateUserBtn.onclick = function() {
            console.log("ERROR",textStatus, errorThrown);
         }
     });
-    modal.style.display = "none";
+    dogmodal.style.display = "none";
+    window.location="dog.html?dog=" + dog['id'];
 }
