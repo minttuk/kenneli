@@ -1,7 +1,7 @@
 var dogmodal = document.getElementById('dogModal');
 var dogbtn = document.getElementById("updateDog");
 var imgbtn = document.getElementById("imagebtn");
-var dogspan = document.getElementsByClassName("close")[0];
+var dogspan = document.getElementsByClassName("closeDog")[0];
 
 (function() {
     if (userid == owner) {
@@ -11,9 +11,9 @@ var dogspan = document.getElementsByClassName("close")[0];
     }
 })();
 
-dogbtn.onclick = function getUserById(callback) {
+dogbtn.onclick = function getDogById(callback) {
     var id = userid;
-    var $str = "getUser";
+    var $str = "getDog";
     $.ajax({
         url: "php/sqlquery.php?q=" + $str,
         type: "post",
@@ -26,7 +26,7 @@ dogbtn.onclick = function getUserById(callback) {
     });
 }
 
-function userUpdateForm(data) {
+function dogUpdateForm(data) {
     console.log("button painettu");
     modal.style.display = "block";
     $('#address').val(data['address']);
