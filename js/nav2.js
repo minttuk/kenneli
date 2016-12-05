@@ -1,4 +1,4 @@
-function getNav() {
+(function getNav() {
     var dogId = parseUri(window.location.search).queryKey['dog'];
     var result;
     var $str = "getDogs";
@@ -10,7 +10,7 @@ function getNav() {
             console.log("toimiiko tama");
            console.log("SUCCESS",response);
            for (var i = 0; i < response.length; i++) {
-                $('#nav').append("<li><a href='dog.html?dog=" + response[i]['id'] + "'>" + response[i]['name'] + "</a></li>");
+                $('.doglist').append("<li><a href='dog.html?dog=" + response[i]['id'] + "'>" + response[i]['name'] + "</a></li>");
            }
            return;
         },
@@ -19,4 +19,4 @@ function getNav() {
         }
     });
     return false;
-}
+})()

@@ -15,7 +15,7 @@
            console.log(response['id']);
            $('.name').html(response['name']);
            $('#description').html(response['description']);
-           $('#profileimage').attr("src", "img/" + response['id'] + ".jpg");
+           $('#profileimage').attr("src", "img/" + response['id'] + ".png");
            owner = response['owner'];
            getOwner();
         },

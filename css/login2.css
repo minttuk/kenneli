@@ -106,4 +106,6 @@ body {
   background-image: url("../img/login.jpg");
   background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
+  background-size: 100%;
+  background-color: #14100d;
 }

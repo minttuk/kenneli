@@ -4,14 +4,17 @@
         url: "php/sqlquery.php?q=" + $str,
         type: "GET",
         success: function (response) {
-            console.log('homo');
-            console.log(response);
             console.log(response['id']);
-            if (response === null) {
+            console.log(window.location.pathname);
+            if ((response['id'] === null || !response['id']) && window.location.pathname !== "/login.html") {
                 console.log('IF');
                 window.location = "login.html";
+                return;
             }
-            return;
+            if (response['id'] != null && window.location.pathname == "/login.html") {
+                window.location = "testi.html";
+                return;
+            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);
