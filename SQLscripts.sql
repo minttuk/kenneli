@@ -17,6 +17,9 @@ firstname varchar(40),
 lastname varchar(40),
 email varchar(255) not null,
 password varchar(255) not null,
+address varchar(255),
+zipcode int(5),
+phonenumber int(25),
 Primary key (id)
 );
 

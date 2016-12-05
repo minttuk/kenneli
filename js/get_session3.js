@@ -7,7 +7,7 @@ var userid;
         type: "GET",
         success: function (response) {
             console.log(response['id']);
-            user_id = response['id'];
+            userid = response['id'];
             console.log(window.location.pathname);
             if ((response['id'] === null || !response['id']) && window.location.pathname !== "/login.html") {
                 console.log('IF');
