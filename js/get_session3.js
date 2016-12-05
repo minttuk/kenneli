@@ -1,3 +1,5 @@
+var userid;
+
 (function get_session() {
     var $str = "getSession";
     $.ajax({
@@ -5,6 +7,7 @@
         type: "GET",
         success: function (response) {
             console.log(response['id']);
+            user_id = response['id'];
             console.log(window.location.pathname);
             if ((response['id'] === null || !response['id']) && window.location.pathname !== "/login.html") {
                 console.log('IF');
