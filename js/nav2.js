@@ -1,5 +1,5 @@
 (function getNav() {
-    var dogId = parseUri(window.location.search).queryKey['dog'];
+    //var dogId = parseUri(window.location.search).queryKey['dog'];
     var result;
     var $str = "getDogs";
     $.ajax({

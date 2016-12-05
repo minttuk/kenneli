@@ -24,7 +24,7 @@ $('#loginbutton').click(function(){
             data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),
             success: function (response) {
                console.log("SUCCESS",response);
-                window.location = "dog.html?dog=1";
+                window.location = "index.html";
             },
             error: function(jqXHR, textStatus, errorThrown) {
                console.log("ERROR",textStatus, errorThrown);

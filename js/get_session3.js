@@ -12,7 +12,7 @@
                 return;
             }
             if (response['id'] !== null && window.location.pathname == "/login.html") {
-                window.location = "dog.html?dog=1";
+                window.location = "index.html";
                 return;
             }
         },
