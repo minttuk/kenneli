@@ -17,6 +17,10 @@ firstname varchar(40),
 lastname varchar(40),
 email varchar(255) not null,
 password varchar(255) not null,
+address varchar(150),
+zipcode varchar(5),
+city varchar(40),
+phonenumber varchar(40),
 Primary key (id)
 );
 
@@ -42,7 +46,7 @@ foreign key (user_id) references user(id),
 foreign key (dog_id) references dog(id)
 );
 
-insert into user (firstname, lastname, email, password) values ("Leena", "Jokiaho", "testi@testi.fi", "testipassword");
+insert into user (firstname, lastname, email, password, address, zipcode, city, phonenumber) values ("Leena", "Jokiaho", "hash@hash.fi", "$2y$10$r85x52ep7OvUuxtnJhozseNVNtE2BVdCypJzTO8UNClmMPlr2sjju", "Bulevardi 18", "00140", "Helsinki", "050 1234 5678");
 insert into user (firstname, lastname, email, password) values ("Maija", "Honka", "testi2@testi2.fi", "testi2password");
 
 insert into dog (name, owner, description) values ("Fanni", "2", "Fanni on hieman ujo, mutta erittäin älykäs koira.");

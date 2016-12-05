@@ -195,7 +195,7 @@ function getUser() {
     if ($result->num_rows > 0) {
         // output data of each row
         if ($row = $result->fetch_assoc()) {
-            $user = array('id'=>$row['id'], 'firstname'=>$row['firstname'], 'lastname'=>$row['lastname'], 'email'=>$row['email']);
+            $user = array('id'=>$row['id'], 'firstname'=>$row['firstname'], 'lastname'=>$row['lastname'], 'email'=>$row['email'], 'address'=>$row['address'], 'zipcode'=>$row['zipcode'], 'city'=>$row['city'], 'phonenumber'=>$row['phonenumber']);
             echo $jsonformat=json_encode($user);
             return; 
         }
@@ -305,6 +305,7 @@ function getDogs() {
 }
     
     
+$db->close();
 
 
 
@@ -318,9 +319,5 @@ function getDogs() {
 //getMsgs();
 // updateMsg()
 // deleteMsg()
-
-
-$db->close();
-
 
 ?>

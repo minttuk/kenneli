@@ -11,22 +11,13 @@
 
     <title>Somekenneli</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="css/kenneli2.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome-4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
     <script type="text/javascript" src="js/parseUri.js"></script>
     <script type="text/javascript" src="js/get_session3.js"></script>
-    <script type="text/javascript" src="js/get_session.js"></script>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 
@@ -50,8 +41,8 @@
                 <ul class="nav navbar-nav doglist" id="nav">
 
                 </ul>
-                <a id="settingsbtn" href=""><i class="fa fa-cog fa-2x fa-right" aria-hidden="true"></i></a>
-                <a id="addbtn" href=""><i class="fa fa-plus fa-2x fa-right" aria-hidden="true"></i></a>
+                <p id="updateUser"><i class="fa fa-cog fa-2x fa-right" aria-hidden="true"></i></p>
+                <p id="addbtn"><i class="fa fa-plus fa-2x fa-right" aria-hidden="true"></i></p>
                 <button type="button" id="logoutbutton">Logout</button>
             </div>
             <!-- /.navbar-collapse -->
@@ -244,12 +235,37 @@
         </footer>
 
     </div>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">x</span>
+                <form>
+                  <div class="form-group">
+                    <label for="exampleInputAddress">Address</label>
+                    <input type="text" class="form-control" id="address" placeholder="address">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputZipcode">Zip Code</label>
+                    <input type="text" class="form-control" id="zipcode" placeholder="zipcode">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputCity">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="city">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputNumber">Phone Number</label>
+                    <input type="text" class="form-control" id="phonenumber" placeholder="phone number">
+                  </div>
+                  <button type="button" class="btn btn-default updateUserBtn">Save</button>
+                </form>
+        </div>
+    </div>
     <!-- /.container -->
 
     <!-- <script type="text/javascript" src="js/dog2.js"></script> -->
     <script src="js/etusivu.js"></script>
     <script type="text/javascript" src="js/nav2.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
+    <script type="text/javascript" src="js/updateUser.js"></script>
     <!-- <script src="js/insertMessage.js"></script> tätä ei varmaan tarvitse -->
 
 </body>
