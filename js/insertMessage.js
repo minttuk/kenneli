@@ -64,7 +64,7 @@ function postMessage(){
 	var ajaxRequest; 
 	var title = document.getElementById('title').value;
     var message = document.getElementById('message').value;
-    var array = {title: title, message: message};
+    var array = {"title": title, "message": message};
     var dataString = JSON.stringify(array);
     console.log('muodostettu json string' + dataString);
 	

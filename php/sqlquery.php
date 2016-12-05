@@ -259,10 +259,10 @@ function createMsg() {
     //$message = $value->message;
     $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
     $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
-    $sql = "INSERT INTO message(title, message) VALUES ('$title', '$message')";
+    $sql = "INSERT INTO message(title, message, user_id, dog_id) VALUES ('" . $title . "', '" . $message . "', '1', '1')";
+    //$sql = "INSERT INTO message(title, message) VALUES ('hei', 'moi')";
     //$result = mysql_query($sql);
-    $result = $GLOBALS['db']->query($sql);
-    if ($result->num_rows > 0) {
+    if ($GLOBALS['db']->query($sql) === TRUE) {
         echo json_encode(array('answer'=>'message successfully created'));
     }
     else {
