@@ -44,6 +44,9 @@ function get_dog_content() {
             success: function (response) {
                 console.log("SUCCESS",response);
                 $('#owner').html(response['firstname'] + " " + response['lastname']);
+                $('#contact').html("<strong>" + response['firstname'] + " " + response['lastname'] + "</strong>");
+                $('#address').html(response['address'] + ", " + response['zipcode'] + "<br>" + response['email'] + "<br>" + response['phonenumber']);
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                console.log("ERROR",textStatus, errorThrown);
