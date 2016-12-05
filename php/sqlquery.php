@@ -256,7 +256,8 @@ function createMsg() {
     $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
     $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
     $id = mysqli_real_escape_string($GLOBALS['db'], $value['id']);
-    $sql = "INSERT INTO message(title, message, user_id, dog_id) VALUES ('" . $title . "', '" . $message . "', '" . $id . "', '1')";
+    $dogid = mysqli_real_escape_string($GLOBALS['db'], $value['dogid']);
+    $sql = "INSERT INTO message(title, message, user_id, dog_id) VALUES ('" . $title . "', '" . $message . "', '" . $id . "', '" . $dogid . "')";
     if ($GLOBALS['db']->query($sql) === TRUE) {
         echo json_encode(array('answer'=>'message successfully created'));
     }

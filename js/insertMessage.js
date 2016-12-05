@@ -6,8 +6,10 @@ function postMessage(){
 	var title = document.getElementById('title').value;
     var message = document.getElementById('message').value;
     var id = userid;
+    var dogId = parseUri(window.location.search).queryKey['dog'];
+    console.log("koiran id" + dogId);
     console.log("Sessionin id numero on " + id);
-    var array = {"title": title, "message": message, "id": id};
+    var array = {"title": title, "message": message, "id": id, "dogid": dogId};
     var dataString = JSON.stringify(array);
     console.log('muodostettu json string' + dataString);
 	
