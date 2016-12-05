@@ -214,10 +214,13 @@ function updateUser() {
 }
 
 function getMsgs() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
     //$query="select *  FROM message WHERE id=1";
     //$query="select * FROM message"; tällä sai haettua kaikki, tätä voi käyttää etusivulla
-    $query = "select * FROM message WHERE dog_id=1"; //hakee kaikki koira1:n päivitykset. Tämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
-                                                    // parametrina koiran id-numeroa??
+    $blaa = 2;
+    $query = "select * FROM message WHERE dog_id=".$dog_param.""; //ämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
+    //$query = "select * FROM message WHERE dog_id=".mysqli_real_escape_string($GLOBALS['db'], $blaa)."";                                                
     //$result = mysql_query($query);
     $result=$GLOBALS['db']->query($query);
     $msg = array();
