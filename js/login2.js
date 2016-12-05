@@ -55,7 +55,7 @@ $('#registerbutton').click(function(){
             data: JSON.stringify({'email': $registeremail, 'password': $registerpassword, 'firstname': $firstname, 'lastname': $lastname}),
             success: function (response) {
                console.log("SUCCESS",response);
-                window.location = "testi2.html";
+                window.location = "index.html";
             },
             error: function(response) {
                console.log("ERROR",response.responseText);
@@ -105,7 +105,7 @@ function passwordRegister(password) {
 }
 
 function nameGiven(name1, name2) {
-    if (name.length > 1 && name2.length > 1) {
+    if (name1.length > 1 && name2.length > 1) {
         return true;
     }
     else {
