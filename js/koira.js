@@ -7,6 +7,7 @@ function getDogMessages(){
 	console.log("DOGID"+dogId);
 	var array = {"title": dogId};
     var dataString = JSON.stringify(array);
+    console.log(dataString);
 	try{
 		// Opera 8.0+, Firefox, Safari
 		ajaxRequest = new XMLHttpRequest();
@@ -84,7 +85,7 @@ function getDogMessages(){
 		}
 	};
 	
-	ajaxRequest.open("GET", "php/sqlquery.php?q=getMsgs", true);
+	ajaxRequest.open("POST", "php/sqlquery.php?q=getMsgs", true);
 	ajaxRequest.send(dataString);
 	
 }

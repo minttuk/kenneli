@@ -216,12 +216,13 @@ function updateUser() {
 function getMsgs() {
     $value = json_decode(file_get_contents('php://input'), true);
     $dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
+    
     //$query="select *  FROM message WHERE id=1";
     //$query="select * FROM message"; tällä sai haettua kaikki, tätä voi käyttää etusivulla
     $blaa = 2;
-    $query = "select * FROM message WHERE dog_id=".$dog_param.""; //ämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
+    
+    $query = "select * FROM message WHERE dog_id=".$dog_param."";
     //$query = "select * FROM message WHERE dog_id=".mysqli_real_escape_string($GLOBALS['db'], $blaa)."";                                                
-    //$result = mysql_query($query);
     $result=$GLOBALS['db']->query($query);
     $msg = array();
     while($row=$result->fetch_assoc()){
@@ -230,7 +231,7 @@ function getMsgs() {
       $time=$row["posttime"];
     
       $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time);
-    }
+    } 
     echo $jsonformat=json_encode($msg);
 }
 
@@ -314,7 +315,7 @@ function getDogs() {
 // createDog()
 // updateDog()
 // getMsg()
-// getMsgs()
+//getMsgs();
 // updateMsg()
 // deleteMsg()
 
