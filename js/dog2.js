@@ -1,7 +1,7 @@
 var owner;
 var dog;
 
-(function get_dog_content() {
+function get_dog_content() {
     console.log('DOG');
     var dogId = parseUri(window.location.search).queryKey['dog'];
     $('#profileimage').attr("src", "img/" + dogId + ".png");
@@ -50,4 +50,8 @@ var dog;
             }
         });
     }
-})();
+}
+
+$(function() {
+    get_dog_content();
+})

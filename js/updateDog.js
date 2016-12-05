@@ -37,11 +37,13 @@ updateDogBtn.onclick = function() {
         data: JSON.stringify({'id': dog['id'],'name': $('#dogFormName').val(), 'title': $('#dogFormTitle').val(), 'description': $('#dogFormDescription').val()}),
         success: function (response) {
             console.log("SUCCESS",response);
+            dogmodal.style.display = "none";
+            get_dog_content();
+            
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log("ERROR",textStatus, errorThrown);
         }
     });
-    dogmodal.style.display = "none";
-    window.location="dog.html?dog=" + dog['id'];
+    //window.location="dog.html?dog=" + dog['id'];
 }
