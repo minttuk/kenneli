@@ -1,6 +1,9 @@
 (function get_dog_content() {
     console.log('DOG');
     var dogId = parseUri(window.location.search).queryKey['dog'];
+    if (!dogId) {
+        window.location = "index.html";
+    }
     console.log(dogId);
     var result;
     var $str = "getDog";
