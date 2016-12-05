@@ -63,7 +63,7 @@
                     <i>&nbsp;</i>
                 </p>
                 <hr class="style8">
-                <a id="imagebtn" href=""><i class="fa fa-picture-o fa-2x fa-right editDog" aria-hidden="true"></i></a>
+                <a id="imagebtn"><i class="fa fa-picture-o fa-2x fa-right editDog" aria-hidden="true"></i></a>
                 <p id="updateDog"><i class="fa fa-cog fa-2x fa-right editDog" aria-hidden="true"></i></p>
                 <img class="img-responsive" id="profileimage" width="400" height="200" src="" alt="Image not shown properly">
                 <hr class="style8">
@@ -226,10 +226,23 @@
                 </form>
         </div>
     </div>
+    
+    <div class="form-wrap modal" id="dogImageForm">
+        <div class="modal-content">
+            <span class="close">x</span>
+                <form action="process.php" method="post" enctype="multipart/form-data" id="upload_form">
+                    <input name="__files[]" type="file" multiple="multiple" />
+                    <input name="__submit__" type="submit" value="Upload"/>
+                </form>
+                <div id="output"><!-- error or success results --></div>
+        </div>
+    </div>
+    
     <script src="js/koira.js"></script>
     <script src="js/insertMessage2.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
     <script type="text/javascript" src="js/updateDog.js"></script>
+    <script type="text/javascript" src="js/uploadImage.js"></script>
 
 </body>
 <!--<div class="se-pre-con"></div>-->

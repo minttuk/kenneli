@@ -1,13 +1,11 @@
 var dogmodal = document.getElementById('dogModal');
 var dogbtn = document.getElementById("updateDog");
-var imgbtn = document.getElementById("imagebtn");
 var span = document.getElementsByClassName("close")[0];
 
 (function() {
     if (userid == owner) {
         console.log(userid + ", " + owner);
         dogbtn.style.display = "block";
-        imgbtn.style.display = "block";
     }
 })();
 
