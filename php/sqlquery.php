@@ -251,56 +251,19 @@ function getFrontSideMsgs() {
 }
 
 function createMsg() {
-    //mysql_set_charset('utf8');
-    //$json = file_get_contents('php://input');
-    //console.log($json);
+
     $value = json_decode(file_get_contents('php://input'), true);
-    //$title = $value->title;
-    //$message = $value->message;
     $title = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
     $message = mysqli_real_escape_string($GLOBALS['db'], $value['message']);
-    $sql = "INSERT INTO message(title, message, user_id, dog_id) VALUES ('" . $title . "', '" . $message . "', '1', '1')";
-    //$sql = "INSERT INTO message(title, message) VALUES ('hei', 'moi')";
-    //$result = mysql_query($sql);
+    $id = mysqli_real_escape_string($GLOBALS['db'], $value['id']);
+    $dogid = mysqli_real_escape_string($GLOBALS['db'], $value['dogid']);
+    $sql = "INSERT INTO message(title, message, user_id, dog_id) VALUES ('" . $title . "', '" . $message . "', '" . $id . "', '" . $dogid . "')";
     if ($GLOBALS['db']->query($sql) === TRUE) {
         echo json_encode(array('answer'=>'message successfully created'));
     }
     else {
         echo json_encode(array('answer'=>'Error in creating mysql message'));    
     }
-    
-    
-    /*if ($_REQUEST['title']) {
-        $title = $_REQUEST['title'];
-        $message = $_REQUEST['message'];
-        console.log($title);
-        $sql = "INSERT INTO message(title, message) VALUES ('$title' '$message')";
-        $result = $GLOBALS['db']->query($sql);
-        //$query = mysqli_query($GLOBALS['db'], $sql);
-        if($result){
-            echo 'message inserted successfully';
-        }
-        else{
-            echo 'Error in creating mysql message';
-        }
-
-    }*/
-
-    
-    /*if(isset($_POST['title'])){
-        $title = mysql_real_escape_string($_POST['title']);
-        console.log($title);
-        $message = mysql_real_escape_string($_POST['message']);
-        $result = mysql_query("insert into message(title, message) values ('$title', '$message')");
-        //$row=mysql_fetch_array($result);
-        //echo $row['title'];
-        if ($result->num_rows > 0) {
-            echo json_encode(array('answer'=>'message successfully created'));
-        }
-        else {
-            echo json_encode(array('answer'=>'Error in creating mysql message'));    
-        }
-    }*/
     
 }
 
