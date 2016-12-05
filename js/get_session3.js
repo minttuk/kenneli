@@ -11,8 +11,8 @@
                 window.location = "login.html";
                 return;
             }
-            if (response['id'] != null && window.location.pathname == "/login.html") {
-                window.location = "testi.html";
+            if (response['id'] !== null && window.location.pathname == "/login.html") {
+                window.location = "dog.html?dog=1";
                 return;
             }
         },
