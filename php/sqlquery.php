@@ -49,6 +49,10 @@ if ($q == "register") {
     register();
 }
 
+if ($q == "updateUser") {
+    updateUser();
+}
+
 
 function getResource() {
     # returns numerically indexed array of URI parts
@@ -205,11 +209,25 @@ function getUser() {
 }
 
 function updateUser() {
-    $sql = "UPDATE user SET email='updatetest@test.com' WHERE id=2";
+    $value = json_decode(file_get_contents('php://input'), true);
+    $address = mysqli_real_escape_string($GLOBALS['db'], $value['address']);
+    $zipcode = mysqli_real_escape_string($GLOBALS['db'], $value['zipcode']);
+    $city = mysqli_real_escape_string($GLOBALS['db'], $value['city']);
+    $phonenumber = mysqli_real_escape_string($GLOBALS['db'], $value['phonenumber']);
+    $sql = "UPDATE user SET 
+    address='" . $address . "',
+    zipcode='" . $zipcode . "', 
+    city='" . $city . "', 
+    phonenumber='" . $phonenumber . "' 
+    WHERE id='" . $_SESSION['id'] . "'";
     if ($GLOBALS['db']->query($sql) === TRUE) {
-        echo "Record updated successfully";
+        $msg[] = array("message"=> 'User updated successfully');
+        echo $jsonformat=json_encode($msg);
+        return;
     } else {
-        echo "Error updating record: " . $GLOBALS['db']->error;
+        $msg[] = array("message"=> 'Error updating user');
+        echo $jsonformat=json_encode($msg);
+        return;
     }
 }
 

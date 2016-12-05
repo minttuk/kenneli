@@ -9,7 +9,6 @@ btn.onclick = function getUserById(callback) {
         url: "php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
-        async: false,
         data: JSON.stringify({'id': id}),
         success: userUpdateForm,
         error: function(jqXHR, textStatus, errorThrown) {
@@ -38,5 +37,17 @@ window.onclick = function(event) {
 
 var updateUserBtn = document.getElementById("updateUserBtn");
 updateUserBtn.onclick = function() {
-    
+    var $str = "updateUser";
+    $.ajax({
+        url: "php/sqlquery.php?q=" + $str,
+        type: "post",
+        dataType: "json",
+        data: JSON.stringify({'address': $('#address').val(), 'zipcode': $('#zipcode').val(), 'city': $('#city').val(), 'phonenumber': $('#phonenumber').val()}),
+        success: function (response) {
+            console.log("SUCCESS",response);
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log("ERROR",textStatus, errorThrown);
+        }
+    });
 }
