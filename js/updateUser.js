@@ -50,4 +50,5 @@ updateUserBtn.onclick = function() {
            console.log("ERROR",textStatus, errorThrown);
         }
     });
+    modal.style.display = "none";
 }
