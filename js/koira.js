@@ -36,7 +36,9 @@ function getDogMessages(){
 			console.log(count);
 			//var dogId = parseUri(window.location.search).queryKey['dog'];
 			
-			for(var i=0;i<count;i++){
+			for(var i=0, j=(count-1);i<count && i<10; j--, i++){
+				console.log("kierrosmuuttuja"+j);
+				console.log("i:n arvo "+i);
 				var src = "img/koira"+dogId+"naama.png";
 				var title = "title"+(i+1);
 				var timestamp = "timestamp"+(i+1);
@@ -59,15 +61,15 @@ function getDogMessages(){
 				var heading = document.createElement('h4');
 				heading.className = "media-heading";
 				heading.setAttribute("id", title);
-				heading.innerHTML = object[i].title;
+				heading.innerHTML = object[j].title;
 				div2.appendChild(heading);
 				var para1 = document.createElement('p');
 				para1.setAttribute("id", timestamp);
-				para1.innerHTML = "<small>"+object[i].time+"</small>";
+				para1.innerHTML = "<small>"+object[j].time+" kirjoittanut: "+object[j].firstname+" "+object[j].lastname+"</small>";
 				div2.appendChild(para1);
 				var para2 = document.createElement('p');
 				para2.setAttribute("id", message);
-				para2.innerHTML = object[i].message;
+				para2.innerHTML = object[j].message;
 				div2.appendChild(para2);
 				div1.appendChild(div2);
 				document.getElementById("containeri").appendChild(div1);

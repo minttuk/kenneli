@@ -238,31 +238,26 @@ function updateUser() {
 function getMsgs() {
     $value = json_decode(file_get_contents('php://input'), true);
     $dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
-    
-    //$query="select *  FROM message WHERE id=1";
-    //$query="select * FROM message"; tällä sai haettua kaikki, tätä voi käyttää etusivulla
-    $blaa = 2;
-    
-    $query = "select * FROM message WHERE dog_id=".$dog_param."";
-    //$query = "select * FROM message WHERE dog_id=".mysqli_real_escape_string($GLOBALS['db'], $blaa)."";                                                
+    //$query = "select * FROM message WHERE dog_id=".$dog_param."";
+    $query = "select message.title, message.message, message.posttime, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param."";
+                                             
     $result=$GLOBALS['db']->query($query);
     $msg = array();
     while($row=$result->fetch_assoc()){
       $title=$row["title"]; 
       $message=$row["message"];
       $time=$row["posttime"];
+      $firstname=$row["firstname"];
+      $lastname=$row["lastname"];
+      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time, "firstname"=>$firstname, "lastname"=>$lastname);
+    }
     
-      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time);
-    } 
     echo $jsonformat=json_encode($msg);
 }
 
 function getFrontSideMsgs() {
-    //$query="select *  FROM message WHERE id=1";
-    $query="select * FROM message"; //tällä sai haettua kaikki, tätä voi käyttää etusivulla
-    //$query = "select * FROM message WHERE dog_id=1"; //hakee kaikki koira1:n päivitykset. Tämän voi yhdistää dynaamisiin sivuihin ja käyttää funktion
-                                                    // parametrina koiran id-numeroa??
-    //$result = mysql_query($query);
+    //$query="select * FROM message order by id desc"; //tällä sai haettua kaikki, tätä voi käyttää etusivulla
+    $query = "select message.title, message.message, message.posttime, message.dog_id, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id order by message.id desc";
     $result=$GLOBALS['db']->query($query);
     $msg = array();
     while($row=$result->fetch_assoc()){
@@ -270,8 +265,9 @@ function getFrontSideMsgs() {
       $message=$row["message"];
       $time=$row["posttime"];
       $dog_id=$row["dog_id"];
-    
-      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time, "dog_id"=>$dog_id);
+      $firstname=$row["firstname"];
+      $lastname=$row["lastname"];
+      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time, "dog_id"=>$dog_id, "lastname"=>$lastname, "firstname"=>$firstname);
     }
     echo $jsonformat=json_encode($msg);
 }
