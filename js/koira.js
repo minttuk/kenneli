@@ -34,11 +34,8 @@ function getDogMessages(){
 		    console.log(object[0]);
 		    var count = Object.keys(object).length;
 			console.log(count);
-			//var dogId = parseUri(window.location.search).queryKey['dog'];
-			
-			for(var i=0, j=(count-1);i<count && i<10; j--, i++){
-				console.log("kierrosmuuttuja"+j);
-				console.log("i:n arvo "+i);
+
+			for(var i=0;i<count && i<10;i++){
 				var src = "img/koira"+dogId+"naama.png";
 				var title = "title"+(i+1);
 				var timestamp = "timestamp"+(i+1);
@@ -61,29 +58,19 @@ function getDogMessages(){
 				var heading = document.createElement('h4');
 				heading.className = "media-heading";
 				heading.setAttribute("id", title);
-				heading.innerHTML = object[j].title;
+				heading.innerHTML = object[i].title;
 				div2.appendChild(heading);
 				var para1 = document.createElement('p');
 				para1.setAttribute("id", timestamp);
-				para1.innerHTML = "<small>"+object[j].time+" kirjoittanut: "+object[j].firstname+" "+object[j].lastname+"</small>";
+				para1.innerHTML = "<small>"+object[i].time+" kirjoittanut: "+object[i].firstname+" "+object[i].lastname+"</small>";
 				div2.appendChild(para1);
 				var para2 = document.createElement('p');
 				para2.setAttribute("id", message);
-				para2.innerHTML = object[j].message;
+				para2.innerHTML = object[i].message;
 				div2.appendChild(para2);
 				div1.appendChild(div2);
 				document.getElementById("containeri").appendChild(div1);
-			}/*
-		    document.getElementById("title1").innerHTML = object[0].title;
-		    document.getElementById("message1").innerHTML = object[0].message;
-		    document.getElementById("timestamp1").innerHTML = "<small>"+object[0].time+"</small>";
-		    document.getElementById("title2").innerHTML = object[1].title;
-		    document.getElementById("message2").innerHTML = object[1].message;
-		    document.getElementById("timestamp2").innerHTML = "<small>"+object[1].time+"</small>";
-		    document.getElementById("title3").innerHTML = object[2].title;
-		    document.getElementById("message3").innerHTML = object[2].message;
-		    document.getElementById("timestamp3").innerHTML = "<small>"+object[2].time+"</small>";
-		    */
+			}
 		}
 	};
 	

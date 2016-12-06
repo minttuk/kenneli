@@ -238,9 +238,7 @@ function updateUser() {
 function getMsgs() {
     $value = json_decode(file_get_contents('php://input'), true);
     $dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
-    //$query = "select * FROM message WHERE dog_id=".$dog_param."";
-    $query = "select message.title, message.message, message.posttime, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param."";
-                                             
+    $query = "select message.title, message.message, message.posttime, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param." order by message.id desc";
     $result=$GLOBALS['db']->query($query);
     $msg = array();
     while($row=$result->fetch_assoc()){
@@ -256,7 +254,6 @@ function getMsgs() {
 }
 
 function getFrontSideMsgs() {
-    //$query="select * FROM message order by id desc"; //tällä sai haettua kaikki, tätä voi käyttää etusivulla
     $query = "select message.title, message.message, message.posttime, message.dog_id, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id order by message.id desc";
     $result=$GLOBALS['db']->query($query);
     $msg = array();

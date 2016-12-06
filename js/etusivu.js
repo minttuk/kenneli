@@ -30,19 +30,42 @@ function getDogMessages(){
 		    console.log(object[0]);
 		    var count = Object.keys(object).length;
 		    
-		    for (var i=0; i<5 ; i++){
-		    	//console.log(j);
-		        var koiran_id = object[i].dog_id;
-		        var loop_title = "title"+(i+1);
-		        var loop_message = "message"+(i+1);
-		        var loop_timestamp = "timestamp"+(i+1);
-		        var loop_kuvan_id = "naamakuva"+(i+1);
-		        var loop_kuvan_src = "<img class=\"media-object\" src=\"img/koira"+koiran_id+"naama.png\" alt=\"\">";
-		        document.getElementById(loop_title).innerHTML = object[i].title;
-		        document.getElementById(loop_message).innerHTML = object[i].message;
-    		    document.getElementById(loop_timestamp).innerHTML = "<small>"+object[i].time+" kirjoittanut: "+object[i].firstname+" "+object[i].lastname+"</small>";
-    		    document.getElementById(loop_kuvan_id).innerHTML = loop_kuvan_src;
-		    }
+		    for(var i=0;i<count && i<5;i++){
+				var src = "img/koira"+object[i].dog_id+"naama.png";
+				var title = "title"+(i+1);
+				var timestamp = "timestamp"+(i+1);
+				var message = "message"+(i+1);
+				var div1 = document.createElement('div');
+				div1.className = "media";
+				div1.setAttribute("id", "ylintaso");
+				var a = document.createElement('a');
+				a.className = "pull-left";
+				a.setAttribute("href", "#");
+				a.setAttribute("id", "adivi");
+				var image = document.createElement('img');
+				image.className = "media-object";
+				image.src = src;
+				a.appendChild(image);
+				div1.appendChild(a);
+				var div2 = document.createElement('div');
+				div2.className = "media-body";
+				div2.setAttribute("id", "tokataso");
+				var heading = document.createElement('h4');
+				heading.className = "media-heading";
+				heading.setAttribute("id", title);
+				heading.innerHTML = object[i].title;
+				div2.appendChild(heading);
+				var para1 = document.createElement('p');
+				para1.setAttribute("id", timestamp);
+				para1.innerHTML = "<small>"+object[i].time+" kirjoittanut: "+object[i].firstname+" "+object[i].lastname+"</small>";
+				div2.appendChild(para1);
+				var para2 = document.createElement('p');
+				para2.setAttribute("id", message);
+				para2.innerHTML = object[i].message;
+				div2.appendChild(para2);
+				div1.appendChild(div2);
+				document.getElementById("containeri").appendChild(div1);
+			}
 		}
 	};
 	
