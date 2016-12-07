@@ -4,12 +4,12 @@
 <head>
 
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title class="name"></title>
+    <title class="name">Title</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -48,7 +48,7 @@
 
                 </ul>
                 <p id="updateUser"><i class="fa fa-cog fa-2x fa-right" aria-hidden="true"></i></p>
-                <p id="addbtn" href=""><i class="fa fa-plus fa-2x fa-right" aria-hidden="true"></i></p>
+                <p id="addbtn"><i class="fa fa-plus fa-2x fa-right" aria-hidden="true"></i></p>
                 <button type="button" id="logoutbutton">Logout</button>
             </div>
         </div>
@@ -66,7 +66,7 @@
                 <hr class="style8">
                 <a id="imagebtn"><i class="fa fa-picture-o fa-2x fa-right editDog" aria-hidden="true"></i></a>
                 <p id="updateDog"><i class="fa fa-cog fa-2x fa-right editDog" aria-hidden="true"></i></p>
-                <img class="img-responsive" id="profileimage" width="400" height="200" src="" alt="Image not shown properly">
+                <img class="img-responsive" id="profileimage" width="400" height="200" src="img/Preloader_21.gif" alt="Image not shown properly">
                 <hr class="style8">
 
                 <!-- Post Content -->
@@ -77,7 +77,7 @@
                 <!-- Comments Form -->
                 <div class="well" id="paivitywell">
                     <h4>Kirjoita tähän koiran kuulumisia:</h4>
-                    <form role="form" method="post" id="formPost">
+                    <form method="post" id="formPost">
                         <div class="form-group">
                             <textarea class="form-control" rows="1" placeholder="Otsikko" id="title"  maxlength="225"></textarea>
                             <textarea class="form-control" rows="3" placeholder="Teksti" id="message"  maxlength="500"></textarea>
@@ -147,7 +147,7 @@
                 <div class="well">
                     <h4>Yhteystiedot:</h4>
                     <p id="contact"></p>
-                    <p id="address"></p>
+                    <p id="address2"></p>
                 </div>
                 
                 <div class="well" id="somewell">
@@ -189,16 +189,16 @@
             <span class="close">x</span>
                 <form>
               <div class="form-group">
-                <label for="dogName">Name</label>
+                Name
                 <input type="text" class="form-control" id="dogFormName" placeholder="name">
               </div>
               <div class="form-group">
-                <label for="dogTitle">Title</label>
+                Title
                 <input type="text" class="form-control" id="dogFormTitle" placeholder="title">
               </div>
               <div class="form-group">
-                <label for="dogDescription">Description</label>
-                <input type="textarea" class="form-control" id="dogFormDescription" placeholder="description">
+                Description
+                <textarea rows="4" class="form-control" id="dogFormDescription" placeholder="description"></textarea>
               </div>
               <button type="button" class="btn btn-default" id="updateDogBtn">Save</button>
             </form>
@@ -209,19 +209,19 @@
             <span class="close">x</span>
                 <form>
                   <div class="form-group">
-                    <label for="exampleInputAddress">Address</label>
+                    Address
                     <input type="text" class="form-control" id="address" placeholder="address">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputZipcode">Zip Code</label>
+                    Zip Code
                     <input type="text" class="form-control" id="zipcode" placeholder="zipcode">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputCity">City</label>
+                    City
                     <input type="text" class="form-control" id="city" placeholder="city">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputNumber">Phone Number</label>
+                    Phone Number
                     <input type="text" class="form-control" id="phonenumber" placeholder="phone number">
                   </div>
                   <button type="button" class="btn btn-default" id="updateUserBtn">Save</button>
