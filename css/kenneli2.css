@@ -159,3 +159,7 @@ hr.style8 {
 .dogImageForm {
     display: none;
 }
+
+.errormsg {
+  color: red;
+}
