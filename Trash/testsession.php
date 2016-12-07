@@ -1,5 +1,7 @@
 <?php
+/*
 session_start();
+$_SESSION['id'] = 10;
 ?>
 <html>
     <body>
@@ -8,3 +10,4 @@ session_start();
         ?>
     </body>
 </html>
+*/

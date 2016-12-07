@@ -1,6 +1,6 @@
 <?php
+/*
 session_start();
-$_SESSION['id'] = 10;
 ?>
 <html>
     <body>
@@ -9,3 +9,4 @@ $_SESSION['id'] = 10;
         ?>
     </body>
 </html>
+*/

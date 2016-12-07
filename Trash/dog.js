@@ -1,3 +1,5 @@
+/*
+
 (function get_dog_content() {
     console.log('DOG');
     var dogId = parseUri(window.location.search).queryKey['dog'];
@@ -44,3 +46,5 @@
         return false;
     }
 })();
+
+*/

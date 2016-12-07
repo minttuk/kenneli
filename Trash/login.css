@@ -1,3 +1,5 @@
+/*
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
 .login-page {
@@ -102,9 +104,11 @@ body {
   background: -o-linear-gradient(right, #76b852, #8DC26F);
   background: linear-gradient(to left, #76b852, #8DC26F);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;  */
+  -moz-osx-font-smoothing: grayscale;  
   background-image: url("../img/login.jpg");
   background-repeat: no-repeat;
   font-family: "Roboto", sans-serif;
   background-size: 100%;
 }
+
+*/

@@ -1,3 +1,4 @@
+/*
 function getNav() {
     var dogId = parseUri(window.location.search).queryKey['dog'];
     var result;
@@ -20,3 +21,4 @@ function getNav() {
     });
     return false;
 }
+*/
