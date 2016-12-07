@@ -1,5 +1,5 @@
 
-document.getElementById('formPost').onsubmit = postMessage;
+document.getElementById('submitPost').onclick = function(){postMessage();};
 
 function postMessage(){
 	var ajaxRequest; 
@@ -38,6 +38,7 @@ function postMessage(){
 			if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 			    var text = ajaxRequest.responseText;
 			    console.log(text);
+			    window.location = 'dog.html?dog='+ dogId;
 			    //var object = JSON.parse(text);
 			    //console.log(object[0]);
 			    //document.getElementById("title1").innerHTML = object[0].title;
