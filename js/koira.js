@@ -36,6 +36,8 @@ function getDogMessages(){
 			console.log(count);
 
 			for(var i=0;i<count && i<10;i++){
+				var msgId = object[i].id;
+				console.log("viestin id "+msgId);
 				var src = "img/koira"+dogId+"naama.png";
 				var title = "title"+(i+1);
 				var timestamp = "timestamp"+(i+1);
@@ -67,7 +69,14 @@ function getDogMessages(){
 				var para2 = document.createElement('p');
 				para2.setAttribute("id", message);
 				para2.innerHTML = object[i].message;
+				var deleteBtn = document.createElement("BUTTON");
+				//deleteBtn.setAttribute("id", msgId);
+				console.log("lähetetään msgId "+msgId);
+				deleteBtn.onclick=function(){deleteMsg(msgId);};
+				var t = document.createTextNode("Poista viesti");       
+				deleteBtn.appendChild(t);                        
 				div2.appendChild(para2);
+				div2.appendChild(deleteBtn);
 				div1.appendChild(div2);
 				document.getElementById("containeri").appendChild(div1);
 			}

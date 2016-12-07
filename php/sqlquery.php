@@ -238,16 +238,17 @@ function updateUser() {
 function getMsgs() {
     $value = json_decode(file_get_contents('php://input'), true);
     $dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
-    $query = "select message.title, message.message, message.posttime, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param." order by message.id desc";
+    $query = "select message.id, message.title, message.message, message.posttime, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param." order by message.id desc";
     $result=$GLOBALS['db']->query($query);
     $msg = array();
     while($row=$result->fetch_assoc()){
+      $id=$row["id"];
       $title=$row["title"]; 
       $message=$row["message"];
       $time=$row["posttime"];
       $firstname=$row["firstname"];
       $lastname=$row["lastname"];
-      $msg[] = array("title"=> $title,"message"=> $message, "time"=> $time, "firstname"=>$firstname, "lastname"=>$lastname);
+      $msg[] = array("id"=>$id, "title"=> $title,"message"=> $message, "time"=> $time, "firstname"=>$firstname, "lastname"=>$lastname);
     }
     
     echo $jsonformat=json_encode($msg);
@@ -283,6 +284,10 @@ function createMsg() {
     else {
         echo json_encode(array('answer'=>'Error in creating mysql message'));    
     }
+    
+}
+
+function deleteMsg() {
     
 }
 
