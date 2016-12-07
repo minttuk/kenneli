@@ -45,7 +45,7 @@ function get_dog_content() {
                 console.log("SUCCESS",response);
                 $('#owner').html(response['firstname'] + " " + response['lastname']);
                 $('#contact').html("<strong>" + response['firstname'] + " " + response['lastname'] + "</strong>");
-                $('#address').html(response['address'] + ", " + response['zipcode'] + "<br>" + response['email'] + "<br>" + response['phonenumber']);
+                $('#address2').html(response['address'] + ", " + response['zipcode'] + "<br>" + response['email'] + "<br>" + response['phonenumber']);
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
