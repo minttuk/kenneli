@@ -10,7 +10,7 @@ function postMessage(){
     console.log("koiran id" + dogId);
     console.log("Sessionin id numero on " + id);
     
-    if (title.checkTitle(title) && message.checkMessage(message)){
+    if (checkTitle(title) && checkMessage(message)){
     
 	    var array = {"title": title, "message": message, "id": id, "dogid": dogId};
 	    var dataString = JSON.stringify(array);
