@@ -46,3 +46,23 @@ function postMessage(){
 	ajaxRequest.send(dataString);
 	
 }
+
+function checkMessage(message) {
+    if (message.length > 0 && message.length < 500) {
+        return true;
+    }
+    else {
+        $('.errormsg').html("Please give a title!");
+        return false;
+    }
+}
+
+function checkTitle(title) {
+    if (title.length > 0 && title.length < 255) {
+        return true;
+    }
+    else {
+        $('.errormsg').html("Please give a title!");
+        return false;
+    }
+}
