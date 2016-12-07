@@ -1,13 +1,14 @@
 
 window.onload = getDogMessages();
+window.onload = displayEditButtons();
 
 function getDogMessages(){
 	var ajaxRequest;  
 	var dogId = parseUri(window.location.search).queryKey['dog'];
-	console.log("DOGID"+dogId);
+	//console.log("DOGID"+dogId);
 	var array = {"title": dogId};
     var dataString = JSON.stringify(array);
-    console.log(dataString);
+    //console.log(dataString);
 	try{
 		// Opera 8.0+, Firefox, Safari
 		ajaxRequest = new XMLHttpRequest();
@@ -29,15 +30,15 @@ function getDogMessages(){
 	ajaxRequest.onreadystatechange = function(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
-		    console.log(text);
+		    //console.log(text);
 		    var object = JSON.parse(text);
-		    console.log(object[0]);
+		    //console.log(object[0]);
 		    var count = Object.keys(object).length;
-			console.log(count);
+			//console.log(count);
 
 			for(var i=0;i<count && i<10;i++){
 				var msgId = object[i].id;
-				console.log("viestin id "+msgId);
+				//console.log("viestin id "+msgId);
 				var src = "img/koira"+dogId+"naama.png";
 				var title = "title"+(i+1);
 				var timestamp = "timestamp"+(i+1);
@@ -84,7 +85,7 @@ function getDogMessages(){
 			var buttonsCount = buttons.length;
 			for (var i = 0; i < buttonsCount; i++) {
 			    buttons[i].onclick = function(e) {
-			        console.log("funktiossa kutsuu: "+this.id);
+			        //console.log("funktiossa kutsuu: "+this.id);
     			};
 			}
 		}
@@ -95,3 +96,10 @@ function getDogMessages(){
 	
 }
 
+//Displays dog edit buttons if the session/user id is the same as the dog owner id
+function displayEditButtons() {
+	console.log("user and owner" + userid +", " + dog['owner']);
+	if (userid == dog['owner']) {
+		document.getElementById('dogEditBtns').style.display = "block";
+	}
+}

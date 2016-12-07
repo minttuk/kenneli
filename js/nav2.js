@@ -7,7 +7,6 @@
         type: "get",
         //dataType: "json",
         success: function (response) {
-            console.log("toimiiko tama");
            console.log("SUCCESS",response);
            for (var i = 0; i < response.length; i++) {
                 $('.doglist').append("<li><a href='dog.html?dog=" + response[i]['id'] + "'>" + response[i]['name'] + "</a></li>");

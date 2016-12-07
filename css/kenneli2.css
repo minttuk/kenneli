@@ -163,3 +163,7 @@ hr.style8 {
 .errormsg {
   color: red;
 }
+
+#dogEditBtns {
+    display: none;
+}

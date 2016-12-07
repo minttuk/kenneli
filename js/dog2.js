@@ -2,13 +2,11 @@ var owner;
 var dog;
 
 function get_dog_content() {
-    console.log('DOG');
     var dogId = parseUri(window.location.search).queryKey['dog'];
     $('#profileimage').attr("src", "img/" + dogId + ".png");
     if (!dogId) {
         window.location = "index.html";
     }
-    console.log(dogId);
     var result;
     var $str = "getDog";
     var owner = null;
@@ -20,7 +18,6 @@ function get_dog_content() {
         success: function (response) {
            dog = response;
            console.log("SUCCESS",response);
-           console.log(response['id']);
            $('.name').html(response['name']);
            $('#dogTitle').html(response['title']);
            $('#description').html(response['description']);
@@ -34,7 +31,6 @@ function get_dog_content() {
         }
     });
     function getOwner() {
-    //console.log('owner id:',owner);
         $str = "getUser";
         $.ajax({
             url: "php/sqlquery.php?q=" + $str,
