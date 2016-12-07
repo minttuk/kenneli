@@ -57,6 +57,10 @@ if ($q == "updateUser") {
     updateUser();
 }
 
+if ($q == "getDogByOwner") {
+    getDogByOwner();
+}
+
 
 function getResource() {
     # returns numerically indexed array of URI parts
@@ -218,13 +222,19 @@ function updateUser() {
     $zipcode = mysqli_real_escape_string($GLOBALS['db'], $value['zipcode']);
     $city = mysqli_real_escape_string($GLOBALS['db'], $value['city']);
     $phonenumber = mysqli_real_escape_string($GLOBALS['db'], $value['phonenumber']);
+    $dogid = mysqli_real_escape_string($GLOBALS['db'], $value['dogid']);
+    //Updating user information of this session
     $sql = "UPDATE user SET 
     address='" . $address . "',
     zipcode='" . $zipcode . "', 
     city='" . $city . "', 
     phonenumber='" . $phonenumber . "' 
     WHERE id='" . $_SESSION['id'] . "'";
-    if ($GLOBALS['db']->query($sql) === TRUE) {
+    //Updating the owner of dogs that were stated in update user form
+    $sql2 = "UPDATE dog SET owner='" . $_SESSION['id'] . "' WHERE id='" . $dogid . "'";
+    //Deleting those dogs from use that were not stated in update user form
+    $sql3 = "UPDATE dog SET owner=null WHERE owner='" . $_SESSION['id'] . "' AND id!='" . $dogid . "'";
+    if ($GLOBALS['db']->query($sql) === TRUE && $GLOBALS['db']->query($sql2) === TRUE && $GLOBALS['db']->query($sql3) === TRUE) {
         $msg[] = array("message"=> 'User updated successfully');
         echo $jsonformat=json_encode($msg);
         return;
@@ -343,7 +353,23 @@ function getDogs() {
     }
     http_response_code(403);
     echo json_encode(array('error'=>'No dog found'));
-    
+}
+
+function getDogByOwner() {
+    $value = json_decode(file_get_contents('php://input'), true);
+    $sql = "SELECT * FROM dog WHERE owner='" . mysqli_real_escape_string($GLOBALS['db'], $value['owner']) . "'";
+    $result = $GLOBALS['db']->query($sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
+        $myDogs = array();
+        while ($row = $result->fetch_assoc()) {
+            $myDogs[] = array('id'=>$row['id'], 'name'=>$row['name'], 'owner'=>$row['owner'], 'title'=>$row['title'], 'description'=>$row['description']);
+        }
+        echo $jsonformat=json_encode($myDogs);
+        return; 
+    }
+    http_response_code(403);
+    echo json_encode(array('error'=>'No dog found'));
 }
     
     
