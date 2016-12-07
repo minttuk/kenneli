@@ -7,8 +7,8 @@ function postMessage(){
     var message = document.getElementById('message').value;
     var id = userid;
     var dogId = parseUri(window.location.search).queryKey['dog'];
-    console.log("koiran id" + dogId);
-    console.log("Sessionin id numero on " + id);
+    console.log("title " + title);
+    console.log("message " + message);
     
     if (checkTitle(title) && checkMessage(message)){
     
