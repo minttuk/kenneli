@@ -6,7 +6,7 @@ var userid;
         url: "php/sqlquery.php?q=" + $str,
         type: "GET",
         success: function (response) {
-            console.log(response['id']);
+            console.log('sessionin id on ' + response['id']);
             userid = response['id'];
             console.log(window.location.pathname);
             if ((response['id'] === null || !response['id']) && window.location.pathname !== "/login.html") {
@@ -26,4 +26,20 @@ var userid;
             return;
         }
     });
+    var $str = "getUser";
+    $.ajax({
+        url: "php/sqlquery.php?q=" + $str,
+        type: "GET",
+        dataType: "json",
+        data: JSON.stringify({'id': userid}),
+        success: function (response) {
+            $('#currentUser').html(response['firstname'] + " " + response['lastname']);
+
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+           console.log(textStatus, errorThrown);
+            return;
+        }
+    });
+    
 })()
