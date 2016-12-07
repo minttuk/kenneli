@@ -99,7 +99,7 @@ hr.style8 {
 }
 
 #logoutbutton {
-    margin: 12px;
+    margin: 3px;
     float: right;
 }
 
@@ -166,4 +166,12 @@ hr.style8 {
 
 #dogEditBtns {
     display: none;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #cccccc;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #cccccc;
 }
