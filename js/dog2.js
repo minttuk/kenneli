@@ -42,8 +42,8 @@ function get_dog_content() {
                 $('#owner').html(response['firstname'] + " " + response['lastname']);
                 $('#contact').html("<strong>" + response['firstname'] + " " + response['lastname'] + "</strong>");
                 $('#address2').html(response['address'] + ", " + response['zipcode'] + "<br>" + response['email'] + "<br>" + response['phonenumber']);
-
-
+                displayEditButtons();
+                return;
             },
             error: function(jqXHR, textStatus, errorThrown) {
                console.log("ERROR",textStatus, errorThrown);
@@ -55,3 +55,11 @@ function get_dog_content() {
 $(function() {
     get_dog_content();
 })
+
+//Displays dog edit buttons if the session/user id is the same as the dog owner id
+function displayEditButtons() {
+	console.log("user and owner" + userid +", " + dog['owner']);
+	if (userid == owner) {
+		document.getElementById('dogEditBtns').style.display = "block";
+	}
+}

@@ -1,6 +1,5 @@
 
 window.onload = getDogMessages();
-window.onload = displayEditButtons();
 
 function getDogMessages(){
 	var ajaxRequest;  
@@ -94,12 +93,4 @@ function getDogMessages(){
 	ajaxRequest.open("POST", "php/sqlquery.php?q=getMsgs", true);
 	ajaxRequest.send(dataString);
 	
-}
-
-//Displays dog edit buttons if the session/user id is the same as the dog owner id
-function displayEditButtons() {
-	console.log("user and owner" + userid +", " + dog['owner']);
-	if (userid == dog['owner']) {
-		document.getElementById('dogEditBtns').style.display = "block";
-	}
 }
