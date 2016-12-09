@@ -1,0 +1,17 @@
+Tervetuloa kennelin pentueen somesivuille!
+
+Tietokannan sisällön löydät kennel/SQLscripts.sql tiedostosta...
+
+
+Sivut voit käynnistää kennel/login.html tiedostosta. Kun olet päivittänyt mysql tietokannan tiedot, niin voit kirjautua kolmella eri käyttäjätunnuksella:
+    sähköposti: hash@hash.fi            salasana: hash
+    sähköposti: maija.honka@koira.fi    salasana: maijahonka
+    sähköposti: pate.koivisto@koira.fi  salasana: patekoivisto
+Voit vaihtoehtoisesti luoda oman käyttäjätunnuksen.
+
+sitten lisäksi mm:
+-muiden html sivujen esittely (myös SpecRunner.html)
+-css esittely
+-img esittely
+-js esittely
+-php esittely
