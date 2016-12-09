@@ -1,3 +1,7 @@
+/* Funktiot koiran oman sivun viestin käsittelyä varten. 
+postMessage() = viesti lähtee ajaxin kautta JSON muotoisena
+*/
+
 
 document.getElementById('submitPost').onclick = function(){postMessage();};
 
@@ -50,6 +54,8 @@ function postMessage(){
 		ajaxRequest.send(dataString);
     }
 }
+/* checkMessage() = tarkistetaan että on viesti joka ei ole pelkästään tyhjää 
+jos ei ole viestiä, tai se sisältää pelkkää tyhjää, tulostuu virheilmoitus. */
 
 function checkMessage(message) {
     if (message.length > 0 && message.length < 500 && message.trim().length !== 0) {
@@ -60,6 +66,9 @@ function checkMessage(message) {
         return false;
     }
 }
+
+/* checkTitle() = tarkistetaan että on otsikko
+jos ei ole otsikkoa, tulostuu virheilmoitus asiasta. */
 
 function checkTitle(title) {
     if (title.length > 0 && title.length < 255) {

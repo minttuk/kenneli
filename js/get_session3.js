@@ -26,20 +26,23 @@ var userid;
             return;
         }
     });
-    var $str = "getUser";
-    $.ajax({
-        url: "php/sqlquery.php?q=" + $str,
-        type: "GET",
-        dataType: "json",
-        data: JSON.stringify({'id': userid}),
-        success: function (response) {
-            $('#currentUser').html(response['firstname'] + " " + response['lastname']);
-
-        },
-        error: function(jqXHR, textStatus, errorThrown) {
-           console.log(textStatus, errorThrown);
-            return;
-        }
-    });
+    function getSessionUser(){
+        var $str = "getUser";
+        $.ajax({
+            url: "php/sqlquery.php?q=" + $str,
+            type: "GET",
+            dataType: "json",
+            data: JSON.stringify({'id': userid}),
+            success: function (response) {
+                console.log("tämän nimi pitäisi tulostua " + response['firstname']);
+                $('#currentUser').html(response['firstname'] + " " + response['lastname']);
+    
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+               console.log(textStatus, errorThrown);
+                return;
+            }
+        });
+    }
     
 })()
