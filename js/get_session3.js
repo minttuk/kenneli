@@ -18,6 +18,8 @@ var userid;
                 window.location = "index.html";
                 return;
             }
+            getSessionUser();
+
         },
         error: function(jqXHR, textStatus, errorThrown) {
            console.log(textStatus, errorThrown);
@@ -27,14 +29,13 @@ var userid;
         }
     });
     function getSessionUser(){
-        var $str = "getUser";
+        $str = "getUser";
         $.ajax({
             url: "php/sqlquery.php?q=" + $str,
-            type: "GET",
+            type: "post",
             dataType: "json",
             data: JSON.stringify({'id': userid}),
             success: function (response) {
-                console.log("tämän nimi pitäisi tulostua " + response['firstname']);
                 $('#currentUser').html(response['firstname'] + " " + response['lastname']);
     
             },
