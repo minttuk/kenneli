@@ -39,7 +39,6 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav doglist" id="nav">
-
                 </ul>
                 <p class="updateUser" id="updateUser"><i class="fa fa-cog fa-2x fa-right" aria-hidden="true"></i></p>
                 <button type="button" id="logoutbutton">Logout</button>
@@ -57,16 +56,11 @@
             <!-- Blog Post Content Column -->
             <div class="col-lg-9" id="containeri">
 
-                <!-- Blog Post -->
-
                 <!-- Title -->
                 <h1>Tervetuloa Dalmatian-pentueen omille sivuille</h1>
 
-                
-
                 <hr class="style8">
 
-                <!-- Date/Time -->
                 <p>Tällä sivustolla Dalmatian-pentueen omistajat voivat päivittää pentujen kuulumisia.
                 Pääset kirjoittamaan päivitystä siirtymällä pennun omalle sivulle. Tämän sivun alalaidasta näet uusimmat päivitykset.</p>
 
@@ -78,7 +72,6 @@
                 
                 <hr class="style8">
 
-                <!-- Post Content -->
                 <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
@@ -87,21 +80,9 @@
 
                 <hr class="style8">
 
-                <!-- Blog Comments -->
-
-                <!-- Comments Form -->
-                <div class="well" id="commentarea">
-                    <h4>Leave a Comment:</h4>
-                    <form>
-                        <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </form>
-                </div>
-
-
-                <!-- Posted Comments 
+                <!-- Posted Comments: tähän luodaan etusivu.js-tiedostossa dynaamisesti media-luokan divejä riippuen
+                siitä onko tietokannan message-taulussa dataa. Viesteistä otetaan x uusinta, x määritetty js-tiedostossa.
+                Alla alkuperäinen kovakoodattu div, jota käytetty mallina. 
 
                 <div class="media">
                     <a class="pull-left" href="#">
@@ -113,50 +94,31 @@
                         <p id="message1">Tähän päivityksen sisältö ja kuvaan koiran kuva</p>
                     </div>
                 </div>
-                
                 -->
-                
-                
 
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-3">
 
-                <!-- Blog Search Well -->
-                <div class="well" id="testiwell">
-                    <h4>Blog Search</h4>
-                    <div class="input-group">
-                        <input type="text" class="form-control">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">
-                                <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                        </span>
-                    </div>
-                    <!-- /.input-group -->
-                </div>
-
-
-                <!-- Blog Categories Well -->
+                <!-- Links: linkit muiden koirien sivuille ja etusivulle, luodaan dynaamisesti nav2.js-tiedostossa -->
                 <div class="well" id="linkkiwell">
                     <h4>Pentueen koirat</h4>
                     <div class="row">
                         <div class="col-lg-6">
                             <ul class="list-unstyled doglist">
-
                             </ul>
                         </div>
                     </div>
-                    <!-- /.row -->
                 </div>
 
-                <!-- Side Widget Well -->
+                <!-- Kasvattajan yhteystiedot -->
                 <div class="well">
                     <h4>Kasvattajan yhteystiedot:</h4>
                     <p><strong>Kaija Kasvattaja </strong><br> Terhotie 15, 09200 Taipalsaari <br> kaija.kasvattaja@dalmatialaiset.fi <br> 044-0011000</p>
                 </div>
                 
+                <!-- Social media Well: ei toiminnallisuutta tässä tapauksessa, se olisi kuitenkin helppo liittää -->
                 <div class="well" id="somewell">
                     <h4>Seuraa meitä somessa:</h4>
                     <div id="somebuttons">
@@ -175,7 +137,6 @@
             </div>
 
         </div>
-        <!-- /.row -->
 
         <hr class="style8">
 
@@ -220,12 +181,10 @@
     </div>
     <!-- /.container -->
 
-    <!-- <script type="text/javascript" src="js/dog2.js"></script> -->
     <script src="js/etusivu.js"></script>
     <script type="text/javascript" src="js/nav2.js"></script>
     <script type="text/javascript" src="js/logout.js"></script>
     <script type="text/javascript" src="js/updateUser2.js"></script>
-    <!-- <script src="js/insertMessage.js"></script> tätä ei varmaan tarvitse -->
 
 </body>
 

@@ -98,9 +98,11 @@
 
                 <hr class="style8">
 
-                <!-- Posted Comments -->
+                <!-- Posted Comments: tähän luodaan koira.js-tiedostossa dynaamisesti media-luokan divejä riippuen
+                siitä onko tietokannan message-taulussa dataa. Viestejä näytetään x uusinta kyseiseltä koiralta, x
+                määritetty js-tiedostossa. Alla alkuperäinen kovakoodattu div, jota käytetty mallina.
 
-                <!-- Comment 
+                
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="img/koira1naama.png" alt="">
@@ -111,29 +113,8 @@
                         <p id="message1">Tähän päivityksen sisältö ja kuvaan koiran kuva</p>
                     </div>
                 </div>
-                
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="img/koira1naama.png" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading" id="title2">Tähän tietokannasta haettu koiran nimi: päivityksen otsikko</h4>
-                        <p id="timestamp2"><small>Tähän aikaleima</small></p>
-                        <p id="message2">Tähän päivityksen sisältö ja kuvaan koiran kuva</p>
-                    </div>
-                </div>
-                
-                <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="img/koira1naama.png" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading" id="title3">Tähän tietokannasta haettu koiran nimi: päivityksen otsikko</h4>
-                        <p id="timestamp3"><small>Tähän aikaleima</small></p>
-                        <p id="message3">Tähän päivityksen sisältö ja kuvaan koiran kuva</p>
-                    </div>
-                </div>
                 -->
+                
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
@@ -152,13 +133,14 @@
                     <!-- /.row -->
                 </div>
 
-                <!-- Side Widget Well -->
+                <!-- Side Widget Well: tähän haetaan dynaamisesti omistajan tiedot dog2.js-tiedostossa -->
                 <div class="well">
                     <h4>Yhteystiedot:</h4>
                     <p id="contact"></p>
                     <p id="address2"></p>
                 </div>
                 
+                <!-- Social media Well: ei toiminnallisuutta tässä tapauksessa, se olisi kuitenkin helppo liittää -->
                 <div class="well" id="somewell">
                     <h4>Seuraa meitä somessa:</h4>
                     <div id="somebuttons">
