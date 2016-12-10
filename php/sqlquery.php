@@ -8,7 +8,7 @@ mb_language('uni');
 mb_internal_encoding('UTF-8');
 
 
-/*
+
 # Main
 # ----
 
@@ -18,7 +18,7 @@ $parameters = getParameters();
 
 # Redirect to appropriate handlers.
 if ($resource[0]=="kennelsome") {
-	if ($request_method=="POST" && $resource[1]=="getMsgs") {
+	/*if ($request_method=="POST" && $resource[1]=="getMsgs") {
     	getMsgs();
 	}
 	else if ($request_method=="GET" && $resource[1]=="getFrontSideMsgs") {
@@ -38,11 +38,11 @@ if ($resource[0]=="kennelsome") {
 	}	
 	else if ($request_method=="POST" && $resource[1]=="updateDog") {
 		updateDog();
-	}
-	else if ($request_method=="GET" && $resource[1]=="getDogs") {
+	}*/
+	if ($request_method=="GET" && $resource[1]=="getDogs") {
 		getDogs();
 	}
-	else if ($request_method=="POST" && $resource[1]=="getUser") {
+	/*else if ($request_method=="POST" && $resource[1]=="getUser") {
 		getUser();
 	}	
 	else if ($request_method=="GET" && $resource[1]=="logout") {
@@ -56,13 +56,13 @@ if ($resource[0]=="kennelsome") {
 	}
 	else if ($request_method=="POST" && $resource[1]=="getDogByOwner") {    
 		getDogByOwner();
-	}
+	}*/
 
 	else {
 		http_response_code(405); # Method not allowed
 	}
 }
-else {
+/*else {
 	http_response_code(405); # Method not allowed
 }
 
@@ -98,9 +98,9 @@ if ($q == "updateDog") {
     updateDog();
 }
 
-if ($q == "getDogs") {
+/*if ($q == "getDogs") {
     getDogs();
-}
+}*/
 
 if ($q == "getUser") {
     getUser();
