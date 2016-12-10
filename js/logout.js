@@ -2,7 +2,7 @@ $('#logoutbutton').click(function(){
     console.log("logout pushed");
     var $str = "logout";
     $.ajax({
-        url: "php/sqlquery.php?q=" + $str,
+        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
         type: "get",
         //dataType: "json",
         //data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),

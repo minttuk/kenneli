@@ -45,7 +45,7 @@ function postMessage(){
 			}
 		};
 		
-		ajaxRequest.open("POST", "php/sqlquery.php?q=createMsg", true);
+		ajaxRequest.open("POST", /*"https://kennel-minttukoponen.c9users.io/kennelsome/createMsg", true);  //*/"php/sqlquery.php?q=createMsg", true);
 		ajaxRequest.send(dataString);
     }
 }

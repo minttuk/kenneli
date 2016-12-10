@@ -11,7 +11,7 @@ function get_dog_content() {
     var $str = "getDog";
     var owner = null;
     $.ajax({
-        url: "php/sqlquery.php?q=" + $str,
+        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str, //*/"php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
         data: JSON.stringify({'dogID': dogId}),
@@ -33,7 +33,7 @@ function get_dog_content() {
     function getOwner() {
         $str = "getUser";
         $.ajax({
-            url: "php/sqlquery.php?q=" + $str,
+            url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
             type: "post",
             dataType: "json",
             data: JSON.stringify({'id': owner}),

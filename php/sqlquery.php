@@ -7,6 +7,67 @@ include("connect.php");
 mb_language('uni');
 mb_internal_encoding('UTF-8');
 
+
+/*
+# Main
+# ----
+
+$resource = getResource();
+$request_method = getMethod();
+$parameters = getParameters();
+
+# Redirect to appropriate handlers.
+if ($resource[0]=="kennelsome") {
+	if ($request_method=="POST" && $resource[1]=="getMsgs") {
+    	getMsgs();
+	}
+	else if ($request_method=="GET" && $resource[1]=="getFrontSideMsgs") {
+		getFrontSideMsgs();
+	} 
+	else if ($request_method=="POST" && $resource[1]=="createMsg") {
+		createMsg();
+	}
+	else if ($request_method=="POST" && $resource[1]=="login") {
+	    login();
+	}
+	else if ($request_method=="GET" && $resource[1]=="getSession") {
+		getSession();
+	}
+	else if ($request_method=="POST" && $resource[1]=="getDog") {
+		getDog();
+	}	
+	else if ($request_method=="POST" && $resource[1]=="updateDog") {
+		updateDog();
+	}
+	else if ($request_method=="GET" && $resource[1]=="getDogs") {
+		getDogs();
+	}
+	else if ($request_method=="POST" && $resource[1]=="getUser") {
+		getUser();
+	}	
+	else if ($request_method=="GET" && $resource[1]=="logout") {
+		sessionDestroy();
+	}
+	else if ($request_method=="POST" && $resource[1]=="register") {
+		register();
+	}
+	else if ($request_method=="POST" && $resource[1]=="updateUser") {
+		updateUser();
+	}
+	else if ($request_method=="POST" && $resource[1]=="getDogByOwner") {    
+		getDogByOwner();
+	}
+
+	else {
+		http_response_code(405); # Method not allowed
+	}
+}
+else {
+	http_response_code(405); # Method not allowed
+}
+
+*/
+
 $q = $_REQUEST["q"];
 
 if ($q == "getMsgs"){
@@ -60,6 +121,7 @@ if ($q == "updateUser") {
 if ($q == "getDogByOwner") {
     getDogByOwner();
 }
+
 
 
 function getResource() {

@@ -7,7 +7,7 @@ btn.onclick = function getUserById(callback) {
     var id = userid;
     var $str = "getUser";
     $.ajax({
-        url: "php/sqlquery.php?q=" + $str,
+        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
         data: JSON.stringify({'id': id}),
@@ -41,7 +41,7 @@ var updateUserBtn = document.getElementById('updateUserBtn');
 updateUserBtn.onclick = function() {
     var $str = "updateUser";
     $.ajax({
-        url: "php/sqlquery.php?q=" + $str,
+        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
         data: JSON.stringify({'address': $('#address').val(), 'zipcode': $('#zipcode').val(), 'city': $('#city').val(), 'phonenumber': $('#phonenumber').val()}),

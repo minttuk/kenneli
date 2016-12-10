@@ -84,7 +84,7 @@ function getDogMessages(){
 		}
 	};
 	
-	ajaxRequest.open("POST", "php/sqlquery.php?q=getMsgs", true);
+	ajaxRequest.open("POST", /*"https://kennel-minttukoponen.c9users.io/kennelsome/getMsgs", true);  //*/"php/sqlquery.php?q=getMsgs", true);
 	ajaxRequest.send(dataString);
 	
 }

@@ -1,7 +1,7 @@
 window.onload = getDogMessages();
 
 function getDogMessages(){
-	var ajaxRequest;  
+	var ajaxRequest;
 	
 	try{
 		// Opera 8.0+, Firefox, Safari
@@ -66,7 +66,7 @@ function getDogMessages(){
 		}
 	};
 	
-	ajaxRequest.open("GET", "php/sqlquery.php?q=getFrontSideMsgs", true);
+	ajaxRequest.open("GET", /*"https://kennel-minttukoponen.c9users.io/kennelsome/getFrontSideMsgs", true);   //*/"php/sqlquery.php?q=getFrontSideMsgs", true);
 	ajaxRequest.send(null);
 	
 }

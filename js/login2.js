@@ -18,7 +18,7 @@ $('#loginbutton').click(function(){
     if (checkEmail($loginemail) && passwordGiven($loginpassword)) {
         var $str = "login";
         $.ajax({
-            url: "php/sqlquery.php?q=" + $str,
+            url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
             type: "post",
             dataType: "json",
             data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),
@@ -49,7 +49,7 @@ $('#registerbutton').click(function(){
         console.log('both ok');
         var $str = "register";
         $.ajax({
-            url: "php/sqlquery.php?q=" + $str,
+            url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/ "php/sqlquery.php?q=" + $str,
             type: "post",
             dataType: "json",
             data: JSON.stringify({'email': $registeremail, 'password': $registerpassword, 'firstname': $firstname, 'lastname': $lastname}),

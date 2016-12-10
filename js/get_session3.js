@@ -3,7 +3,7 @@ var userid;
 (function get_session() {
     var $str = "getSession";
     $.ajax({
-        url: "php/sqlquery.php?q=" + $str,
+        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
         type: "GET",
         success: function (response) {
             console.log('sessionin id on ' + response['id']);
@@ -31,7 +31,7 @@ var userid;
     function getSessionUser(){
         $str = "getUser";
         $.ajax({
-            url: "php/sqlquery.php?q=" + $str,
+            url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
             type: "post",
             dataType: "json",
             data: JSON.stringify({'id': userid}),
