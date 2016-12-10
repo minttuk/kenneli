@@ -1,4 +1,3 @@
-
 window.onload = getDogMessages();
 
 function getDogMessages(){
@@ -25,12 +24,10 @@ function getDogMessages(){
 	ajaxRequest.onreadystatechange = function(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
-		    console.log(text);
 		    var object = JSON.parse(text);
-		    console.log(object[0]);
-		    var count = Object.keys(object).length;
+		    var count = Object.keys(object).length; //lasketaan montako viestiä
 		    
-		    for(var i=0;i<count && i<5;i++){
+		    for(var i=0;i<count && i<5;i++){  //sivulla näytetään maksimissaan 5 viestiä, ne luodaan DOMin avulla
 				var src = "img/koira"+object[i].dog_id+"naama.png";
 				var title = "title"+(i+1);
 				var timestamp = "timestamp"+(i+1);

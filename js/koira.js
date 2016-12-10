@@ -2,12 +2,10 @@
 window.onload = getDogMessages();
 
 function getDogMessages(){
-	var ajaxRequest;  
-	var dogId = parseUri(window.location.search).queryKey['dog'];
-	//console.log("DOGID"+dogId);
+	var ajaxRequest;
+	var dogId = parseUri(window.location.search).queryKey['dog'];  //haetaan kyseisen sivun koiran id
 	var array = {"title": dogId};
     var dataString = JSON.stringify(array);
-    //console.log(dataString);
 	try{
 		// Opera 8.0+, Firefox, Safari
 		ajaxRequest = new XMLHttpRequest();
@@ -29,15 +27,11 @@ function getDogMessages(){
 	ajaxRequest.onreadystatechange = function(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
-		    //console.log(text);
 		    var object = JSON.parse(text);
-		    //console.log(object[0]);
-		    var count = Object.keys(object).length;
-			//console.log(count);
+		    var count = Object.keys(object).length; //lasketaan montako viestiä
 
-			for(var i=0;i<count && i<10;i++){
+			for(var i=0;i<count && i<10;i++){ //sivulla näytetään maksimissaan 10 viestiä, ne luodaan DOMin avulla for-silmukassa
 				var msgId = object[i].id;
-				//console.log("viestin id "+msgId);
 				var src = "img/koira"+dogId+"naama.png";
 				var title = "title"+(i+1);
 				var timestamp = "timestamp"+(i+1);
@@ -82,7 +76,7 @@ function getDogMessages(){
 			}
 			var buttons = document.getElementsByClassName("deleteButton");
 			var buttonsCount = buttons.length;
-			for (var i = 0; i < buttonsCount; i++) {
+			for (var i = 0; i < buttonsCount; i++) {  //viestien poistamisnapeille asetetaan toiminnallisuus
 			    buttons[i].onclick = function(e) {
 			        //console.log("funktiossa kutsuu: "+this.id);
     			};
