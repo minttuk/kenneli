@@ -81,7 +81,7 @@ function getDogMessages(){
 			var buttonsCount = buttons.length;
 			for (var i = 0; i < buttonsCount; i++) {  //viestien poistamisnapeille asetetaan toiminnallisuus
 			    buttons[i].onclick = function(e) {
-			        //console.log("funktiossa kutsuu: "+this.id);
+			        deleteMsg(this.id);
     			};
 			}
 		}
