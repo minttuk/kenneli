@@ -1,11 +1,10 @@
+// Kun painetaan logout, kutsutaan ajaxilla php-funktiota joka tuhoaa session.
 $('#logoutbutton').click(function(){
     console.log("logout pushed");
     var $str = "logout";
     $.ajax({
         url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
         type: "get",
-        //dataType: "json",
-        //data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),
         success: function (response) {
            console.log("SUCCESS",response);
             window.location = "login.html";
@@ -15,5 +14,4 @@ $('#logoutbutton').click(function(){
            console.log("ERROR",textStatus, errorThrown);
         }
     });
-    //return false;
 });

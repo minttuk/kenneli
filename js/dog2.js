@@ -1,6 +1,11 @@
+// Koira ja omistaja tallennetaan muuttujiin, jotta niihin voidaan viitata muissakin scripteissä hakematta aina niitä uudelleen.
 var owner;
 var dog;
 
+
+// Hakee kullekkin koiran sivulle kyseisen koiran nimen, kuvauksen, omistajan yms. 
+// Koirien sivut generoidaan dog.html:stä ja urlissa oleva ?dog= määrittelee minkä id:n koira on kyseessä
+// Tiedot haetaan sql:stä id:n mukaan.
 function get_dog_content() {
     var dogId = parseUri(window.location.search).queryKey['dog'];
     $('#profileimage').attr("src", "img/" + dogId + ".png");
@@ -30,6 +35,8 @@ function get_dog_content() {
            //return false;
         }
     });
+    
+    // Haetaan koiran owner-id:n perusteella omistajan tiedot user-taulusta
     function getOwner() {
         $str = "getUser";
         $.ajax({
@@ -56,7 +63,8 @@ $(function() {
     get_dog_content();
 })
 
-//Displays dog edit buttons if the session/user id is the same as the dog owner id
+//Näyttää koiran sivulla edit-napit, jos koiran omistajan id on sama kuin session id. Eli oman koiran tietoja voi vain muokata. 
+//Kaikki voivat kuitenkin postata kaikkien koirien sivuille uusia viestejä
 function displayEditButtons() {
 	console.log("user and owner" + userid +", " + dog['owner']);
 	if (userid == owner) {

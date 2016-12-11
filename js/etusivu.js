@@ -1,5 +1,6 @@
 window.onload = getDogMessages();
 
+//Haetaan etusivulle kaikkien koirien uusimpia viestejä
 function getDogMessages(){
 	var ajaxRequest;
 	

@@ -45,7 +45,7 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav doglist" id="nav">
-
+                    <!-- Tähän generoidaan javascriptillä tietokannan koirat nav2.js-tiedostossa -->
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <p class="updateUser" id="updateUser"><i class="fa fa-cog fa-2x fa-right" aria-hidden="true"></i></p>
@@ -75,7 +75,8 @@
                     <a id="imagebtn"><i class="fa fa-picture-o fa-2x fa-right editDog" aria-hidden="true"></i></a>
                     <p id="updateDog"><i class="fa fa-cog fa-2x fa-right editDog" aria-hidden="true"></i></p>
                 </div>
-                <img class="img-responsive" id="profileimage" width="400" height="200" src="img/Preloader_21.gif" alt="Image not shown properly">
+                <!-- Kuvana default.png alkuun, mutta javascriptillä haetaan koiran id:tä vastaava kuva -->
+                <img class="img-responsive" id="profileimage" width="400" height="200" src="img/default.png" alt="Image not shown properly">
                 <hr class="style8">
 
                 <!-- Post Content -->
@@ -175,6 +176,8 @@
 
     </div>
     
+    <!--- Koiramodal, jossa voi editoida koiran tietoja tietokantaan. Modal avautuu kun painaa koiran kuvan oikealla puolella olevaa settings-symbolia.
+    Tämä symboli näkyy tosin vain koiran omistajalle. updateDog2.js tiedosto käsittelee tätä modalia. -->
     <div id="dogModal" class="modal">
         <div class="modal-content">
             <span id="dogSpan" class="close">x</span>
@@ -196,6 +199,8 @@
         </div>
     </div>
     
+    <!-- Tämä modal tulee näkyviin, kun painetaan navigointibaarissa olevaa settings-symbolia. Sieltä voi editoida oman käyttäjätunnuksen tietoja. 
+    updateUser2.js käsittelee tätä modalia. -->
     <div id="userModal" class="modal usermodal">
         <div class="modal-content">
             <span class="close userspan">x</span>
@@ -225,6 +230,7 @@
         </div>
     </div>
     
+    <!-- Tässä modalissa vaihdetaan koiran kuvaa. Näkyy voin koiran omistajalle oman koiran kuvan oikealla puolella. uploadImage käsittelee tätä modalia -->
     <div class="form-wrap modal" id="dogImageForm">
         <div class="modal-content">
             <span class="close">x</span>
