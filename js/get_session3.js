@@ -1,8 +1,8 @@
 var userid;
 
 //var c9address = "https://kennel-minttukoponen.c9users.io/kennelsome/";
-var c9address = "https://kenneli-hannmard.c9users.io/kennelsome/";
-//var c9address = "https://kennel- ";
+//var c9address = "https://kenneli-hannmard.c9users.io/kennelsome/";
+var c9address = "https://kennelsome-sainipatala.c9users.io/kennelsome/";
 
 (function get_session() {
     var $str = "getSession";

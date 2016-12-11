@@ -3,17 +3,6 @@ var dogmodal = document.getElementById('dogModal');
 var dogbtn = document.getElementById('updateDog');
 var dogspan = document.getElementById('dogSpan');
 
-// Tarkistaa onko aiemmin tallennettu userid sama kuin kyseisen koiran ownerin id. Jos on niin näytetään koiran editointinapit.
-(function() {
-    if (userid == owner) {
-        console.log(userid + ", " + owner);
-        dogbtn.style.display = "block";
-    }
-    else {
-        dogbtn.style.display = "none";
-    }
-})();
-
 // Täytetään modalin kentät koiran aiemmilla tiedoilla.
 dogbtn.onclick = function getDogById() {
     $('#dogFormName').val(dog['name']);

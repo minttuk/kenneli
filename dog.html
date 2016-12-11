@@ -234,9 +234,10 @@
     <div class="form-wrap modal" id="dogImageForm">
         <div class="modal-content">
             <span class="close">x</span>
-                <form action="process.php" method="post" enctype="multipart/form-data" id="upload_form">
-                    <input name="__files[]" type="file" multiple="multiple" />
-                    <input name="__submit__" type="submit" value="Upload"/>
+                <form action="/php/upload.php" method="post" enctype="multipart/form-data" id="upload_form">
+                    <input id="dogIdToImage" name="dogIdToImage" type="hidden" value=""/>
+                    <input name="picture" type="file"/>
+                    <input type="submit" value="Upload"/>
                 </form>
                 <div id="output"><!-- error or success results --></div>
         </div>

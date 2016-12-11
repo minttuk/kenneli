@@ -29,7 +29,7 @@ create table dog (
 id int not null auto_increment,
 name varchar(40) not null,
 owner int null,
-image varchar(255),
+image varchar(255) DEFAULT "default.png",
 title varchar(255),
 description varchar(1000),
 Primary key (id),

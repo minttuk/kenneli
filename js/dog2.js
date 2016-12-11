@@ -2,19 +2,16 @@
 var owner;
 var dog;
 
-
 // Hakee kullekkin koiran sivulle kyseisen koiran nimen, kuvauksen, omistajan yms. 
 // Koirien sivut generoidaan dog.html:stä ja urlissa oleva ?dog= määrittelee minkä id:n koira on kyseessä
 // Tiedot haetaan sql:stä id:n mukaan.
 function get_dog_content() {
     var dogId = parseUri(window.location.search).queryKey['dog'];
-    $('#profileimage').attr("src", "img/" + dogId + ".png");
     if (!dogId) {
         window.location = "index.html";
     }
     var result;
     var $str = "getDog";
-    var owner = null;
     $.ajax({
         url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str, //*/"php/sqlquery.php?q=" + $str,
         type: "post",
@@ -26,6 +23,7 @@ function get_dog_content() {
            $('.name').html(response['name']);
            $('#dogTitle').html(response['title']);
            $('#description').html(response['description']);
+           $('#profileimage').attr("src", "img/uploads/" + response['image']);
            owner = response['owner'];
            getOwner();
         },
@@ -66,8 +64,13 @@ $(function() {
 //Näyttää koiran sivulla edit-napit, jos koiran omistajan id on sama kuin session id. Eli oman koiran tietoja voi vain muokata. 
 //Kaikki voivat kuitenkin postata kaikkien koirien sivuille uusia viestejä
 function displayEditButtons() {
-	console.log("user and owner" + userid +", " + dog['owner']);
-	if (userid == owner) {
-		document.getElementById('dogEditBtns').style.display = "block";
-	}
+    var editdiv = document.getElementById('dogEditBtns');
+    console.log(userid + ", " + owner);
+    if (userid == owner) {
+        document.getElementById("dogIdToImage").value = dog['id'];
+        editdiv.style.display = "block";
+    }
+    else {
+        editdiv.style.display = "none";
+    }
 }
