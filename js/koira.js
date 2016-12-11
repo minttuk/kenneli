@@ -4,6 +4,8 @@ window.onload = getDogMessages();
 // Hakee koiran messaget
 function getDogMessages(){
 	var ajaxRequest;
+	var myid = userid;
+	console.log("minun id"+myid);
 	var dogId = parseUri(window.location.search).queryKey['dog'];  //haetaan kyseisen sivun koiran id
 	var array = {"title": dogId};
     var dataString = JSON.stringify(array);
@@ -75,6 +77,10 @@ function getDogMessages(){
 				var deleteBtn = document.createElement("BUTTON");
 				deleteBtn.setAttribute("id", msgId);
 				deleteBtn.setAttribute("class", "deleteButton");
+				console.log("minun id: "+myid+"ja viestin lähettäjän id: "+object[i].userid);
+				if(myid!=object[i].userid){
+					deleteBtn.style.visibility='hidden';
+				}
 				console.log("lähetetään msgId "+msgId);
 				var t = document.createTextNode("Poista viesti");       
 				deleteBtn.appendChild(t);                        

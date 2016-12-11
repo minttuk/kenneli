@@ -314,7 +314,7 @@ function updateUser() {
 function getMsgs($dog_param) {
     //$value = json_decode(file_get_contents('php://input'), true);
     //$dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['dogID']);
-    $query = "select message.id, message.title, message.message, message.posttime, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param." order by message.id desc";
+    $query = "select message.id, message.title, message.message, message.posttime, message.user_id, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param." order by message.id desc";
     $result=$GLOBALS['db']->query($query);
     $msg = array();
     while($row=$result->fetch_assoc()){
@@ -324,7 +324,8 @@ function getMsgs($dog_param) {
       $time=$row["posttime"];
       $firstname=$row["firstname"];
       $lastname=$row["lastname"];
-      $msg[] = array("id"=>$id, "title"=> $title,"message"=> $message, "time"=> $time, "firstname"=>$firstname, "lastname"=>$lastname);
+      $userid=$row["user_id"];
+      $msg[] = array("id"=>$id, "title"=> $title,"message"=> $message, "time"=> $time, "user_id"=>$userid, "firstname"=>$firstname, "lastname"=>$lastname);
     }
     
     echo $jsonformat=json_encode($msg);
