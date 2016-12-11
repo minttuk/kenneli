@@ -4,6 +4,8 @@ window.onload = getDogMessages();
 // Hakee koiran messaget
 function getDogMessages(){
 	var ajaxRequest;
+	var myid = userid;
+	console.log("minun id"+myid);
 	var dogId = parseUri(window.location.search).queryKey['dog'];  //haetaan kyseisen sivun koiran id
 	var array = {"title": dogId};
     var dataString = JSON.stringify(array);
@@ -54,26 +56,38 @@ function getDogMessages(){
 				var div2 = document.createElement('div');
 				div2.className = "media-body";
 				div2.setAttribute("id", "tokataso");
+				var divleft = document.createElement('div');
+				divleft.className = "media-body";
+				divleft.setAttribute("id", "tokatasoleft");
+				var divright = document.createElement('div');
+				divright.className = "media-body";
+				divright.setAttribute("id", "tokatasoright");
 				var heading = document.createElement('h4');
 				heading.className = "media-heading";
 				heading.setAttribute("id", title);
 				heading.innerHTML = object[i].title;
-				div2.appendChild(heading);
+				divleft.appendChild(heading);
 				var para1 = document.createElement('p');
 				para1.setAttribute("id", timestamp);
 				para1.innerHTML = "<small>"+object[i].time+" kirjoittanut: "+object[i].firstname+" "+object[i].lastname+"</small>";
-				div2.appendChild(para1);
+				divleft.appendChild(para1);
 				var para2 = document.createElement('p');
 				para2.setAttribute("id", message);
 				para2.innerHTML = object[i].message;
 				var deleteBtn = document.createElement("BUTTON");
 				deleteBtn.setAttribute("id", msgId);
 				deleteBtn.setAttribute("class", "deleteButton");
+				console.log("minun id: "+myid+"ja viestin lähettäjän id: "+object[i].userid);
+				if(myid!=object[i].userid){
+					deleteBtn.style.visibility='hidden';
+				}
 				console.log("lähetetään msgId "+msgId);
 				var t = document.createTextNode("Poista viesti");       
 				deleteBtn.appendChild(t);                        
-				div2.appendChild(para2);
-				div2.appendChild(deleteBtn);
+				divleft.appendChild(para2);
+				divright.appendChild(deleteBtn);
+				div2.appendChild(divleft);
+				div2.appendChild(divright);
 				div1.appendChild(div2);
 				document.getElementById("containeri").appendChild(div1);
 			}

@@ -182,3 +182,22 @@ hr.style8 {
 .navbar-inverse .navbar-brand {
     color: #cccccc;
 }
+
+.deleteButton {
+    background-color: #990044;
+    border-color: black;
+    color: white;
+    margin-top: 20px;
+    float: right;
+}
+
+#divleft {
+    width: 90%;
+    float:left;
+}
+
+#divright {
+    width: 10%;
+    float:right;
+}
+

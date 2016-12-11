@@ -7,6 +7,7 @@ function deleteMsg(msgId){
     //var id = userid;
     //var dogId = parseUri(window.location.search).queryKey['dog'];
     //var array = {"title": title, "message": message, "id": id, "dogid": dogId};
+    var dogId = parseUri(window.location.search).queryKey['dog'];
     var array = {"msgId": msgId};
     var dataString = JSON.stringify(array);
     console.log('muodostettu json string' + dataString);
@@ -33,6 +34,7 @@ function deleteMsg(msgId){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
 		    console.log(text);
+		    window.location = 'dog.html?dog='+ dogId;
 		    //var object = JSON.parse(text);
 		    //console.log(object[0]);
 		    //document.getElementById("title1").innerHTML = object[0].title;
