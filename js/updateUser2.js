@@ -1,8 +1,10 @@
+// Määritellään html-elementeille javascript muuttujat
 var modal = document.getElementById('userModal');
 var btn = document.getElementById('updateUser');
 var span = document.getElementsByClassName('userspan')[0];
 
-//
+// Kun settings-nappia painetaan navigointibaarista, tämä funktio käynnistyy. Se hakee käyttäjän tiedot ajaxilla ja kutsuu sitten userUpdateFormia, jolloin
+// modalin kentät täytetään tietokannan tiedoilla ja modal muutetaan näkyväksi.
 btn.onclick = function getUserById(callback) {
     var id = userid;
     var $str = "getUser";
@@ -18,7 +20,7 @@ btn.onclick = function getUserById(callback) {
     });
 }
 
-// Fills the values with previously given user information and changes the modal display to bloc
+// Laittaa modalin kenttien alkuarvoiksi tietokannassa jo olevat tiedot. Niitä muuttamalla ja painamalla save uudet tiedot viedään tietokantaan.
 function userUpdateForm(data) {
     console.log("button painettu");
     getDogByOwner(userid);
@@ -29,16 +31,19 @@ function userUpdateForm(data) {
     modal.style.display = "block";
 }
 
+// Muuttaa modalin taas näkymättömäksi, jos ruksia painetaan kentän yläkulmassa
 span.onclick = function() {
     modal.style.display = "none";
 }
+
+// Muuttaa modalin näkymättömäksi, jos kentän ulkopuolista aluetta painetaan.. (EI toimi jostain syystä joka sivulla...)
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
     }
 }
 
-//Sends new user information to server with ajax
+//Lähettää käyttäjän tiedot serverille ajaxilla save-nappia painamalla
 var updateUserBtn = document.getElementById('updateUserBtn');
 updateUserBtn.onclick = function() {
     var $str = "updateUser";
@@ -58,7 +63,7 @@ updateUserBtn.onclick = function() {
     modal.style.display = "none";
 }
 
-//Gets dogs by owner id (session id)
+//Hakee modaliin sen koiran ID:n jolla on omistajana tämä kyseinen käyttäjä eli session ID.
 function getDogByOwner(userid) {
     var $str = "getDogByOwner";
     $.ajax({

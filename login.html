@@ -8,8 +8,10 @@
     </head>
     <body>
         <div class="login-page">
+          <!-- Login/register-form, josta voi vaihtaa näkymään joko sisäänkirjautumiskentät tai rekisteröitymiskentät -->
           <div class="form">
-            <h3>Welcome to Kennelbook!</h3>
+            <h3>Welcome to Kennelsome!</h3>
+            <!-- Rekisteröitymisformi -->
             <form class="register-form">
               <input id='firstname' type="text" placeholder="firstname"/>
               <input id='lastname' type="text" placeholder="lastname"/>
@@ -18,12 +20,14 @@
               <button id='registerbutton'>create</button>
               <p class="message">Already registered? <a href="#">Sign In</a></p>
             </form>
+            <!-- Sisäänkirjautumisformi -->
             <form class="login-form" id="login-form">
               <input type="text" id="loginemail" placeholder="email"/>
               <input type="password" id="loginpassword" placeholder="password"/>
               <button id="loginbutton">login</button>
               <p class="message">Not registered? <a href="#">Create an account</a></p>
             </form>
+            <!-- Tähän tulee errorviesti, jos kenttiin ei ole syötetty oikeita asioita -->
             <p class="errormsg"></p>
           </div>
         </div>

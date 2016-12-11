@@ -1,3 +1,5 @@
+// Hakee kaikki koirat tietokannasta ja tekee niistä listaelementtejä navigointibaariin sekä pentueen koirat -sivupaneeliin. Generoi jokaiselle koiralle id:tä
+// vastaavan urlin 
 (function getNav() {
     //var dogId = parseUri(window.location.search).queryKey['dog'];
     var result;

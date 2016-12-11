@@ -1,6 +1,7 @@
 
 window.onload = getDogMessages();
 
+// Hakee koiran messaget
 function getDogMessages(){
 	var ajaxRequest;
 	var dogId = parseUri(window.location.search).queryKey['dog'];  //haetaan kyseisen sivun koiran id
@@ -24,6 +25,7 @@ function getDogMessages(){
 		}
 	}
 
+	// Täyttää koiran sivun viestit
 	ajaxRequest.onreadystatechange = function(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;

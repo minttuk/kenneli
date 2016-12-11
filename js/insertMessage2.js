@@ -1,6 +1,7 @@
 
 document.getElementById('formPost').onsubmit = postMessage;
 
+// Postaa uuden viestin php:lle ja siitä mysql:ään. Tarkistaa, että otsikko ja viestikenttä eivät ole tyhjiä
 function postMessage(){
 	var ajaxRequest; 
 	var title = document.getElementById('title').value;
@@ -50,22 +51,24 @@ function postMessage(){
     }
 }
 
+// Tarkistaa viesin pituuden
 function checkMessage(message) {
     if (message.length > 0 && message.length < 500 && message.trim().length !== 0) {
         return true;
     }
     else {
-        $('.errormsg').html("Please write a message!");
+        $('.errormsg').html("Please write a message! Max 500 characters.");
         return false;
     }
 }
 
+// Tarkistaa otsikon pituuden
 function checkTitle(title) {
     if (title.length > 0 && title.length < 255) {
         return true;
     }
     else {
-        $('.errormsg').html("Please give a title!");
+        $('.errormsg').html("Please give a title! Max 255 characters.");
         return false;
     }
 }
