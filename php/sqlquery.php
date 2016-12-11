@@ -18,10 +18,10 @@ $parameters = getParameters();
 
 # Redirect to appropriate handlers.
 if ($resource[0]=="kennelsome") {
-	/*if ($request_method=="POST" && $resource[1]=="getMsgs") {
-    	getMsgs();
+	if ($request_method=="GET" && $resource[1]=="getMsgs") {
+    	getMsgs($resource[2]);
 	}
-	else if ($request_method=="GET" && $resource[1]=="getFrontSideMsgs") {
+	/*else if ($request_method=="GET" && $resource[1]=="getFrontSideMsgs") {
 		getFrontSideMsgs();
 	} 
 	else if ($request_method=="POST" && $resource[1]=="createMsg") {
@@ -39,7 +39,7 @@ if ($resource[0]=="kennelsome") {
 	else if ($request_method=="POST" && $resource[1]=="updateDog") {
 		updateDog();
 	}*/
-	if ($request_method=="GET" && $resource[1]=="getDogs") {
+	else if ($request_method=="GET" && $resource[1]=="getDogs") {
 		getDogs();
 	}
 	/*else if ($request_method=="POST" && $resource[1]=="getUser") {
@@ -70,9 +70,9 @@ if ($resource[0]=="kennelsome") {
 
 $q = $_REQUEST["q"];
 
-if ($q == "getMsgs"){
+/*if ($q == "getMsgs"){
     getMsgs();
-}
+}*/
 
 if ($q == "getFrontSideMsgs"){
     getFrontSideMsgs();
@@ -307,9 +307,9 @@ function updateUser() {
     }
 }
 
-function getMsgs() {
-    $value = json_decode(file_get_contents('php://input'), true);
-    $dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['title']);
+function getMsgs($dog_param) {
+    //$value = json_decode(file_get_contents('php://input'), true);
+    //$dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['dogID']);
     $query = "select message.id, message.title, message.message, message.posttime, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param." order by message.id desc";
     $result=$GLOBALS['db']->query($query);
     $msg = array();

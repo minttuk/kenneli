@@ -3,7 +3,7 @@
     var result;
     var $str = "getDogs";
     $.ajax({
-        url: "https://kennel-minttukoponen.c9users.io/kennelsome/getDogs",  //"php/sqlquery.php?q=" + $str,
+        url: c9address + $str,  //"php/sqlquery.php?q=" + $str,
         type: "get",
         //dataType: "json",
         success: function (response) {

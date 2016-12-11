@@ -27,6 +27,7 @@ function getDogMessages(){
 	ajaxRequest.onreadystatechange = function(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
+		    console.log(text);
 		    var object = JSON.parse(text);
 		    var count = Object.keys(object).length; //lasketaan montako viestiä
 
@@ -84,7 +85,7 @@ function getDogMessages(){
 		}
 	};
 	
-	ajaxRequest.open("POST", /*"https://kennel-minttukoponen.c9users.io/kennelsome/getMsgs", true);  //*/"php/sqlquery.php?q=getMsgs", true);
-	ajaxRequest.send(dataString);
+	ajaxRequest.open("GET", c9address + "getMsgs/"+ dogId, true);  //"php/sqlquery.php?q=getMsgs", true);
+	ajaxRequest.send(/*dataString*/);
 	
 }
