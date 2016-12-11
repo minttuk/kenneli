@@ -21,6 +21,9 @@ if ($resource[0]=="kennelsome") {
 	if ($request_method=="GET" && $resource[1]=="getMsgs") {
     	getMsgs($resource[2]);
 	}
+	else if($request_method=="GET" && $resource[1]=="deleteMsg") {
+	    deleteMsg($resource[2]);
+	}
 	/*else if ($request_method=="GET" && $resource[1]=="getFrontSideMsgs") {
 		getFrontSideMsgs();
 	} 
@@ -121,6 +124,7 @@ if ($q == "updateUser") {
 if ($q == "getDogByOwner") {
     getDogByOwner();
 }
+
 
 
 
@@ -359,8 +363,18 @@ function createMsg() {
     
 }
 
-function deleteMsg() {
-    
+function deleteMsg($msg_id) {
+    $query = "DELETE FROM message WHERE id=".$msg_id;
+    $result=$GLOBALS['db']->query($query);
+    if ($result === TRUE) {
+        $msg[] = array("message"=> 'Message deleted successfully');
+        echo $jsonformat=json_encode($msg);
+        return;
+    } else {
+        $msg[] = array("message"=> 'Error deleting message');
+        echo $jsonformat=json_encode($msg);
+        return;
+    }
 }
 
 function getDog() {

@@ -1,14 +1,13 @@
 function deleteMsg(msgId){
     console.log("ollaan deletemessagessa "+msgId);
-    /*
+    
 	var ajaxRequest; 
-	var title = document.getElementById('title').value;
-    var message = document.getElementById('message').value;
-    var id = userid;
-    var dogId = parseUri(window.location.search).queryKey['dog'];
-    console.log("koiran id" + dogId);
-    console.log("Sessionin id numero on " + id);
-    var array = {"title": title, "message": message, "id": id, "dogid": dogId};
+	//var title = document.getElementById('title').value;
+    //var message = document.getElementById('message').value;
+    //var id = userid;
+    //var dogId = parseUri(window.location.search).queryKey['dog'];
+    //var array = {"title": title, "message": message, "id": id, "dogid": dogId};
+    var array = {"msgId": msgId};
     var dataString = JSON.stringify(array);
     console.log('muodostettu json string' + dataString);
 	
@@ -41,9 +40,10 @@ function deleteMsg(msgId){
 		}
 	};
 	
-	ajaxRequest.open("POST", "php/sqlquery.php?q=deleteMsg", true);
-	ajaxRequest.send(dataString);
+	ajaxRequest.open("GET", c9address + "deleteMsg/"+ msgId, true);  //"php/sqlquery.php?q=getMsgs", true);
+	ajaxRequest.send(/*dataString*/);
 	
-	*/
+	
+	
 	
 }
