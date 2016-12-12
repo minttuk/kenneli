@@ -59,13 +59,13 @@ insert into dog (name, owner, image, title, description) values ("Musti", "3", "
 
 insert into message (title, message, user_id, dog_id) values ("Ulkoilua", "Tänään käytiin ulkoilemassa Nuuksiossa. Oli ihanan aurinkoinen ilma ja Fanni söi mustikoita suoraan puskista.", "1", "1");
 insert into message (title, message, user_id, dog_id) values ("Musti maalla", "Olimme  Mustin kanssa koko viikonlopun maalla Asikkalassa. Musti nautti vapaana olosta ja tapasi paljon uusia eläintuttavuuksia.", "3", "3");
-insert into message (title, message, user_id, dog_id) values ("Ruffe rannalla", "Kävimme tänään Ruffen kanssa rannalla. Heitimme keppiä veteen, mutta Ruffe ei uskaltanut uida. Kahlaamisesta se kyllä piti.", "1", "2");
+insert into message (title, message, user_id, dog_id) values ("Ruffe rannalla", "Kävimme tänään Ruffen kanssa rannalla. Heitimme keppiä veteen, mutta Ruffe ei uskaltanut uida. Kahlaamisesta se kyllä piti.", "2", "2");
 insert into message (title, message, user_id, dog_id) values ("Ruokavalio", "Olemme kokeilleet muutaman viikon kasvattajan suosittelemaa koiranruokaa. Fannin turkki voi hyvin ja uusi ruoka kaikenpuolin sopii hänelle loistavasti.", "1", "1");
-insert into message (title, message, user_id, dog_id) values ("Ruffen ulvoi yöllä", "Mikähän siinä on, että Ruffe alkoi ulkova keskellä yötä? Onko teillä käynyt koskaan samaa?", "1", "2");
-insert into message (title, message, user_id, dog_id) values ("Koirapuistossa", "Ruffe pääsi tänään läheiseen koirapuistoon. Siellä oli paljon koiria, mutta Ruffe tuli tietysti kaikkien kanssa toimeen.", "1", "2");
+insert into message (title, message, user_id, dog_id) values ("Ruffen ulvoi yöllä", "Mikähän siinä on, että Ruffe alkoi ulkova keskellä yötä? Onko teillä käynyt koskaan samaa?", "2", "2");
+insert into message (title, message, user_id, dog_id) values ("Koirapuistossa", "Ruffe pääsi tänään läheiseen koirapuistoon. Siellä oli paljon koiria, mutta Ruffe tuli tietysti kaikkien kanssa toimeen.", "2", "2");
 insert into message (title, message, user_id, dog_id) values ("Pentuetreffit", "Mukavaa oli nähdä teitä kaikkia pentuetreffeillä. Otetaan pian uudestaan!", "1", "1");
 insert into message (title, message, user_id, dog_id) values ("Eläinlääkärissä", "Kävimme tänään Mustin kanssa eläinlääkärissä puolivuotistarkastuksessa. Kaikki oli kunnossa ja Musti käyttäytyi mallikkaasti.", "3", "3");
 insert into message (title, message, user_id, dog_id) values ("Messuilla", "Saimme Mustin kanssa kutsun koiramessuille Messukeskukseen. Esittelin Mustin kehässä ja se käyttäytyi taas yhtä hienosti kuin aina.", "3", "3");
 insert into message (title, message, user_id, dog_id) values ("Ontumista", "Musti ontui lenkillä vasenta etutassuaan. Täytyy seurata tilannetta.", "3", "3");
-insert into message (title, message, user_id, dog_id) values ("Eroahdistus??", "Naapuri sanoi, että Ruffe on haukkunut kotona yksin ollessaan... Mitenköhän siitä pääsisi eroon? Vinkkejä?", "1", "2");
+insert into message (title, message, user_id, dog_id) values ("Eroahdistus??", "Naapuri sanoi, että Ruffe on haukkunut kotona yksin ollessaan... Mitenköhän siitä pääsisi eroon? Vinkkejä?", "2", "2");
 insert into message (title, message, user_id, dog_id) values ("Ihanat sadepäivät!", "Voi kun meidän Fanni tykkää kieriskellä mutalammikoissa! Ehkäpä itsekin kohta otan pienen mutakylvyn =) !", "1", "1");
