@@ -28,7 +28,7 @@ var updateDogBtn = document.getElementById("updateDogBtn");
 updateDogBtn.onclick = function() {
     var $str = "updateDog";
     $.ajax({
-        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
+        url: "php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
         data: JSON.stringify({'id': dog['id'],'name': $('#dogFormName').val(), 'title': $('#dogFormTitle').val(), 'description': $('#dogFormDescription').val()}),

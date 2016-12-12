@@ -9,8 +9,7 @@ mb_internal_encoding('UTF-8');
 
 
 
-# Main
-# ----
+
 
 $resource = getResource();
 $request_method = getMethod();
@@ -24,108 +23,61 @@ if ($resource[0]=="kennelsome") {
 	else if($request_method=="GET" && $resource[1]=="deleteMsg") {
 	    deleteMsg($resource[2]);
 	}
-	/*else if ($request_method=="GET" && $resource[1]=="getFrontSideMsgs") {
-		getFrontSideMsgs();
-	} 
-	else if ($request_method=="POST" && $resource[1]=="createMsg") {
-		createMsg();
-	}
-	else if ($request_method=="POST" && $resource[1]=="login") {
-	    login();
-	}
-	else if ($request_method=="GET" && $resource[1]=="getSession") {
-		getSession();
-	}*/
 	else if ($request_method=="GET" && $resource[1]=="getDog") {
 		getDog($resource[2]);
 	}	
-	/*else if ($request_method=="POST" && $resource[1]=="updateDog") {
-		updateDog();
-	}*/
 	else if ($request_method=="GET" && $resource[1]=="getDogs") {
 		getDogs();
 	}
-	/*else if ($request_method=="POST" && $resource[1]=="getUser") {
-		getUser();
-	}	
-	else if ($request_method=="GET" && $resource[1]=="logout") {
-		sessionDestroy();
-	}
-	else if ($request_method=="POST" && $resource[1]=="register") {
-		register();
-	}
-	else if ($request_method=="POST" && $resource[1]=="updateUser") {
-		updateUser();
-	}
-	else if ($request_method=="POST" && $resource[1]=="getDogByOwner") {    
-		getDogByOwner();
-	}*/
-
 	else {
 		http_response_code(405); # Method not allowed
 	}
 }
-/*else {
-	http_response_code(405); # Method not allowed
+else {
+    
+    $q = $_REQUEST["q"];
+
+    if ($q == "getFrontSideMsgs"){
+        getFrontSideMsgs();
+    }
+    
+    if ($q == "createMsg"){
+        createMsg(); 
+    }
+    
+    if ($q == "login"){
+        login();
+    }
+    
+    if ($q == "getSession") {
+        getSession();
+    }
+    
+    if ($q == "updateDog") {
+        updateDog();
+    }
+    
+    if ($q == "getUser") {
+        getUser();
+    }
+    
+    if ($q == "logout") {
+        sessionDestroy();
+    }
+    
+    if ($q == "register") {
+        register();
+    }
+    
+    if ($q == "updateUser") {
+        updateUser();
+    }
+    
+    if ($q == "getDogByOwner") {
+        getDogByOwner();
+    }
+
 }
-
-*/
-
-$q = $_REQUEST["q"];
-
-/*if ($q == "getMsgs"){
-    getMsgs();
-}*/
-
-if ($q == "getFrontSideMsgs"){
-    getFrontSideMsgs();
-}
-
-if ($q == "createMsg"){
-    createMsg(); 
-}
-
-if ($q == "login"){
-    login();
-}
-
-if ($q == "getSession") {
-    getSession();
-}
-
-/*if ($q == "getDog") {
-    getDog();
-}*/
-
-if ($q == "updateDog") {
-    updateDog();
-}
-
-/*if ($q == "getDogs") {
-    getDogs();
-}*/
-
-if ($q == "getUser") {
-    getUser();
-}
-
-if ($q == "logout") {
-    sessionDestroy();
-}
-
-if ($q == "register") {
-    register();
-}
-
-if ($q == "updateUser") {
-    updateUser();
-}
-
-if ($q == "getDogByOwner") {
-    getDogByOwner();
-}
-
-
 
 
 function getResource() {
@@ -222,20 +174,6 @@ function sessionDestroy() {
     echo json_encode(array('id'=>$_SESSION['id']));
 }
 
-/*function getMsgs() {
-    $sql="select *  FROM message WHERE id=1";
-    //$result = mysql_query($sql);
-    $result=$GLOBALS['db']->query($sql);
-    $msg = array();
-    while($row=$result->fetch_assoc()){
-      $title=$row["title"]; 
-      $message=$row["message"];
-      //$data += [$category => $question];
-      $msg[] = array('title'=> $title,'message'=> $message);
-    }
-    //echo $jsonformat=json_encode($msg);
-    echo json_encode($msg);
-}*/
 
 function getSession() {
     echo json_encode(array('id'=> $_SESSION['id']));
@@ -453,16 +391,5 @@ function getDogByOwner() {
 $db->close();
 
 
-
-// some functions to be done (some might not be necessary)
-
-// deleteUser()
-// getUser()
-// createDog()
-// updateDog()
-// getMsg()
-//getMsgs();
-// updateMsg()
-// deleteMsg()
 
 ?>
