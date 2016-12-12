@@ -101,8 +101,9 @@ hr.style8 {
 }
 
 #logoutbutton{
-    margin: 3px;
+    margin-top: 10px;
     float: right;
+    margin-left: 10px;
 }
 
 #currentUser {
@@ -181,6 +182,10 @@ hr.style8 {
 
 .navbar-inverse .navbar-brand {
     color: #cccccc;
+}
+
+.nav.navbar-nav.navbar-right {
+    margin-right: 5px;
 }
 
 .deleteButton {
