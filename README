@@ -1,17 +1,52 @@
 Tervetuloa kennelin pentueen somesivuille!
 
-Tietokannan sisällön löydät kennel/SQLscripts.sql tiedostosta...
+Tietokannan sisällön löydät kennel/SQLscripts.sql tiedostosta. Tietokannan voi luoda kopioimalla tiedostosta kaiken "create database kennel;"-lauseesta eteenpäin.
 
 
 Sivut voit käynnistää kennel/login.html tiedostosta. Kun olet päivittänyt mysql tietokannan tiedot, niin voit kirjautua kolmella eri käyttäjätunnuksella:
     sähköposti: hash@hash.fi            salasana: hash
     sähköposti: maija.honka@koira.fi    salasana: maijahonka
     sähköposti: pate.koivisto@koira.fi  salasana: patekoivisto
-Voit vaihtoehtoisesti luoda oman käyttäjätunnuksen.
+Voit vaihtoehtoisesti luoda oman käyttäjätunnuksen. (Uudelle käyttäjälle ei ole oikeutta muuttaa koirien asetuksia, koska ei ole niiden omistaja).
 
-sitten lisäksi mm:
--muiden html sivujen esittely (myös SpecRunner.html)
--css esittely
--img esittely
--js esittely
--php esittely
+HTML:
+    index.html - Pääsivu, pitää olla kirjautunut sisään
+    login.html - Login sivulta kirjaudutaan sisään. Kirjautunut ohjataan index.html-sivulle
+    dog.html - Koirien sivut generoidaan dog.html-pohjaan koiran id:n mukaan. Id annetaan parametrinä urlissa, jonka mukaan tiedot haetaan tietokannasta.
+    SpecRunner.html - SpecRunner.html näyttää Jasmine testien tulokset. Jasminella on testattu tarvittavat tietojen syöttökenttien javascript funtiot. (Esim. sähköpostin validointi).
+    HTML-tiedostot on validoitu.
+    
+CSS:
+    Sivu käyttää kahta Bootstrapteeman valmista CSS-muotoilua, boostrap.css ja bootstrap.min.css. Meidän päämuotoilu tulee kenneli2.css-tiedostosta sekä index.html:lle että dog.html:lle. Sisäänkirjautumisivulle on oma muotoilu login2.css.
+    
+IMG:
+    Sivulla staattisesti käytettävät kuvat ovat img/-kansion alla. Käyttäjän lataamat kuvat menevät img/uploads/-kansion alle.
+
+JS:
+    Suurimmalle osalle sivuston toiminnoista on oma javascript-tiedosto. Tiedostoissa on kommentoitu funktioiden toimintaa ja mihin sivun elementteihin ne liittyvät. Suuri osa javascriptistä on Ajaxia, joka on yhteydessä php:n kanssa.
+
+PHP:
+    Sivusto käyttää kolmea PHP-tiedostoa. connect.php luo yhteyden mySQL-tietokantaan ja se liitetään muihin PHP-sivuihin. upload.php hoitaa kuvan latauksen serverille. Suurin osa PHP-koodista on sqlquery.php-tiedostossa. 
+    Siellä käsitellään ajaxpyyntöjen tietokantakutsut. Osa pyynnöistä tulee restinä, kuten getDog, getDogs, deleteMsg, getMsgs. Loput käyttävät vain ajaxia normaalisti.
+    
+REST:
+    Esimerkkejä REST-apin käytöstä Kennelsomessa:
+    
+    Haetaan koiran tiedot ID:n mukaan (esim id=1)
+    Method: GET
+    osoite: oma-cloud9-osoite/kennelsome/getDog/1
+    
+    Haetaan kaikkien koirien tiedot
+    Method: GET
+    osoite: oma-cloud9-osoite/kennelsome/getDogs
+    
+    Haetaan kaikki viestit koiran ID:n mukaan (esim id=1)
+    Method: GET
+    osoite: oma-cloud9-osoite/kennelsome/getMsgs/1
+    
+    Poistetaan viesti viestin ID:n mukaan (esim id=2)
+    Method: GET
+    osoite: oma-cloud9-osoite/kennelsome/deleteMsg/2
+    
+JASMINE-testaus:
+    SpecRunner.HTML hakee testit alakansioista spec/ ja src/. Spec/-kansiossa on testit ja src/-kansiossa on kopiot testattavista javascript-tiedostoista

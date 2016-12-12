@@ -1,8 +1,8 @@
 var userid;
 
-var c9address = "https://kennel-minttukoponen.c9users.io/kennelsome/";
+//var c9address = "https://kennel-minttukoponen.c9users.io/kennelsome/";
 //var c9address = "https://kenneli-hannmard.c9users.io/kennelsome/";
-//var c9address = "https://kennelsome-sainipatala.c9users.io/kennelsome/";
+var c9address = "https://kennelsome-sainipatala.c9users.io/kennelsome/";
 
 (function get_session() {
     var $str = "getSession";
@@ -12,7 +12,6 @@ var c9address = "https://kennel-minttukoponen.c9users.io/kennelsome/";
         success: function (response) {
             console.log('sessionin id on ' + response['id']);
             userid = response['id'];
-            console.log(window.location.pathname);
             if ((response['id'] === null || !response['id']) && window.location.pathname !== "/login.html") {
                 console.log('IF');
                 window.location = "login.html";

@@ -29,7 +29,6 @@ function getDogMessages(){
 	ajaxRequest.onreadystatechange = function(){
 		if (ajaxRequest.readyState == 4 && ajaxRequest.status == 200){
 		    var text = ajaxRequest.responseText;
-		    console.log(text);
 		    var object = JSON.parse(text);
 		    var count = Object.keys(object).length; //lasketaan montako viestiä
 
@@ -75,11 +74,10 @@ function getDogMessages(){
 				var deleteBtn = document.createElement("BUTTON");
 				deleteBtn.setAttribute("id", msgId);
 				deleteBtn.setAttribute("class", "deleteButton");
-				console.log("minun id: "+userid+"ja viestin lähettäjän id: "+object[i].user_id);
+				//console.log("minun id: "+userid+"ja viestin lähettäjän id: "+object[i].user_id);
 				if(userid!=object[i].user_id){
 					deleteBtn.style.visibility='hidden';
 				}
-				console.log("lähetetään msgId "+msgId);
 				var t = document.createTextNode("Poista viesti");       
 				deleteBtn.appendChild(t);                        
 				divleft.appendChild(para2);

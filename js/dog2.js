@@ -19,7 +19,7 @@ function get_dog_content() {
         //data: JSON.stringify({'dogID': dogId}),
         success: function (response) {
            dog = response;
-           console.log("SUCCESS",response);
+           //console.log("SUCCESS",response);
            $('.name').html(response['name']);
            $('#dogTitle').html(response['title']);
            $('#description').html(response['description']);
@@ -43,7 +43,7 @@ function get_dog_content() {
             dataType: "json",
             data: JSON.stringify({'id': owner}),
             success: function (response) {
-                console.log("SUCCESS",response);
+                //console.log("SUCCESS",response);
                 $('#owner').html(response['firstname'] + " " + response['lastname']);
                 $('#contact').html("<strong>" + response['firstname'] + " " + response['lastname'] + "</strong>");
                 $('#address2').html(response['address'] + ", " + response['zipcode'] + "<br>" + response['email'] + "<br>" + response['phonenumber']);
@@ -65,7 +65,6 @@ $(function() {
 //Kaikki voivat kuitenkin postata kaikkien koirien sivuille uusia viestejä
 function displayEditButtons() {
     var editdiv = document.getElementById('dogEditBtns');
-    console.log(userid + ", " + owner);
     if (userid == owner) {
         document.getElementById("dogIdToImage").value = dog['id'];
         editdiv.style.display = "block";

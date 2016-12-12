@@ -1,8 +1,9 @@
-
+// Tämä vaihtaa login.html formia joko sisäänkirjautumisformiksi tai register-formiksi.
 $('.message a').click(function(){
    $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
 });
 
+// Esitellään muuttujia, joihin tallennetaan myöhemmin arvot
 var $loginemail;
 var $loginpassword;
 var $registeremail;
@@ -10,15 +11,14 @@ var $registerpassword;
 var $firstname;
 var $lastname;
 
-
+// Kun login-nappia painetaan tarkistetaan, että loginemail on halutussa muodossa, ja että salasana on annettu. Jos molemmat ok, lähetetään tiedot ajaxilla php:lle
 $('#loginbutton').click(function(){
     $loginemail = $('#loginemail').val();
     $loginpassword =$('#loginpassword').val();
-    console.log($('#loginpassword').val());
     if (checkEmail($loginemail) && passwordGiven($loginpassword)) {
         var $str = "login";
         $.ajax({
-            url: "php/sqlquery.php?q=" + $str,
+            url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
             type: "post",
             dataType: "json",
             data: JSON.stringify({'email': $loginemail, 'password': $loginpassword}),
@@ -35,6 +35,8 @@ $('#loginbutton').click(function(){
     return false;
 });
 
+// Tarkistaa register-nappia painettua, että kaikki tarvittavat kentät on täytetty. Email vastaa email-muotoa, etu- ja sukunimi ainakin kaksi merkkiä pitkät ja
+// salasana ainakin kolme merkkiä. Jos ok lähetetään ajaxilla php:lle
 $('#registerbutton').click(function(){
     console.log('register button pushed');
     $firstname = $('#firstname').val();
@@ -49,7 +51,7 @@ $('#registerbutton').click(function(){
         console.log('both ok');
         var $str = "register";
         $.ajax({
-            url: "php/sqlquery.php?q=" + $str,
+            url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/ "php/sqlquery.php?q=" + $str,
             type: "post",
             dataType: "json",
             data: JSON.stringify({'email': $registeremail, 'password': $registerpassword, 'firstname': $firstname, 'lastname': $lastname}),
@@ -70,6 +72,7 @@ $('#registerbutton').click(function(){
     return false;
 });
 
+// Emailin validointi
 function checkEmail(emailAddress) {
     var emailRegex = new RegExp("^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
     var valid = emailRegex.test(emailAddress);
@@ -84,6 +87,7 @@ function checkEmail(emailAddress) {
     }
 }
 
+// tarkistaa, että salasana annettu
 function passwordGiven(password) {
     if (password.length > 0) {
         return true;
@@ -94,6 +98,7 @@ function passwordGiven(password) {
     }
 }
 
+// tarkistaa, että rekisteröitäessä annetaan ainakin kolme merkkiä pitkä salasana
 function passwordRegister(password) {
     if (password.length > 2) {
         return true;
@@ -104,6 +109,7 @@ function passwordRegister(password) {
     }
 }
 
+// Tarkistetaan, että etu- ja sukunimi ainakin kaksi merkkiä pitkät rekisteröityessä
 function nameGiven(name1, name2) {
     if (name1.length > 1 && name2.length > 1) {
         return true;
