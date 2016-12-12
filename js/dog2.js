@@ -13,10 +13,10 @@ function get_dog_content() {
     var result;
     var $str = "getDog";
     $.ajax({
-        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str, //*/"php/sqlquery.php?q=" + $str,
-        type: "post",
-        dataType: "json",
-        data: JSON.stringify({'dogID': dogId}),
+        url: c9address + "getDog/" + dogId, //"php/sqlquery.php?q=" + $str,
+        type: "get",
+        //dataType: "json",
+        //data: JSON.stringify({'dogID': dogId}),
         success: function (response) {
            dog = response;
            console.log("SUCCESS",response);
