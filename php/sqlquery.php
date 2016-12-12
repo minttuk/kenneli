@@ -35,11 +35,11 @@ if ($resource[0]=="kennelsome") {
 	}
 	else if ($request_method=="GET" && $resource[1]=="getSession") {
 		getSession();
-	}
-	else if ($request_method=="POST" && $resource[1]=="getDog") {
-		getDog();
+	}*/
+	else if ($request_method=="GET" && $resource[1]=="getDog") {
+		getDog($resource[2]);
 	}	
-	else if ($request_method=="POST" && $resource[1]=="updateDog") {
+	/*else if ($request_method=="POST" && $resource[1]=="updateDog") {
 		updateDog();
 	}*/
 	else if ($request_method=="GET" && $resource[1]=="getDogs") {
@@ -93,9 +93,9 @@ if ($q == "getSession") {
     getSession();
 }
 
-if ($q == "getDog") {
+/*if ($q == "getDog") {
     getDog();
-}
+}*/
 
 if ($q == "updateDog") {
     updateDog();
@@ -311,9 +311,9 @@ function updateUser() {
     }
 }
 
-function getMsgs($dog_param) {
+function getMsgs($dogID) {
     //$value = json_decode(file_get_contents('php://input'), true);
-    //$dog_param = mysqli_real_escape_string($GLOBALS['db'], $value['dogID']);
+    $dog_param = mysqli_real_escape_string($GLOBALS['db'], $dogID);
     $query = "select message.id, message.title, message.message, message.posttime, message.user_id, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id and dog_id=".$dog_param." order by message.id desc";
     $result=$GLOBALS['db']->query($query);
     $msg = array();
@@ -378,9 +378,9 @@ function deleteMsg($msg_id) {
     }
 }
 
-function getDog() {
-    $value = json_decode(file_get_contents('php://input'), true);
-    $sql = "SELECT * FROM dog WHERE id='" . mysqli_real_escape_string($GLOBALS['db'], $value['dogID']) . "'";
+function getDog($dogID) {
+    //$value = json_decode(file_get_contents('php://input'), true);
+    $sql = "SELECT * FROM dog WHERE id='" . mysqli_real_escape_string($GLOBALS['db'], $dogID) . "'";
     $result = $GLOBALS['db']->query($sql);
     if ($result->num_rows > 0) {
         // output data of each row
