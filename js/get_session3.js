@@ -1,13 +1,22 @@
+// Kirjautuneen käyttäjän id tallennetaan muuttujaan userid, joten sitä voidaan muuallakin käyttää.
+
 var userid;
 
-//var c9address = "https://kennel-minttukoponen.c9users.io/kennelsome/";
+//Riippuen siitä, että kuka ryhmämme jäsenistä käyttää ohjelmaa, voimme alla olevista cloud 9 url-osoitteista valita omamme,
+//jotta RestApi kutsut ohjautuvat oikeaan paikkaan.
+
+
+var c9address = "https://kennel-minttukoponen.c9users.io/kennelsome/";
 //var c9address = "https://kenneli-hannmard.c9users.io/kennelsome/";
-var c9address = "https://kennelsome-sainipatala.c9users.io/kennelsome/";
+//var c9address = "https://kennelsome-sainipatala.c9users.io/kennelsome/";
+
+
+//haetaan sessionin käyttäjän id-numero.
 
 (function get_session() {
     var $str = "getSession";
     $.ajax({
-        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
+        url: "php/sqlquery.php?q=" + $str,
         type: "GET",
         success: function (response) {
             console.log('sessionin id on ' + response['id']);
@@ -31,10 +40,12 @@ var c9address = "https://kennelsome-sainipatala.c9users.io/kennelsome/";
             return;
         }
     });
+    
+    // haetaan kyseisen sessionin käyttäjän id:n mukaiset käyttäjätiedot.
     function getSessionUser(){
         $str = "getUser";
         $.ajax({
-            url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
+            url: "php/sqlquery.php?q=" + $str,
             type: "post",
             dataType: "json",
             data: JSON.stringify({'id': userid}),

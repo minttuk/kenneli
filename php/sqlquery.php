@@ -8,12 +8,11 @@ mb_language('uni');
 mb_internal_encoding('UTF-8');
 
 
-
-
-
 $resource = getResource();
 $request_method = getMethod();
 $parameters = getParameters();
+
+//Restiin on määritelty neljä metodia. Tarkistetaan ensin kutsutaanko näitä neljää.
 
 # Redirect to appropriate handlers.
 if ($resource[0]=="kennelsome") {
@@ -34,6 +33,8 @@ if ($resource[0]=="kennelsome") {
 	}
 }
 else {
+    
+    //Jos ei ole restin kautta kutsuttu metodi, niin sitten tarkistetaan muut mahdolliset metodit.
     
     $q = $_REQUEST["q"];
 
@@ -79,7 +80,9 @@ else {
 
 }
 
+// Tästä alkaa varsinaiset metodit.
 
+//Pilkoo URI:n listaksi, jota voidaan tarkastella.
 function getResource() {
     # returns numerically indexed array of URI parts
     $resource_string = $_SERVER['REQUEST_URI'];
@@ -92,6 +95,7 @@ function getResource() {
     return $resource;
 }
 
+//hakee parametrit
 function getParameters() {
     # returns an associative array containing the parameters
     $resource = $_SERVER['REQUEST_URI'];
@@ -110,12 +114,14 @@ function getParameters() {
     return $param_array;
 }
 
+//Hakee metodin tyypin.
 function getMethod() {
     # returns a string containing the HTTP method
     $method = $_SERVER['REQUEST_METHOD'];
     return $method;
 }
 
+//Tarkistetaan vastaako annettu salasana tietokantaan tallennettua salasanaa.
 function login() {
     $value = json_decode(file_get_contents('php://input'), true);
     $sql = "SELECT * FROM user WHERE email='" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "'";
@@ -136,6 +142,7 @@ function login() {
 
 }
 
+//Tallennetaan rekisteröintitiedot tietokantaan.
 function register() {
     $value = json_decode(file_get_contents('php://input'), true);
     $sql = "SELECT * FROM user WHERE email='" . mysqli_real_escape_string($GLOBALS['db'], $value['email']) . "'";
@@ -168,6 +175,7 @@ function register() {
     }
 }
 
+
 function sessionDestroy() {
     $_SESSION['id'] = null;
     session_destroy();
@@ -178,6 +186,7 @@ function sessionDestroy() {
 function getSession() {
     echo json_encode(array('id'=> $_SESSION['id']));
 }
+
 
 function createUser() {
     $sql = "INSERT INTO user (email, password)
@@ -190,6 +199,7 @@ function createUser() {
     }
 }
 
+//Palauttaa tietokannasta käyttäjien id:n, sähköpostin ja salasanan.
 function getUsers() {
     $sql = "SELECT id, email, password FROM user";
     $result = $GLOBALS['db']->query($sql);
@@ -204,6 +214,7 @@ function getUsers() {
     }
 }
 
+//Palauttaa tietyn käyttäjän tiedot.
 function getUser() {
     $value = json_decode(file_get_contents('php://input'), true);
     $sql = "SELECT * FROM user WHERE id='" . mysqli_real_escape_string($GLOBALS['db'], $value['id']) . "'";
@@ -220,6 +231,7 @@ function getUser() {
     echo json_encode(array('error'=>'No user found!'));
 }
 
+//Päivittää käyttäjän tiedot tietokantaan.
 function updateUser() {
     $value = json_decode(file_get_contents('php://input'), true);
     $address = mysqli_real_escape_string($GLOBALS['db'], $value['address']);
@@ -249,6 +261,7 @@ function updateUser() {
     }
 }
 
+//Hakee määritellyn koiran sivun viestit.
 function getMsgs($dogID) {
     //$value = json_decode(file_get_contents('php://input'), true);
     $dog_param = mysqli_real_escape_string($GLOBALS['db'], $dogID);
@@ -269,6 +282,7 @@ function getMsgs($dogID) {
     echo $jsonformat=json_encode($msg);
 }
 
+//Hakee etusivulle tulostuvat viestit
 function getFrontSideMsgs() {
     $query = "select message.title, message.message, message.posttime, message.dog_id, user.firstname, user.lastname FROM message JOIN user ON message.user_id=user.id order by message.id desc";
     $result=$GLOBALS['db']->query($query);
@@ -285,6 +299,8 @@ function getFrontSideMsgs() {
     echo $jsonformat=json_encode($msg);
 }
 
+
+//Tallentaa koiran sivulle kirjoitetun viestin tietokantaan.
 function createMsg() {
 
     $value = json_decode(file_get_contents('php://input'), true);
@@ -302,6 +318,7 @@ function createMsg() {
     
 }
 
+//Poistaa viestin tietokannasta viestin id-numeron perusteella.
 function deleteMsg($msg_id) {
     $query = "DELETE FROM message WHERE id=".$msg_id;
     $result=$GLOBALS['db']->query($query);
@@ -316,6 +333,7 @@ function deleteMsg($msg_id) {
     }
 }
 
+//Palauttaa koiran tiedot koiran id-numeron perusteella.
 function getDog($dogID) {
     //$value = json_decode(file_get_contents('php://input'), true);
     $sql = "SELECT * FROM dog WHERE id='" . mysqli_real_escape_string($GLOBALS['db'], $dogID) . "'";
@@ -332,6 +350,7 @@ function getDog($dogID) {
     echo json_encode(array('error'=>'No dog found'));
 }
 
+//Päivittää koiran tiedot tietokantaan.
 function updateDog() {
     $value = json_decode(file_get_contents('php://input'), true);
     $id = mysqli_real_escape_string($GLOBALS['db'], $value['id']);
@@ -354,6 +373,7 @@ function updateDog() {
     }
 }
 
+//Palauttaa kaikkien koirien tiedot.
 function getDogs() {
     $sql = "SELECT * FROM dog";
     $result = $GLOBALS['db']->query($sql);
@@ -370,6 +390,7 @@ function getDogs() {
     echo json_encode(array('error'=>'No dog found'));
 }
 
+//Palauttaa koiran tiedot omistajan mukaan.
 function getDogByOwner() {
     $value = json_decode(file_get_contents('php://input'), true);
     $sql = "SELECT * FROM dog WHERE owner='" . mysqli_real_escape_string($GLOBALS['db'], $value['owner']) . "'";

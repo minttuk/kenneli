@@ -5,7 +5,7 @@
     var result;
     var $str = "getDogs";
     $.ajax({
-        url: c9address + $str,  //"php/sqlquery.php?q=" + $str,
+        url: c9address + $str,
         type: "get",
         //dataType: "json",
         success: function (response) {

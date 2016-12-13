@@ -67,7 +67,7 @@ function getDogMessages(){
 		}
 	};
 	
-	ajaxRequest.open("GET", /*"https://kennel-minttukoponen.c9users.io/kennelsome/getFrontSideMsgs", true);   //*/"php/sqlquery.php?q=getFrontSideMsgs", true);
+	ajaxRequest.open("GET", "php/sqlquery.php?q=getFrontSideMsgs", true);
 	ajaxRequest.send(null);
 	
 }

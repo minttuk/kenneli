@@ -97,8 +97,8 @@ function getDogMessages(){
 		}
 	};
 	
-	ajaxRequest.open("GET", c9address + "getMsgs/"+ dogId, true);  //"php/sqlquery.php?q=getMsgs", true);
-	ajaxRequest.send(/*dataString*/);
+	ajaxRequest.open("GET", c9address + "getMsgs/"+ dogId, true);
+	ajaxRequest.send(null);
 	
 	
 }

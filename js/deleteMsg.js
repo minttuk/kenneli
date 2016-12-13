@@ -1,3 +1,5 @@
+//funktio jota kutsutaan kun halutaan poistaa viesti
+
 function deleteMsg(msgId){
     console.log("ollaan deletemessagessa "+msgId);
     
@@ -42,8 +44,8 @@ function deleteMsg(msgId){
 		}
 	};
 	
-	ajaxRequest.open("GET", c9address + "deleteMsg/"+ msgId, true);  //"php/sqlquery.php?q=getMsgs", true);
-	ajaxRequest.send(/*dataString*/);
+	ajaxRequest.open("GET", c9address + "deleteMsg/"+ msgId, true);
+	ajaxRequest.send(null);
 	
 	
 	

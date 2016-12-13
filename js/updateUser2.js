@@ -9,7 +9,7 @@ btn.onclick = function getUserById(callback) {
     var id = userid;
     var $str = "getUser";
     $.ajax({
-        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
+        url: "php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
         data: JSON.stringify({'id': id}),
@@ -49,7 +49,7 @@ updateUserBtn.onclick = function() {
     var $str = "updateUser";
     //var $mydogs = $('#mydogid').val().split(',');
     $.ajax({
-        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
+        url: "php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
         data: JSON.stringify({'address': $('#address').val(), 'zipcode': $('#zipcode').val(), 'city': $('#city').val(), 'phonenumber': $('#phonenumber').val(), 'dogid': $('#mydogid').val()}),
@@ -67,7 +67,7 @@ updateUserBtn.onclick = function() {
 function getDogByOwner(userid) {
     var $str = "getDogByOwner";
     $.ajax({
-        url: /*"https://kennel-minttukoponen.c9users.io/kennelsome/" + $str,  //*/"php/sqlquery.php?q=" + $str,
+        url: "php/sqlquery.php?q=" + $str,
         type: "post",
         dataType: "json",
         data: JSON.stringify({'owner': userid}),

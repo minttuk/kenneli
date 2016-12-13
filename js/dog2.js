@@ -13,7 +13,7 @@ function get_dog_content() {
     var result;
     var $str = "getDog";
     $.ajax({
-        url: c9address + "getDog/" + dogId, //"php/sqlquery.php?q=" + $str,
+        url: c9address + "getDog/" + dogId, 
         type: "get",
         //dataType: "json",
         //data: JSON.stringify({'dogID': dogId}),
