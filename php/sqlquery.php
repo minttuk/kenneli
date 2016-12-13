@@ -182,7 +182,7 @@ function sessionDestroy() {
     echo json_encode(array('id'=>$_SESSION['id']));
 }
 
-
+//Palauttaa sessionin id-numeron.
 function getSession() {
     echo json_encode(array('id'=> $_SESSION['id']));
 }
